@@ -1,9 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://dgodjbf3tbeda"]
+[gd_scene load_steps=31 format=3 uid="uid://dgodjbf3tbeda"]
 
 [ext_resource type="Script" path="res://scripts/player.cs" id="1_43t8o"]
 [ext_resource type="Texture2D" uid="uid://bpclenw8l51a3" path="res://assets/Character/_Idle.png" id="1_pgf5c"]
 [ext_resource type="Texture2D" uid="uid://u83m6wiy22cb" path="res://assets/Character/_Run.png" id="3_fec25"]
 [ext_resource type="Texture2D" uid="uid://djkk3o8ux7l4b" path="res://assets/Character/_JumpFallInbetween.png" id="3_x8lri"]
+[ext_resource type="PackedScene" uid="uid://brarfc8alv51j" path="res://prefabs/hurtbox.tscn" id="5_28lnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ilpu"]
+atlas = ExtResource("3_x8lri")
+region = Rect2(159, 39, 29, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uouet"]
 atlas = ExtResource("1_pgf5c")
@@ -49,10 +54,6 @@ region = Rect2(1123, 42, 24, 38)
 atlas = ExtResource("3_x8lri")
 region = Rect2(39, 39, 29, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ilpu"]
-atlas = ExtResource("3_x8lri")
-region = Rect2(159, 39, 29, 41)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ciy4s"]
 atlas = ExtResource("3_fec25")
 region = Rect2(40, 41, 34, 39)
@@ -95,6 +96,14 @@ region = Rect2(160, 41, 34, 39)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m3dgr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ilpu")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uouet")
@@ -178,10 +187,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q386c"]
-size = Vector2(21, 38)
+size = Vector2(19, 38)
 
-[node name="player" type="CharacterBody2D"]
-collision_mask = 14
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvviq"]
+size = Vector2(23, 36)
+
+[node name="player" type="CharacterBody2D" groups=["players"]]
+collision_layer = 31
+collision_mask = 31
 floor_constant_speed = true
 script = ExtResource("1_43t8o")
 
@@ -192,23 +205,28 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, -19)
 shape = SubResource("RectangleShape2D_q386c")
 
-[node name="camera" type="Camera2D" parent="."]
-zoom = Vector2(2.4, 2.4)
-limit_left = 0
-limit_top = -368
-limit_bottom = 150
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-rotation_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.0
-drag_top_margin = 0.0
-drag_right_margin = 0.0
-drag_bottom_margin = 0.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
+[node name="hurtbox" parent="." instance=ExtResource("5_28lnm")]
+visible = false
+
+[node name="hurtbox collision" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-0.5, -19)
+shape = SubResource("RectangleShape2D_rvviq")
+debug_color = Color(0.992157, 0, 0.247059, 0.419608)
+
+[node name="remote" type="RemoteTransform2D" parent="."]
+
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2(5, -3)
+target_position = Vector2(11, 0)
+collision_mask = 4
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+position = Vector2(-5, -3)
+target_position = Vector2(-11, 0)
+collision_mask = 4
+
+[connection signal="body_entered" from="hurtbox" to="." method="OnHurtboxBodyEntered"]

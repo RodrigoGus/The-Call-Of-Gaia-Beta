@@ -8,9 +8,8 @@ public partial class enemy : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	private int direction = 1;
-	[Export]
 	private NodePath animationNodePath = "anim";
-	private AnimationPlayer animation;
+	public AnimationPlayer animation;
 	private NodePath texturePath = "sprite";
 	private Sprite2D texture;
 	private NodePath wallDetectorPath = "wall detector";
@@ -41,5 +40,10 @@ public partial class enemy : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	public void OnAnimAnimationFinished(StringName animName)
+	{
+		if ("damage" == animName) QueueFree();
 	}
 }

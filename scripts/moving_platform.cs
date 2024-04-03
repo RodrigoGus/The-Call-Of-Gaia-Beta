@@ -17,14 +17,12 @@ public partial class moving_platform : Node2D
 	private Vector2 follow = Vector2.Zero;
 	private int platformCenter = 16;
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		this.platform = GetNode<AnimatableBody2D>("platform");
 		MovePlatform();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double _delta)
 	{
 		this.platform.Position = this.platform.Position.Lerp(this.follow, 0.5f);

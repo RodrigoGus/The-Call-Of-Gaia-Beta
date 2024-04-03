@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PlatformPrototipe"
-run/main_scene="res://levels/world.tscn"
+run/main_scene="res://levels/world1.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -53,6 +53,8 @@ esc={
 2d_physics/layer_2="world"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="items"
+2d_physics/layer_5="hitbox"
+2d_physics/layer_6="hurtbox"
 
 [rendering]
 
