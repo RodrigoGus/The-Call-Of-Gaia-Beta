@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dvfj7n814gq7u" path="res://assets/Background/CloudsFront.png" id="6_forr0"]
 [ext_resource type="Texture2D" uid="uid://bb0ov4xv8acj4" path="res://assets/Background/BGBack.png" id="7_e1qg4"]
 [ext_resource type="Texture2D" uid="uid://uhc3oxrby6kg" path="res://assets/Background/BGFront.png" id="8_wfxes"]
-[ext_resource type="PackedScene" uid="uid://dij1vrwgt2fa6" path="res://prefabs/coins.tscn" id="10_tq6pn"]
+[ext_resource type="PackedScene" uid="uid://c7ouaxlsacdo0" path="res://prefabs/coin.tscn" id="10_iwrxm"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)
@@ -2016,9 +2016,30 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="player" parent="." instance=ExtResource("1_m3gtv")]
 position = Vector2(87, 41)
-collision_layer = 0
+collision_mask = 14
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="coins" type="Node2D" parent="."]
 
-[node name="Area2D" parent="Node2D" instance=ExtResource("10_tq6pn")]
-position = Vector2(165, 87)
+[node name="coin" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(168, 88)
+
+[node name="coin2" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(408, 88)
+
+[node name="coin3" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(656, 88)
+
+[node name="coin4" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(856, 16)
+
+[node name="coin5" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(776, -48)
+
+[node name="coin6" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(856, -112)
+
+[node name="coin7" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(776, -176)
+
+[node name="coin8" parent="coins" instance=ExtResource("10_iwrxm")]
+position = Vector2(1024, -208)
