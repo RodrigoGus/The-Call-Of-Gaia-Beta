@@ -181,7 +181,7 @@ animations = [{
 size = Vector2(21, 38)
 
 [node name="player" type="CharacterBody2D"]
-collision_mask = 10
+collision_mask = 14
 floor_constant_speed = true
 script = ExtResource("1_43t8o")
 
@@ -198,6 +198,7 @@ shape = SubResource("RectangleShape2D_q386c")
 [node name="camera" type="Camera2D" parent="."]
 zoom = Vector2(2.4, 2.4)
 limit_left = 0
+limit_top = -368
 limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true

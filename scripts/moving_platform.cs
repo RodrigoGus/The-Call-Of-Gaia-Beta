@@ -20,20 +20,20 @@ public partial class moving_platform : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		platform = GetNode<AnimatableBody2D>("platform");
+		this.platform = GetNode<AnimatableBody2D>("platform");
 		MovePlatform();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double _delta)
 	{
-		platform.Position = platform.Position.Lerp(follow, 0.5f);
+		this.platform.Position = this.platform.Position.Lerp(this.follow, 0.5f);
 	}
 
 	public void MovePlatform()
 	{
-		Vector2 moveDirection = moveHorizontal ? Vector2.Right * distance : Vector2.Up * distance;
-		double duration = (double)moveDirection.Length() / MOVE_SPEED * platformCenter;
+		Vector2 moveDirection = this.moveHorizontal ? Vector2.Right * this.distance : Vector2.Up * this.distance;
+		double duration = (double)moveDirection.Length() / MOVE_SPEED * this.platformCenter;
 
 		Tween platformTween = CreateTween().SetLoops().SetTrans(Tween.TransitionType.Linear).SetEase(Tween.EaseType.InOut);
 
