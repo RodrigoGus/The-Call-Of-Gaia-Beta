@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://ex6ctejfyx0u"]
+[gd_scene load_steps=2 format=3 uid="uid://3hp4fcvdq0i6"]
 
 [ext_resource type="Texture2D" uid="uid://cqinm6scjkeot" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Health_Kit (16 x 16).png" id="1_dptyw"]
 
@@ -9,19 +9,16 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -2.0
-offset_right = 4.0
-offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="container" type="MarginContainer" parent="control"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 39.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -30,7 +27,7 @@ theme_override_constants/margin_bottom = 8
 [node name="coins_container" type="HBoxContainer" parent="control/container"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="control/container/coins_container"]
@@ -43,10 +40,26 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "0"
 
+[node name="life_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="control/container/life_container"]
+layout_mode = 2
+texture = ExtResource("1_dptyw")
+expand_mode = 2
+
+[node name="coins_counter" type="Label" parent="control/container/life_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0"
+
 [node name="score_container" type="HBoxContainer" parent="control/container"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_vertical = 0
 alignment = 1
 
 [node name="score_label" type="Label" parent="control/container/score_container"]
@@ -58,3 +71,19 @@ text = "SCORE:"
 layout_mode = 2
 size_flags_vertical = 1
 text = "0"
+
+[node name="timer_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+
+[node name="timer_label" type="Label" parent="control/container/timer_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "TIME:"
+
+[node name="timer_counter" type="Label" parent="control/container/timer_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "00:00"
