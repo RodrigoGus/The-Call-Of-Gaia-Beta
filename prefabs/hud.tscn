@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://3hp4fcvdq0i6"]
+[gd_scene load_steps=4 format=3 uid="uid://3hp4fcvdq0i6"]
 
 [ext_resource type="Texture2D" uid="uid://cqinm6scjkeot" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Health_Kit (16 x 16).png" id="1_dptyw"]
+[ext_resource type="Script" path="res://scripts/hud_manager.cs" id="1_jibiq"]
+[ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Coin-Sprites/00_Coin-Sprites.png" id="2_b81w6"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -11,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jibiq")
 
 [node name="container" type="MarginContainer" parent="control"]
 layout_mode = 1
@@ -32,42 +35,10 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="control/container/coins_container"]
 layout_mode = 2
-texture = ExtResource("1_dptyw")
+texture = ExtResource("2_b81w6")
 expand_mode = 2
 
 [node name="coins_counter" type="Label" parent="control/container/coins_container"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "0"
-
-[node name="life_container" type="HBoxContainer" parent="control/container"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="control/container/life_container"]
-layout_mode = 2
-texture = ExtResource("1_dptyw")
-expand_mode = 2
-
-[node name="coins_counter" type="Label" parent="control/container/life_container"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "0"
-
-[node name="score_container" type="HBoxContainer" parent="control/container"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-alignment = 1
-
-[node name="score_label" type="Label" parent="control/container/score_container"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "SCORE:"
-
-[node name="score_counter" type="Label" parent="control/container/score_container"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "0"
@@ -87,3 +58,40 @@ text = "TIME:"
 layout_mode = 2
 size_flags_vertical = 1
 text = "00:00"
+
+[node name="score_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+alignment = 1
+
+[node name="score_label" type="Label" parent="control/container/score_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "SCORE:"
+
+[node name="score_counter" type="Label" parent="control/container/score_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0"
+
+[node name="life_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="control/container/life_container"]
+layout_mode = 2
+texture = ExtResource("1_dptyw")
+expand_mode = 2
+
+[node name="life_separator" type="Label" parent="control/container/life_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "X"
+
+[node name="life_counter" type="Label" parent="control/container/life_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "00"
