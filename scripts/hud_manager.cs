@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using GLobalsNS;
 
 public partial class hud_manager : Control
 {
@@ -23,5 +22,6 @@ public partial class hud_manager : Control
 
 	public override void _Process(double delta)
 	{
+		_coins_counter.Text = Globals.coins.ToString();
 	}
 }
