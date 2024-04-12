@@ -14,7 +14,6 @@ public partial class player : CharacterBody2D
 	int inputDirection = 1;
 	private NodePath remoteTransformPath = "remote";
 	public RemoteTransform2D remoteTransform2D;
-	public int playerLife = 10;
 	private Vector2 knockbackVector;
 	private NodePath rayRightPath = "RayRight";
 	public RayCast2D rayRight;
@@ -75,7 +74,7 @@ public partial class player : CharacterBody2D
 	private void OnHurtboxBodyEntered(Node2D body)
 	{
 		//if (body.IsInGroup("enemies")) QueueFree();
-		if (this.playerLife <= 0) QueueFree();
+		if (Globals.player_life <= 0) QueueFree();
 		else
 		{
 			if (rayRight.IsColliding()) TakeDamage(new Vector2(-200, -200));
@@ -89,7 +88,7 @@ public partial class player : CharacterBody2D
 
 	public void TakeDamage(Vector2 knockbackForce, double duration = 0.25)
 	{
-		this.playerLife -= 1;
+		Globals.player_life -= 1;
 		if(knockbackForce != Vector2.Zero) knockbackVector = knockbackForce;
 
 		Tween knockbackTween = GetTree().CreateTween();

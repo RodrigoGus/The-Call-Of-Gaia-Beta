@@ -6,5 +6,6 @@ using System;
 	{
 		public static int coins = 0;
 		public static int score = 0;
+		public static int player_life = 10;
 	}
 
