@@ -21,7 +21,7 @@ public partial class coin : Area2D
 		_collision.SetDeferred("disabled", true);
 		GetNode<AnimatedSprite2D>("anim").Play("collected");
 
-		Globals.coins += coins;
+		globals.coins += coins;
 	}
 	private void OnAnimAnimationFinished()
 	{
