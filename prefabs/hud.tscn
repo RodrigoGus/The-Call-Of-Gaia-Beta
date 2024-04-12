@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://3hp4fcvdq0i6"]
+[gd_scene load_steps=6 format=3 uid="uid://3hp4fcvdq0i6"]
 
 [ext_resource type="Script" path="res://scripts/hud_manager.cs" id="1_jibiq"]
 [ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Coin-Sprites/00_Coin-Sprites.png" id="2_b81w6"]
 [ext_resource type="Texture2D" uid="uid://nv6m8kymlf0l" path="res://assets/Mini FX, Items & UI/HealthBarBackground_Test.png" id="3_8r0d5"]
 [ext_resource type="Texture2D" uid="uid://ddtt1uoealhfo" path="res://assets/Mini FX, Items & UI/HealthBarFill_Test.png" id="4_oy3r6"]
+[ext_resource type="Script" path="res://scripts/texture_health_bar.cs" id="5_no6yw"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -84,3 +85,4 @@ max_value = 10.0
 value = 10.0
 texture_under = ExtResource("3_8r0d5")
 texture_progress = ExtResource("4_oy3r6")
+script = ExtResource("5_no6yw")
