@@ -86,3 +86,8 @@ value = 10.0
 texture_under = ExtResource("3_8r0d5")
 texture_progress = ExtResource("4_oy3r6")
 script = ExtResource("5_no6yw")
+
+[node name="clock_timer" type="Timer" parent="control"]
+autostart = true
+
+[connection signal="timeout" from="control/clock_timer" to="control" method="_on_clock_timer_timeout"]
