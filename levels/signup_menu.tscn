@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1d0aq4fa0lqe"]
+
+[ext_resource type="Script" path="res://scripts/login_menu.cs" id="1_pd150"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pd150")
+
+[node name="nickname_textbox" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 79.0
+offset_right = 346.0
+offset_bottom = 116.0
+placeholder_text = "nickname"
+
+[node name="email_textbox" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 120.0
+offset_right = 346.0
+offset_bottom = 157.0
+placeholder_text = "your email"
+
+[node name="password_textbox" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 161.0
+offset_right = 347.0
+offset_bottom = 198.0
+placeholder_text = "password
+"
+
+[node name="sign_up_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 202.0
+offset_right = 346.0
+offset_bottom = 237.0
+text = "Sign up"
+
+[connection signal="button_down" from="sign_up_button" to="." method="_on_sign_up_button_button_down"]
