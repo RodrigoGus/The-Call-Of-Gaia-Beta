@@ -6,6 +6,8 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.3.0" />
+    <PackageReference Include="MySqlConnector" Version="2.3.6" />
     <PackageReference Include="Npgsql" Version="8.0.2" />
   </ItemGroup>
 </Project>

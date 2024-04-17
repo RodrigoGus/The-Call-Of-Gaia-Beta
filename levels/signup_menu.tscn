@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1d0aq4fa0lqe"]
+[gd_scene load_steps=2 format=3 uid="uid://ddvjbdw83vkca"]
 
 [ext_resource type="Script" path="res://scripts/login_menu.cs" id="1_pd150"]
 
@@ -9,6 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_pd150")
 
 [node name="nickname_textbox" type="TextEdit" parent="."]
