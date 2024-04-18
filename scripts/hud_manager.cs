@@ -33,7 +33,7 @@ public partial class hud_manager : Control
 		// _life_counter = GetNode<Label>("/root/world1/HUD/control/container/life_container/life_counter");
 		_timer_counter = GetNode<Label>("/root/world1/HUD/control/container/timer_container/timer_counter");
 
-		_coins_counter.Text = globals.coins.ToString();
+		_coins_counter.Text = Globals.coins.ToString();
 		_timer_counter.Text = default_minutes + ":" + default_seconds ;
 		// _score_counter.Text = globals.score.ToString();
 		// _life_counter.Text = globals.player_life.ToString();
@@ -42,7 +42,7 @@ public partial class hud_manager : Control
 
 	public override void _Process(double delta)
 	{
-		_coins_counter.Text = globals.coins.ToString();
+		_coins_counter.Text = Globals.coins.ToString();
 		// _life_counter.Text = globals.player_life.ToString();
 	}
 

@@ -74,7 +74,7 @@ public partial class player : CharacterBody2D
 	private void OnHurtboxBodyEntered(Node2D body)
 	{
 		//if (body.IsInGroup("enemies")) QueueFree();
-		if (globals.player_life <= 0) QueueFree();
+		if (Globals.player_life <= 0) QueueFree();
 		else
 		{
 			if (rayRight.IsColliding()) TakeDamage(new Vector2(-200, -200));
@@ -88,7 +88,7 @@ public partial class player : CharacterBody2D
 
 	public void TakeDamage(Vector2 knockbackForce, double duration = 0.25)
 	{
-		globals.player_life -= 1;
+		Globals.player_life -= 1;
 		if(knockbackForce != Vector2.Zero) knockbackVector = knockbackForce;
 
 		Tween knockbackTween = GetTree().CreateTween();
