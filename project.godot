@@ -23,6 +23,10 @@ Globals="*res://scripts/Globals.cs"
 
 project/assembly_name="PlatformPrototipe"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 left={
