@@ -21,6 +21,7 @@ public partial class Globals : Node
             {"coins" , 5},
             {"score", 5},
             {"player_life", 10},
+            {"play_time", hud_manager.hours + ":" + hud_manager.minutes + ":" + hud_manager.seconds},
         };
         return save_dictionary;
         
