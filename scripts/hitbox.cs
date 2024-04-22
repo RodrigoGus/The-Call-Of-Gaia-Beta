@@ -17,8 +17,6 @@ public partial class hitbox : Area2D
             Vector2 velocity = this._player.Velocity;
             velocity.Y = JumpVelocity / 2;
             this._player.Velocity = velocity;
-
-            //Owner.QueueFree();
         }
     }
 }

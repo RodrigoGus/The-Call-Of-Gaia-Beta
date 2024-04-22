@@ -4,9 +4,6 @@ public partial class hud_manager : Control
 {
     public Label _coins_counter;
     public Timer _clock_timer;
-    public static int hours = 0;
-    public static int minutes = 0;
-    public static int seconds = 0;
 
     [Export(PropertyHint.Range, "0,59,")]
     private int default_minutes = 0;
@@ -35,26 +32,26 @@ public partial class hud_manager : Control
     private void _on_clock_timer_timeout()
     {
 
-        if (seconds == 60)
+        if (Globals.seconds == 60)
         {
-            minutes += 1;
-            seconds = 0;
+            Globals.minutes += 1;
+            Globals.seconds = 0;
 
         }
-        if (minutes == 60)
+        if (Globals.minutes == 60)
         {
-            hours += 1;
-            minutes = 0;
-            seconds = 0;
+            Globals.hours += 1;
+            Globals.minutes = 0;
+            Globals.seconds = 0;
         }
-        seconds += 1;
-        _timer_counter.Text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+        Globals.seconds += 1;
+        _timer_counter.Text = Globals.minutes.ToString("D2") + ":" + Globals.seconds.ToString("D2");
     }
 
     private void reset_clock_timer()
     {
-        minutes = default_minutes;
-        seconds = default_seconds;
+        Globals.minutes = default_minutes;
+        Globals.seconds = default_seconds;
 
     }
 }
