@@ -2080,5 +2080,10 @@ editor_draw_drag_margin = true
 
 [node name="HUD" parent="." instance=ExtResource("13_gb5p4")]
 
-[node name="checkpoint" parent="." instance=ExtResource("14_6tbuf")]
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="checkpoint" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
 position = Vector2(777, 95)
+
+[node name="checkpoint2" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
+position = Vector2(1405, 94)

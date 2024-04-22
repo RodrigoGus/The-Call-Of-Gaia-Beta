@@ -1,6 +1,7 @@
 using Godot;
+using System;
 
-public partial class texture_health_bar : TextureProgressBar
+public partial class texture_mana_bar : TextureProgressBar
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
