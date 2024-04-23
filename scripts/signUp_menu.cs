@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 public partial class signUp_menu : Control
 {
@@ -9,6 +9,7 @@ public partial class signUp_menu : Control
    private TextEdit _passwordTextbox;
    public MySqlConnection conn;
    public string conectionString = "server=tcog_db.mysql.dbaas.com.br;user=tcog_db;database=tcog_db;password=tcogdb@T1";
+
 
 
    public override void _Ready()
@@ -33,7 +34,7 @@ public partial class signUp_menu : Control
 
 	   try
 	   {
-		   string query = "INSERT INTO users (nickname, email, password) VALUES (@nickname, @email, @password)";
+		   string query = "INSERT INTO Users (nickname, email, user_password) VALUES (@nickname, @email, @password)";
 		   using (var cmd = new MySqlCommand(query, conn))
 		   {
 			   cmd.Parameters.AddWithValue("@nickname", nickname);

@@ -95,7 +95,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 max_value = 10.0
 value = 10.0
-texture_under = ExtResource("3_codld")
 texture_progress = ExtResource("6_mp52u")
 texture_progress_offset = Vector2(-5, -15)
 script = ExtResource("7_obat6")

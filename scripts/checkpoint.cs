@@ -50,19 +50,22 @@ public partial class checkpoint : Area2D
 	public static void load_game(){
 		if(!FileAccess.FileExists("user://savegame.txt")){
 			GD.Print("no savegame");
+			save_game();
+		}else{
+			FileAccess save_game = FileAccess.Open("user://savegame.txt", FileAccess.ModeFlags.Read);
+			var jsonString = save_game.GetLine();
+			var json = new Json();
+			var parseResult = json.Parse(jsonString);
+			var nodeData = new Dictionary<string, float>((Dictionary)json.Data);
+			Globals.player_position = new Vector2(nodeData["position_X"], nodeData["position_Y"]);
+			Globals.coins = (int)nodeData["coins"];
+			Globals.score = (int)nodeData["score"];
+			Globals.player_life = (int)nodeData["player_life"];
+			Globals.hours = (int)nodeData["game_time_hours"];
+			Globals.minutes = (int)nodeData["game_time_minutes"];
+			Globals.seconds = (int)nodeData["game_time_seconds"];
 		}
-		FileAccess save_game = FileAccess.Open("user://savegame.txt", FileAccess.ModeFlags.Read);
-		var jsonString = save_game.GetLine();
-		var json = new Json();
-		var parseResult = json.Parse(jsonString);
-		var nodeData = new Dictionary<string, float>((Dictionary)json.Data);
-		Globals.player_position = new Vector2(nodeData["position_X"], nodeData["position_Y"]);
-		Globals.coins = (int)nodeData["coins"];
-		Globals.score = (int)nodeData["score"];
-		Globals.player_life = (int)nodeData["player_life"];
-		Globals.hours = (int)nodeData["game_time_hours"];
-		Globals.minutes = (int)nodeData["game_time_minutes"];
-		Globals.seconds = (int)nodeData["game_time_seconds"];
+
 	}
 	
 }
