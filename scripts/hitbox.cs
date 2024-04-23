@@ -1,25 +1,21 @@
 using Godot;
 using System;
 
-public partial class hitbox : Area2D
+public partial class Hitbox : Area2D
 {
-	private player _player;
+	private Player player;
 	public const float JumpVelocity = -400.0f;
-
-	public override void _Ready()
-	{
-	}
-
+	
 	public void OnBodyEntered(Node2D body)
 	{
-		if ("player" == body.Name)
+		if ("Player" == body.Name)
 		{
-			this._player = (player)body;
-			Vector2 velocity = this._player.Velocity;
+			this.player = (Player)body;
+			Vector2 velocity = this.player.Velocity;
 			velocity.Y = JumpVelocity / 2;
-			this._player.Velocity = velocity;
+			this.player.Velocity = velocity;
 
-			//Owner.QueueFree();
+			Owner.QueueFree();
 		}
 	}
 }
