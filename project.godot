@@ -17,6 +17,10 @@ config/custom_user_dir_name="SaveSystem"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://scripts/Globals.cs"
+
 [dotnet]
 
 project/assembly_name="PlatformPrototipe"
