@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://3hp4fcvdq0i6"]
+[gd_scene load_steps=8 format=3 uid="uid://u3lf3qudnkdl"]
 
 [ext_resource type="Script" path="res://scripts/hud_manager.cs" id="1_jibiq"]
 [ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Coin-Sprites/00_Coin-Sprites.png" id="2_b81w6"]
@@ -75,7 +75,7 @@ grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 max_value = 10.0
-value = 10.0
+value = 1.0
 texture_under = ExtResource("3_codld")
 texture_progress = ExtResource("4_bpho6")
 texture_progress_offset = Vector2(-5, -15)

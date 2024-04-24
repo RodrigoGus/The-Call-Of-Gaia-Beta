@@ -42,13 +42,16 @@ public partial class signUp_menu : Control
 			   cmd.Parameters.AddWithValue("@password", password);
 			   cmd.ExecuteNonQuery();
 		   }
-		   conn.Close();
 		   GD.Print("Usuário cadastrado com sucesso!");
 	   }
 	   catch (Exception e)
 	   {
-		   GD.PrintErr("Erro ao conectar ao banco de dados: ", e.Message);
+			GD.PrintErr("Erro ao conectar ao banco de dados: ", e.Message);
 			GD.PrintErr("Stack Trace: ", e.StackTrace);
+	   }
+	   finally
+	   {
+		conn.Close();
 	   }
 	}
 }
