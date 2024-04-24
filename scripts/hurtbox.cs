@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Hurtbox : Area2D
+public partial class hurtbox : Area2D
 {
 	public override void _Ready()
 	{

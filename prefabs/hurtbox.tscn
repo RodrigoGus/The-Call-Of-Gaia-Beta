@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3lgclfh68rlk"]
 
-[ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="1_fs8mf"]
+[ext_resource type="Script" path="res://scripts/hurtbox.cs" id="1_5ttc0"]
 
 [node name="Hurtbox" type="Area2D"]
 collision_layer = 32
-script = ExtResource("1_fs8mf")
+script = ExtResource("1_5ttc0")

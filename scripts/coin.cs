@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Coin : Area2D
+public partial class coin : Area2D
 {
 	private void OnBodyEntered(Node2D body)
 	{

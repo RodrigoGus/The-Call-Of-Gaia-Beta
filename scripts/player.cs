@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections;
 
-public partial class Player : CharacterBody2D
+public partial class player : CharacterBody2D
 {
 	public const float Speed = 150.0f;
 	public const float JumpVelocity = -325.0f;

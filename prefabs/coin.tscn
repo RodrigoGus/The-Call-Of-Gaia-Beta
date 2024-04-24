@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c7ouaxlsacdo0"]
 
+[ext_resource type="Script" path="res://scripts/coin.cs" id="1_0sy4e"]
 [ext_resource type="Texture2D" uid="uid://cpjqsvgr0cwdb" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin (16 x 16).png" id="1_cmacl"]
-[ext_resource type="Script" path="res://scripts/Coin.cs" id="1_rm56s"]
 [ext_resource type="Texture2D" uid="uid://btmguc7fbha0b" path="res://assets/Mini FX, Items & UI/Effects/Yellow_Sparkle (16 x 16).png" id="2_olbyg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vjsn"]
@@ -70,7 +70,7 @@ animations = [{
 
 [node name="Coin" type="Area2D"]
 collision_layer = 8
-script = ExtResource("1_rm56s")
+script = ExtResource("1_0sy4e")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vyqma")
