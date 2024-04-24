@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
 [ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="9_m4koa"]
-[ext_resource type="PackedScene" path="res://prefabs/hud.tscn" id="13_gb5p4"]
-[ext_resource type="PackedScene" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
+[ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
+[ext_resource type="PackedScene" uid="uid://bupw5s65ggsmt" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)
