@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://u3lf3qudnkdl"]
+
+[ext_resource type="Script" path="res://scripts/hud_manager.cs" id="1_jibiq"]
+[ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Coin-Sprites/00_Coin-Sprites.png" id="2_b81w6"]
+[ext_resource type="Texture2D" uid="uid://dimbjoknxkr7p" path="res://Life_and_Mana_bars_Frame.webp" id="3_codld"]
+[ext_resource type="Texture2D" uid="uid://cef3bswcwkqy4" path="res://Life_Bar.webp" id="4_bpho6"]
+[ext_resource type="Script" path="res://scripts/texture_health_bar.cs" id="5_no6yw"]
+[ext_resource type="Texture2D" uid="uid://b7wpj3m7sb16x" path="res://Mana_bar.webp" id="6_mp52u"]
+[ext_resource type="Script" path="res://scripts/texture_mana_bar.cs" id="7_obat6"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jibiq")
+
+[node name="clock_timer" type="Timer" parent="control"]
+autostart = true
+
+[node name="timer_container" type="HBoxContainer" parent="control"]
+layout_mode = 2
+offset_left = 532.0
+offset_top = 8.0
+offset_right = 620.0
+offset_bottom = 31.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+
+[node name="timer_label" type="Label" parent="control/timer_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "TIME:"
+
+[node name="timer_counter" type="Label" parent="control/timer_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "00:00"
+
+[node name="score_container" type="HBoxContainer" parent="control"]
+layout_mode = 2
+offset_left = 1074.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+alignment = 1
+
+[node name="score_label" type="Label" parent="control/score_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "SCORE:"
+
+[node name="score_counter" type="Label" parent="control/score_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0"
+
+[node name="texture_health_bar" type="TextureProgressBar" parent="control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -708.0
+offset_right = 285.0
+offset_bottom = -388.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+max_value = 10.0
+value = 1.0
+texture_under = ExtResource("3_codld")
+texture_progress = ExtResource("4_bpho6")
+texture_progress_offset = Vector2(-5, -15)
+script = ExtResource("5_no6yw")
+
+[node name="texture_mana_bar" type="TextureProgressBar" parent="control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -708.0
+offset_right = 285.0
+offset_bottom = -388.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+max_value = 10.0
+value = 10.0
+texture_progress = ExtResource("6_mp52u")
+texture_progress_offset = Vector2(-5, -15)
+script = ExtResource("7_obat6")
+
+[node name="TextureRect" type="TextureRect" parent="control"]
+layout_mode = 2
+offset_left = 62.0
+offset_top = 131.0
+offset_right = 85.0
+offset_bottom = 154.0
+texture = ExtResource("2_b81w6")
+expand_mode = 2
+
+[node name="coins_counter" type="Label" parent="control"]
+layout_mode = 2
+offset_left = 89.0
+offset_top = 131.0
+offset_right = 99.0
+offset_bottom = 154.0
+size_flags_vertical = 1
+text = "0"
+
+[connection signal="timeout" from="control/clock_timer" to="control" method="_on_clock_timer_timeout"]

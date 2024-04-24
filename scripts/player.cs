@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Collections;
 
 public partial class player : CharacterBody2D
 {
@@ -16,12 +14,13 @@ public partial class player : CharacterBody2D
 	float inputDirection = 0.203f;
 	private NodePath remoteTransformPath = "Remote";
 	public RemoteTransform2D remoteTransform2D;
-	public int playerLife = 10;
 	private Vector2 knockbackVector;
 	private NodePath rayRightPath = "RayRight";
 	public RayCast2D rayRight;
 	private NodePath rayLeftPath = "RayLeft";
 	public RayCast2D rayLeft;
+
+	public static Vector2 position;
 
 	public override void _Ready()
 	{
@@ -29,10 +28,13 @@ public partial class player : CharacterBody2D
 		this.remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
+		Position = position;
+
 	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
+
 
 		if (IsOnFloor())
 		{
@@ -65,8 +67,8 @@ public partial class player : CharacterBody2D
 
 	private void OnHurtboxBodyEntered(Node2D body)
 	{
-		//if (body.IsInGroup("enemies")) QueueFree();
-		if (this.playerLife <= 0) QueueFree();
+
+		if (Globals.player_life <= 0) QueueFree();
 		else
 		{
 			if (this.rayRight.IsColliding()) TakeDamage(new Vector2(-200, -200));

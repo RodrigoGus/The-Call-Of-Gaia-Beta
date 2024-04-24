@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class world1 : Node2D
 {
@@ -12,8 +11,8 @@ public partial class world1 : Node2D
 	{
 		this.player = GetNode<player>(playerPath);
 		this.camera = GetNode<Camera2D>(cameraPath);
-
-		player.FollowCamera(camera);
+		checkpoint.load_game();
+		_player.FollowCamera(camera);
 	}
 	public override void _Process(double delta)
 	{
