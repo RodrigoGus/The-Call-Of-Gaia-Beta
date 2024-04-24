@@ -2,14 +2,14 @@ using Godot;
 
 public partial class world1 : Node2D
 {
-	private NodePath _playerPath = "player";
-	public player _player;
-	private NodePath cameraPath = "camera";
+	private NodePath playerPath = "Player";
+	public player player;
+	private NodePath cameraPath = "Camera";
 	public Camera2D camera;
 
 	public override void _Ready()
 	{
-		this._player = GetNode<player>(_playerPath);
+		this.player = GetNode<player>(playerPath);
 		this.camera = GetNode<Camera2D>(cameraPath);
 		checkpoint.load_game();
 		_player.FollowCamera(camera);

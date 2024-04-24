@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c7ouaxlsacdo0"]
 
+[ext_resource type="Script" path="res://scripts/coin.cs" id="1_0sy4e"]
 [ext_resource type="Texture2D" uid="uid://cpjqsvgr0cwdb" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin (16 x 16).png" id="1_cmacl"]
-[ext_resource type="Script" path="res://scripts/coin.cs" id="1_tndtk"]
 [ext_resource type="Texture2D" uid="uid://btmguc7fbha0b" path="res://assets/Mini FX, Items & UI/Effects/Yellow_Sparkle (16 x 16).png" id="2_olbyg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vjsn"]
@@ -68,17 +68,17 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8cdiu"]
 
-[node name="coin" type="Area2D"]
+[node name="Coin" type="Area2D"]
 collision_layer = 8
-script = ExtResource("1_tndtk")
+script = ExtResource("1_0sy4e")
 
-[node name="anim" type="AnimatedSprite2D" parent="."]
+[node name="Anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vyqma")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8cdiu")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
-[connection signal="animation_finished" from="anim" to="." method="OnAnimAnimationFinished"]
+[connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]

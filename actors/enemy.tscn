@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://d2k22vba2s68"]
 
-[ext_resource type="Script" path="res://scripts/enemy.cs" id="1_5hmgr"]
+[ext_resource type="Script" path="res://scripts/enemy.cs" id="1_k0l5m"]
 [ext_resource type="Texture2D" uid="uid://ckkatvbbhai80" path="res://assets/Stinky Rat/MouseRun.png" id="1_u32ap"]
 [ext_resource type="Texture2D" uid="uid://dufomqsi6ry67" path="res://assets/Stinky Rat/MouseDamage.png" id="3_6gpnb"]
 [ext_resource type="Texture2D" uid="uid://ctmimskjw271g" path="res://assets/Stinky Rat/MouseIdle.png" id="4_nk2vd"]
-[ext_resource type="PackedScene" uid="uid://dnrh2gdd01woo" path="res://prefabs/hitbox.tscn" id="5_ub4y5"]
+[ext_resource type="PackedScene" uid="uid://bds7kfnuusmn4" path="res://prefabs/hitbox.tscn" id="5_splok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwbma"]
 size = Vector2(19.2, 9)
@@ -14,7 +14,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +26,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:vframes")
+tracks/1/path = NodePath("Sprite:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -38,7 +38,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -54,7 +54,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,7 +66,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:vframes")
+tracks/1/path = NodePath("Sprite:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -78,7 +78,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -95,7 +95,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -107,7 +107,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:vframes")
+tracks/1/path = NodePath("Sprite:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -119,7 +119,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -136,7 +136,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -148,7 +148,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:vframes")
+tracks/1/path = NodePath("Sprite:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -160,7 +160,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -181,39 +181,39 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajpg5"]
 size = Vector2(14, 2)
 
-[node name="enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 31
 collision_mask = 31
-script = ExtResource("1_5hmgr")
+script = ExtResource("1_k0l5m")
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -3.6)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_u32ap")
 vframes = 6
 frame = 2
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_vwbma")
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_k2lm6")
 }
 speed_scale = 0.8
 
-[node name="wall detector" type="RayCast2D" parent="."]
+[node name="WallDetector" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
 target_position = Vector2(11, 0)
 collision_mask = 6
 collide_with_areas = true
 
-[node name="hitbox" parent="." instance=ExtResource("5_ub4y5")]
+[node name="Hitbox" parent="." instance=ExtResource("5_splok")]
 
-[node name="hitbox collision" type="CollisionShape2D" parent="hitbox"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(2.38419e-07, -8.6)
 shape = SubResource("RectangleShape2D_ajpg5")
 debug_color = Color(0.992157, 0, 0.247059, 0.419608)
 
-[connection signal="animation_finished" from="anim" to="." method="OnAnimAnimationFinished"]
+[connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]

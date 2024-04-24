@@ -7,11 +7,11 @@ public partial class enemy : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	private int direction = 1;
-	private NodePath animationNodePath = "anim";
+	private NodePath animationNodePath = "Anim";
 	public AnimationPlayer animation;
-	private NodePath texturePath = "sprite";
+	private NodePath texturePath = "Sprite";
 	private Sprite2D texture;
-	private NodePath wallDetectorPath = "wall detector";
+	private NodePath wallDetectorPath = "WallDetector";
 	private RayCast2D wallDetector;
 
 	public override void _Ready()

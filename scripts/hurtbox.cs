@@ -9,5 +9,3 @@ public partial class hurtbox : Area2D
     {
     }
 }
-
-

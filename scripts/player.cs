@@ -2,15 +2,17 @@ using Godot;
 
 public partial class player : CharacterBody2D
 {
-	public const float Speed = 200.0f;
-	public const float JumpVelocity = -400.0f;
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	public const float Speed = 150.0f;
+	public const float JumpVelocity = -325.0f;
+	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() / 1.5f;
 
-	private NodePath animationNodePath = "anim";
+	private Vector2 direction;
+	private NodePath animationNodePath = "Anim";
 	public AnimatedSprite2D animation;
 	public bool isJumping = false;
-	int inputDirection = 1;
-	private NodePath remoteTransformPath = "remote";
+	public bool isHited = false;
+	float inputDirection = 0.203f;
+	private NodePath remoteTransformPath = "Remote";
 	public RemoteTransform2D remoteTransform2D;
 	private Vector2 knockbackVector;
 	private NodePath rayRightPath = "RayRight";
@@ -43,33 +45,22 @@ public partial class player : CharacterBody2D
 			}
 			else this.isJumping = false;
 		}
-		else
+		else velocity.Y += this.gravity * (float)delta; 
+
+		this.direction = Input.GetVector("left", "right", "up", "down");
+		if (this.direction != Vector2.Zero)
 		{
-			velocity.Y += this.gravity * (float)delta;
-
-			if (!this.isJumping) this.animation.Play("fall");
-			else this.animation.Play("jump");
-		}
-
-		Vector2 direction = Input.GetVector("left", "right", "up", "down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-			if (Input.IsActionPressed("right")) this.inputDirection = 1;
-			if (Input.IsActionPressed("left")) this.inputDirection = -1;
-
+			velocity.X = this.direction.X * Speed;
+			if (Input.IsActionPressed("right")) this.inputDirection = 0.203f;
+			if (Input.IsActionPressed("left")) this.inputDirection = -0.203f;
+			
 			this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
-
-			if (!this.isJumping) this.animation.Play("run");
 		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			if (IsOnFloor()) this.animation.Play("idle");
-		}
+		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 
-		if (knockbackVector != Vector2.Zero) velocity = knockbackVector;
+		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
 
+		SetState();
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -80,8 +71,8 @@ public partial class player : CharacterBody2D
 		if (Globals.player_life <= 0) QueueFree();
 		else
 		{
-			if (rayRight.IsColliding()) TakeDamage(new Vector2(-200, -200));
-			else if (rayLeft.IsColliding()) TakeDamage(new Vector2(200, -200));
+			if (this.rayRight.IsColliding()) TakeDamage(new Vector2(-200, -200));
+			else if (this.rayLeft.IsColliding()) TakeDamage(new Vector2(200, -200));
 		}
 	}
 
@@ -90,14 +81,32 @@ public partial class player : CharacterBody2D
 		this.remoteTransform2D.RemotePath = camera.GetPath();
 	}
 
-	public void TakeDamage(Vector2 knockbackForce, double duration = 0.25)
+	public async void TakeDamage(Vector2 knockbackForce)
 	{
-		Globals.player_life -= 1;
-		if (knockbackForce != Vector2.Zero) knockbackVector = knockbackForce;
+		this.playerLife -= 1;
+		if(knockbackForce != Vector2.Zero)
+		{
+			this.knockbackVector = knockbackForce;
+			Tween knockbackTween = GetTree().CreateTween();
+			knockbackTween.Parallel().TweenProperty(this, "knockbackVector", Vector2.Zero, 0.25);
+			this.animation.Modulate = new Color(1, 0, 0, 1);
+			knockbackTween.Parallel().TweenProperty(this.animation, "modulate", new Color(1, 1, 1, 1), 0.3);
+		}
 
-		Tween knockbackTween = GetTree().CreateTween();
-		knockbackTween.Parallel().TweenProperty(this, "knockbackVector", Vector2.Zero, duration);
-		animation.Modulate = new Color(1, 0, 0, 1);
-		knockbackTween.Parallel().TweenProperty(animation, "modulate", new Color(1, 1, 1, 1), duration);
+		this.isHited = true;
+		await ToSignal(GetTree().CreateTimer(0.3), "timeout");
+		this.isHited = false;
+	}
+
+	public void SetState()
+	{
+		String state = "idle";
+
+		if (this.direction != Vector2.Zero) state = "run";
+		if (!IsOnFloor() && this.isJumping) state = "jump";
+		if (!IsOnFloor() && !this.isJumping) state = "fall";
+		if (this.isHited) state = "hurt";
+
+		if(this.animation.Name != state) this.animation.Play(state);
 	}
 }
