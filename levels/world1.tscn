@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=24 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -10,9 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
 [ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="9_m4koa"]
-[ext_resource type="PackedScene" uid="uid://c7ouaxlsacdo0" path="res://prefabs/coin.tscn" id="10_wc0y7"]
-[ext_resource type="PackedScene" uid="uid://d2k22vba2s68" path="res://actors/enemy.tscn" id="11_u54w6"]
-[ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
+[ext_resource type="PackedScene" path="res://prefabs/hud.tscn" id="13_gb5p4"]
 [ext_resource type="PackedScene" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
@@ -2022,46 +2020,6 @@ layer_2/tile_data = PackedInt32Array()
 [node name="player" parent="." instance=ExtResource("9_m4koa")]
 position = Vector2(233, 103)
 
-[node name="coins" type="Node2D" parent="."]
-
-[node name="coin" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(180, 58)
-
-[node name="coin2" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(408, 88)
-
-[node name="coin3" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(656, 88)
-
-[node name="coin4" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(856, 0)
-
-[node name="coin5" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(776, -80)
-
-[node name="coin6" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(856, -160)
-
-[node name="coin7" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(776, -240)
-
-[node name="coin8" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(856, -320)
-
-[node name="coin9" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(1032, -320)
-
-[node name="coin10" parent="coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(1144, -24)
-
-[node name="enemies" type="Node2D" parent="."]
-
-[node name="enemy" parent="enemies" instance=ExtResource("11_u54w6")]
-position = Vector2(304, 80)
-
-[node name="enemy2" parent="enemies" instance=ExtResource("11_u54w6")]
-position = Vector2(429, 112)
-
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(356, 20)
 zoom = Vector2(2.5, 2.5)
@@ -2088,45 +2046,6 @@ position = Vector2(777, 95)
 
 [node name="checkpoint2" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
 position = Vector2(1405, 94)
+
 [node name="Player" parent="." instance=ExtResource("9_m4koa")]
 position = Vector2(851, -295)
-
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(194, 94)
-
-[node name="Coin2" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(396, 91)
-
-[node name="Coin3" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(656, 91)
-
-[node name="Coin4" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(854, 12)
-
-[node name="Coin5" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(774, -77)
-
-[node name="Coin6" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(856, -158)
-
-[node name="Coin7" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(778, -234)
-
-[node name="Coin8" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(852, -320)
-
-[node name="Coin9" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(1031, -317)
-
-[node name="Coin10" parent="Coins" instance=ExtResource("10_wc0y7")]
-position = Vector2(1121, -33)
-
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("11_u54w6")]
-position = Vector2(298, 80)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("11_u54w6")]
-position = Vector2(439, 112)

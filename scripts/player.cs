@@ -83,7 +83,7 @@ public partial class player : CharacterBody2D
 
 	public async void TakeDamage(Vector2 knockbackForce)
 	{
-		this.playerLife -= 1;
+		Globals.player_life -= 1;
 		if(knockbackForce != Vector2.Zero)
 		{
 			this.knockbackVector = knockbackForce;
@@ -100,7 +100,7 @@ public partial class player : CharacterBody2D
 
 	public void SetState()
 	{
-		String state = "idle";
+		StringName state = "idle";
 
 		if (this.direction != Vector2.Zero) state = "run";
 		if (!IsOnFloor() && this.isJumping) state = "jump";
