@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
-[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/Player.tscn" id="9_m4koa"]
-[ext_resource type="PackedScene" uid="uid://c7ouaxlsacdo0" path="res://prefabs/Coin.tscn" id="10_wc0y7"]
-[ext_resource type="PackedScene" uid="uid://d2k22vba2s68" path="res://actors/Enemy.tscn" id="11_u54w6"]
+[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="9_m4koa"]
+[ext_resource type="PackedScene" uid="uid://c7ouaxlsacdo0" path="res://prefabs/coin.tscn" id="10_wc0y7"]
+[ext_resource type="PackedScene" uid="uid://d2k22vba2s68" path="res://actors/enemy.tscn" id="11_u54w6"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)

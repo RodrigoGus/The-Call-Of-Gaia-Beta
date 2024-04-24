@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ctg3nqpdmhrtb" path="res://original assets/actors/Aisha/Aisha_Damage.png" id="3_82g3a"]
 [ext_resource type="Texture2D" uid="uid://ct4mp8nue2nxs" path="res://original assets/actors/Aisha/Aisha_Jumping.png" id="3_k0ulp"]
 [ext_resource type="Texture2D" uid="uid://k6vjj28w08db" path="res://original assets/actors/Aisha/Aisha_Idle.png" id="4_m7dsa"]
-[ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/Hurtbox.tscn" id="5_0msut"]
+[ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/hurtbox.tscn" id="5_0msut"]
 [ext_resource type="Texture2D" uid="uid://biobbdegqn45t" path="res://original assets/actors/Aisha/Aisha_Walking_Right.png" id="5_n5uoe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyfur"]
