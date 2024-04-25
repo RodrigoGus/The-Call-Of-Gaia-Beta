@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d23f2htk1q52a"
-path="res://.godot/imported/Aisha_Cat_Runing.webp-861ccd34e36bde39cc8a1ee5a9a2489e.ctex"
+uid="uid://dfdvotuknb6p8"
+path="res://.godot/imported/Aisha_Cat_Idle.png-cba12481c9b6fe8592959667bdcbcc49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://original assets/actors/Mofo black car/Aisha_Cat_Runing.webp"
-dest_files=["res://.godot/imported/Aisha_Cat_Runing.webp-861ccd34e36bde39cc8a1ee5a9a2489e.ctex"]
+source_file="res://original assets/actors/Mofo black car/Aisha_Cat_Idle.png"
+dest_files=["res://.godot/imported/Aisha_Cat_Idle.png-cba12481c9b6fe8592959667bdcbcc49.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvj8kagxb5vwo"
-path="res://.godot/imported/Aisha_Cat_Jumping.webp-91a97d617484b0fc92ef802b68e3b247.ctex"
+uid="uid://i4yu7iesk3c0"
+path="res://.godot/imported/Aisha_Cat_Jumping.png-b9cb123a36e24ef18370f339e2b8f066.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://original assets/actors/Mofo black car/Aisha_Cat_Jumping.webp"
-dest_files=["res://.godot/imported/Aisha_Cat_Jumping.webp-91a97d617484b0fc92ef802b68e3b247.ctex"]
+source_file="res://original assets/actors/Mofo black car/Aisha_Cat_Jumping.png"
+dest_files=["res://.godot/imported/Aisha_Cat_Jumping.png-b9cb123a36e24ef18370f339e2b8f066.ctex"]
 
 [params]
 
