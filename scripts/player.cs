@@ -9,8 +9,8 @@ public partial class player : CharacterBody2D
 	private Vector2 direction;
 	private NodePath animationNodePath = "Anim";
 	public AnimatedSprite2D animation;
-	private NodePath catAnimationNodePath = "CatAnim";
-	public AnimatedSprite2D catAnimation;
+	// private NodePath catAnimationNodePath = "CatAnim";
+	// public AnimatedSprite2D catAnimation;
 	public bool isJumping = false;
 	public bool isHited = false;
 	float inputDirection = 0.203f;
@@ -24,10 +24,14 @@ public partial class player : CharacterBody2D
 
 	public static Vector2 position;
 
+	public PackedScene player_scene = ResourceLoader.Load<PackedScene>("res://actors/player.tscn");
+	public PackedScene cat_scene = ResourceLoader.Load<PackedScene>("res://actors/AishaCat.tscn");
+	public Node current_character;
+
 	public override void _Ready()
 	{
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
-		this.catAnimation = GetNode<AnimatedSprite2D>(catAnimationNodePath);
+		// this.catAnimation = GetNode<AnimatedSprite2D>(catAnimationNodePath);
 		this.remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
@@ -62,7 +66,7 @@ public partial class player : CharacterBody2D
 			if (Input.IsActionPressed("left")) this.inputDirection = -0.203f;
 			
 			this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
-			this.catAnimation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
+			// this.catAnimation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
 		}
 		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 
@@ -116,7 +120,7 @@ public partial class player : CharacterBody2D
 		if (this.isHited) state = "hurt";
 
 		if(this.animation.Name != state) this.animation.Play(state);
-		if(this.catAnimation.Name != state) this.catAnimation.Play(state);
+		// if(this.catAnimation.Name != state) this.catAnimation.Play(state);
 	}
 
 	public void AishaToCat()
@@ -126,6 +130,7 @@ public partial class player : CharacterBody2D
 		if (isTransformedToCat){
 			// animation.Visible = false;
 			// catAnimation.Visible = true;
+			// RemoveChild();
 			
 		}
 	}

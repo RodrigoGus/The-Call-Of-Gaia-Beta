@@ -429,22 +429,18 @@ script = ExtResource("1_8erth")
 position = Vector2(0, -17)
 scale = Vector2(0.203125, 0.203125)
 sprite_frames = SubResource("SpriteFrames_m3dgr")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
-frame = 17
-frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -17.8)
 shape = SubResource("RectangleShape2D_q386c")
-disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_0msut")]
 collision_layer = 0
 collision_mask = 4
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
 position = Vector2(-0.5, -18.3)
 shape = SubResource("RectangleShape2D_gdita")
 debug_color = Color(0.992157, 0, 0.247059, 0.419608)
