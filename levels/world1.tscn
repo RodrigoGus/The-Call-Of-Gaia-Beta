@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
-[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="9_m4koa"]
+[ext_resource type="PackedScene" uid="uid://dhnpcskc70te4" path="res://actors/AishaCat.tscn" id="12_6vjfk"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
 [ext_resource type="PackedScene" uid="uid://bupw5s65ggsmt" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
 
@@ -1964,6 +1964,7 @@ pattern_4 = SubResource("TileMapPattern_aifjm")
 
 [node name="world1" type="Node2D"]
 script = ExtResource("1_0auo0")
+metadata/_edit_horizontal_guides_ = [-882.0]
 
 [node name="Bg" type="ParallaxBackground" parent="."]
 
@@ -2017,9 +2018,6 @@ layer_1/tile_data = PackedInt32Array(458752, 458752, 2, 458753, 524288, 2, 45875
 layer_2/name = "items"
 layer_2/tile_data = PackedInt32Array()
 
-[node name="player" parent="." instance=ExtResource("9_m4koa")]
-position = Vector2(233, 103)
-
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(356, 20)
 zoom = Vector2(2.5, 2.5)
@@ -2047,5 +2045,5 @@ position = Vector2(777, 95)
 [node name="checkpoint2" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
 position = Vector2(1405, 94)
 
-[node name="Player" parent="." instance=ExtResource("9_m4koa")]
-position = Vector2(851, -295)
+[node name="CharacterBody2D" parent="." instance=ExtResource("12_6vjfk")]
+position = Vector2(204, 7)

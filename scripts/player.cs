@@ -23,13 +23,15 @@ public partial class player : CharacterBody2D
 	public RayCast2D rayLeft;
 
 	public static Vector2 position;
+	public PackedScene player_scene = GD.Load<PackedScene>("res://actors/player.tscn");
+	public PackedScene cat_scene = GD.Load<PackedScene>("res://actors/AishaCat.tscn");
 
-	public PackedScene player_scene = ResourceLoader.Load<PackedScene>("res://actors/player.tscn");
-	public PackedScene cat_scene = ResourceLoader.Load<PackedScene>("res://actors/AishaCat.tscn");
-	public Node current_character;
 
 	public override void _Ready()
 	{
+		// player_scene = GetNode<Node>("res://actors/player.tscn");
+		// cat_scene = GetNode<Node>("res://actors/AishaCat.tscn");
+
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
 		// this.catAnimation = GetNode<AnimatedSprite2D>(catAnimationNodePath);
 		this.remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
@@ -126,12 +128,18 @@ public partial class player : CharacterBody2D
 	public void AishaToCat()
 	{
 		isTransformedToCat = !isTransformedToCat;
-
-		if (isTransformedToCat){
-			// animation.Visible = false;
-			// catAnimation.Visible = true;
-			// RemoveChild();
-			
+		if (isTransformedToCat)
+		{
+			QueueFree();
+			GetParent().AddChild(cat_scene.Instantiate<Node2D>());
 		}
+		else
+		{
+			QueueFree();
+			GetParent().AddChild(player_scene.Instantiate<Node2D>());
+		}
+
+
+
 	}
 }
