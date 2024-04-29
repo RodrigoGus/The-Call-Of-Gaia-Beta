@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
-[ext_resource type="PackedScene" uid="uid://dhnpcskc70te4" path="res://actors/AishaCat.tscn" id="12_6vjfk"]
+[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="12_dt08t"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
 [ext_resource type="PackedScene" uid="uid://bupw5s65ggsmt" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
 
@@ -2045,5 +2045,5 @@ position = Vector2(777, 95)
 [node name="checkpoint2" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
 position = Vector2(1405, 94)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("12_6vjfk")]
-position = Vector2(204, 7)
+[node name="player" parent="." instance=ExtResource("12_dt08t")]
+position = Vector2(225, 89)

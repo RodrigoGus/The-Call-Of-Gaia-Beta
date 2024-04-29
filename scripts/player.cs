@@ -2,15 +2,16 @@ using Godot;
 
 public partial class player : CharacterBody2D
 {
+	public PackedScene catScene = (PackedScene)ResourceLoader.Load("res://actors/AishaCat.tscn");
+	public world1 worldScene;
+	private NodePath worldScenePath = "/root/world1";
+	public static bool isTransformedToCat;
 	public const float Speed = 150.0f;
 	public const float JumpVelocity = -325.0f;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() / 1.5f;
-	private bool isTransformedToCat = false;
 	private Vector2 direction;
 	private NodePath animationNodePath = "Anim";
 	public AnimatedSprite2D animation;
-	// private NodePath catAnimationNodePath = "CatAnim";
-	// public AnimatedSprite2D catAnimation;
 	public bool isJumping = false;
 	public bool isHited = false;
 	float inputDirection = 0.203f;
@@ -21,23 +22,17 @@ public partial class player : CharacterBody2D
 	public RayCast2D rayRight;
 	private NodePath rayLeftPath = "RayLeft";
 	public RayCast2D rayLeft;
-
 	public static Vector2 position;
-	public PackedScene player_scene = GD.Load<PackedScene>("res://actors/player.tscn");
-	public PackedScene cat_scene = GD.Load<PackedScene>("res://actors/AishaCat.tscn");
-
 
 	public override void _Ready()
 	{
-		// player_scene = GetNode<Node>("res://actors/player.tscn");
-		// cat_scene = GetNode<Node>("res://actors/AishaCat.tscn");
-
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
-		// this.catAnimation = GetNode<AnimatedSprite2D>(catAnimationNodePath);
 		this.remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
+		this.worldScene = GetNode<world1>(worldScenePath);
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
 		Position = position;
+		isTransformedToCat = false;
 
 	}
 	public override void _PhysicsProcess(double delta)
@@ -68,7 +63,6 @@ public partial class player : CharacterBody2D
 			if (Input.IsActionPressed("left")) this.inputDirection = -0.203f;
 			
 			this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
-			// this.catAnimation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
 		}
 		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 
@@ -81,7 +75,6 @@ public partial class player : CharacterBody2D
 
 	private void OnHurtboxBodyEntered(Node2D body)
 	{
-
 		if (Globals.player_life <= 0) QueueFree();
 		else
 		{
@@ -122,24 +115,18 @@ public partial class player : CharacterBody2D
 		if (this.isHited) state = "hurt";
 
 		if(this.animation.Name != state) this.animation.Play(state);
-		// if(this.catAnimation.Name != state) this.catAnimation.Play(state);
 	}
 
-	public void AishaToCat()
-	{
-		isTransformedToCat = !isTransformedToCat;
-		if (isTransformedToCat)
-		{
-			QueueFree();
-			GetParent().AddChild(cat_scene.Instantiate<Node2D>());
+	public void AishaToCat(){
+		if (!isTransformedToCat){
+			CharacterBody2D cat = catScene.Instantiate<CharacterBody2D>();
+			GetParent().AddChild(cat);
+			cat.Position = this.Position;
+			this.QueueFree();
+			isTransformedToCat = true;
 		}
-		else
-		{
-			QueueFree();
-			GetParent().AddChild(player_scene.Instantiate<Node2D>());
-		}
-
-
 
 	}
+
+
 }
