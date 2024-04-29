@@ -133,7 +133,8 @@ public partial class AishaCat : CharacterBody2D
 			GetParent().AddChild(player);
 			player.Position = this.Position;
 			this.QueueFree();
-			//isTransformedToCat = false;
+			isTransformedToCat = false;
+			GD.Print(isTransformedToCat);
 		}
 	}
 

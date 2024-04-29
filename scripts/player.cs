@@ -39,7 +39,7 @@ public partial class player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
-		if(Input.IsActionPressed("T")){
+		if(Input.IsActionJustPressed("T")){
 			AishaToCat();
 		}
 
@@ -124,6 +124,7 @@ public partial class player : CharacterBody2D
 			cat.Position = this.Position;
 			this.QueueFree();
 			isTransformedToCat = true;
+			GD.Print(isTransformedToCat);
 		}
 
 	}
