@@ -420,7 +420,7 @@ size = Vector2(19, 35.6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdita"]
 size = Vector2(23, 34.6)
 
-[node name="Player" type="CharacterBody2D" groups=["players"]]
+[node name="player" type="CharacterBody2D" groups=["players"]]
 collision_mask = 30
 floor_constant_speed = true
 script = ExtResource("1_8erth")

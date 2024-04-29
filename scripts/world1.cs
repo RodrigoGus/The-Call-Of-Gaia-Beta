@@ -3,7 +3,6 @@ using Godot;
 public partial class world1 : Node2D
 {
 	public NodePath playerPath = "player";
-	public player player;
 	public NodePath CatPath = "AishaCat";
 	private NodePath cameraPath = "camera";
 	public Camera2D camera;
@@ -13,8 +12,7 @@ public partial class world1 : Node2D
 	public override void _Ready()
 	{
 		this.camera = GetNode<Camera2D>(cameraPath);
-		player = GetNode<player>(playerPath);
-		player.FollowCamera(camera);
+
 		checkpoint.load_game();
 	}
 	public override void _Process(double delta)
@@ -24,9 +22,12 @@ public partial class world1 : Node2D
 			AishaCat AishaCat;
 			AishaCat = GetNode<AishaCat>(CatPath);
 			AishaCat.FollowCamera(camera);
-		} else if (!player.isTransformedToCat)
+		} 
+		if (!player.isTransformedToCat)
 		{
-			player.FollowCamera(camera);
+			player player;
+			player = GetNode<player>(playerPath);
+		 	player.FollowCamera(camera);
 		}
 	}
 
