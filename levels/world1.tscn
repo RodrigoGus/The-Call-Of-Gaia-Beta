@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=25 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
 [ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="12_dt08t"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
+[ext_resource type="PackedScene" uid="uid://d2k22vba2s68" path="res://actors/enemy.tscn" id="13_rcj2d"]
 [ext_resource type="PackedScene" uid="uid://bupw5s65ggsmt" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
@@ -2045,5 +2046,7 @@ position = Vector2(777, 95)
 [node name="checkpoint2" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
 position = Vector2(1405, 94)
 
+[node name="Enemy" parent="." instance=ExtResource("13_rcj2d")]
+position = Vector2(404, 103)
+
 [node name="player" parent="." instance=ExtResource("12_dt08t")]
-position = Vector2(225, 89)

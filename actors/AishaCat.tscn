@@ -1,10 +1,11 @@
-[gd_scene load_steps=52 format=3 uid="uid://dhnpcskc70te4"]
+[gd_scene load_steps=54 format=3 uid="uid://dhnpcskc70te4"]
 
 [ext_resource type="Script" path="res://scripts/AishaCat.cs" id="1_1db1b"]
 [ext_resource type="Texture2D" uid="uid://c08d187ica7f4" path="res://original assets/actors/Mofo black car/Aisha_Cat_Falling.png" id="2_3g2to"]
 [ext_resource type="Texture2D" uid="uid://dfdvotuknb6p8" path="res://original assets/actors/Mofo black car/Aisha_Cat_Idle.png" id="3_rsq1l"]
 [ext_resource type="Texture2D" uid="uid://i4yu7iesk3c0" path="res://original assets/actors/Mofo black car/Aisha_Cat_Jumping.png" id="4_wky6t"]
 [ext_resource type="Texture2D" uid="uid://8cpaaotccsee" path="res://original assets/actors/Mofo black car/Aisha_Cat_Runing.png" id="5_iy6km"]
+[ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/hurtbox.tscn" id="6_5sq12"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_riif1"]
 atlas = ExtResource("2_3g2to")
@@ -340,10 +341,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnh6c"]
 size = Vector2(48, 30)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsvw8"]
+size = Vector2(52, 30)
+
 [node name="AishaCat" type="CharacterBody2D" groups=["players"]]
 scale = Vector2(0.5, 0.5)
-collision_layer = 15
-collision_mask = 15
+collision_mask = 30
 script = ExtResource("1_1db1b")
 
 [node name="CatAnim" type="AnimatedSprite2D" parent="."]
@@ -357,14 +360,26 @@ animation = &"idle"
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_mnh6c")
 
-[node name="RayRight" type="RayCast2D" parent="."]
-position = Vector2(18, -3)
-target_position = Vector2(8, 0)
+[node name="Hurtbox" parent="." instance=ExtResource("6_5sq12")]
+position = Vector2(0, -20)
+collision_layer = 0
 collision_mask = 4
 
+[node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_dsvw8")
+debug_color = Color(0.992157, 0, 0.247059, 0.419608)
+
+[node name="Remote" type="RemoteTransform2D" parent="."]
+
 [node name="RayLeft" type="RayCast2D" parent="."]
-position = Vector2(-19, -3)
+position = Vector2(-20, -6)
 target_position = Vector2(-8, 0)
 collision_mask = 4
 
-[node name="Remote" type="RemoteTransform2D" parent="."]
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2(18, -6)
+target_position = Vector2(8, 0)
+collision_mask = 4
+
+[connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

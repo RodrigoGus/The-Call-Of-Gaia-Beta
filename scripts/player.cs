@@ -16,24 +16,24 @@ public partial class player : CharacterBody2D
 	public bool isHited = false;
 	float inputDirection = 0.203f;
 	private NodePath remoteTransformPath = "Remote";
-	public RemoteTransform2D remoteTransform2D;
+	public static RemoteTransform2D remoteTransform2D;
 	private Vector2 knockbackVector;
 	private NodePath rayRightPath = "RayRight";
 	public RayCast2D rayRight;
 	private NodePath rayLeftPath = "RayLeft";
 	public RayCast2D rayLeft;
 	public static Vector2 position;
+	public static bool isDeath = false;
 
 	public override void _Ready()
 	{
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
-		this.remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
+		remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
 		this.worldScene = GetNode<world1>(worldScenePath);
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
 		Position = position;
 		isTransformedToCat = false;
-
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -75,7 +75,11 @@ public partial class player : CharacterBody2D
 
 	private void OnHurtboxBodyEntered(Node2D body)
 	{
-		if (Globals.player_life <= 0) QueueFree();
+		if (Globals.player_life <= 0) 
+		{
+			QueueFree(); 
+			isDeath = true;
+		}
 		else
 		{
 			if (this.rayRight.IsColliding()) TakeDamage(new Vector2(-200, -200));
@@ -83,9 +87,9 @@ public partial class player : CharacterBody2D
 		}
 	}
 
-	public void FollowCamera(Camera2D camera)
+	public static void FollowCamera(Camera2D camera)
 	{
-		this.remoteTransform2D.RemotePath = camera.GetPath();
+		remoteTransform2D.RemotePath = camera.GetPath();
 	}
 
 	public async void TakeDamage(Vector2 knockbackForce)

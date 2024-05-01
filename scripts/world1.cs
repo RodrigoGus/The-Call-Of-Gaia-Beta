@@ -19,14 +19,10 @@ public partial class world1 : Node2D
 	{
 		if (player.isTransformedToCat)
 		{
-			AishaCat AishaCat;
-			AishaCat = GetNode<AishaCat>(CatPath);
 			AishaCat.FollowCamera(camera);
 		} 
-		if (!player.isTransformedToCat)
+		if (!player.isTransformedToCat && !player.isDeath)
 		{
-			player player;
-			player = GetNode<player>(playerPath);
 		 	player.FollowCamera(camera);
 		}
 	}
