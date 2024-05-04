@@ -5,6 +5,7 @@ using System.Data.Common;
 
 public partial class AishaCat : CharacterBody2D
 {
+	private bool isTransforming = false;
 	public PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://actors/player.tscn");
 	public world1 worldScene;
 	private NodePath worldScenePath = "/root/world1";
@@ -43,7 +44,7 @@ public partial class AishaCat : CharacterBody2D
 		Vector2 velocity = Velocity;
 
 		if(Input.IsActionJustPressed("T")){
-			CatToAisha();
+			isTransforming = true;
 		}
 
 
@@ -127,6 +128,8 @@ public partial class AishaCat : CharacterBody2D
 		if (!IsOnFloor() && this.isJumping) state = "jump";
 		if (!IsOnFloor() && !this.isJumping) state = "fall";
 
+		if (this.isTransforming) state = "test";
+
 		if(this.animation.Name != state) this.animation.Play(state);
 		// if(this.catAnimation.Name != state) this.catAnimation.Play(state);
 	}
@@ -141,6 +144,14 @@ public partial class AishaCat : CharacterBody2D
 			GD.Print(isTransformedToCat);
 		}
 	}
+	private void OnCatAnimAnimationFinished()
+	{
+		isTransforming = false;
+		CatToAisha();
+	}
 
 
 }
+
+
+

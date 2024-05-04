@@ -2,6 +2,7 @@ using Godot;
 
 public partial class player : CharacterBody2D
 {
+	private bool isTransforming = false;
 	public PackedScene catScene = (PackedScene)ResourceLoader.Load("res://actors/AishaCat.tscn");
 	public world1 worldScene;
 	private NodePath worldScenePath = "/root/world1";
@@ -40,7 +41,7 @@ public partial class player : CharacterBody2D
 		Vector2 velocity = Velocity;
 
 		if(Input.IsActionJustPressed("T")){
-			AishaToCat();
+			isTransforming = true;
 		}
 
 
@@ -117,6 +118,7 @@ public partial class player : CharacterBody2D
 		if (!IsOnFloor() && this.isJumping) state = "jump";
 		if (!IsOnFloor() && !this.isJumping) state = "fall";
 		if (this.isHited) state = "hurt";
+		if (this.isTransforming) state = "test";
 
 		if(this.animation.Name != state) this.animation.Play(state);
 	}
@@ -132,6 +134,16 @@ public partial class player : CharacterBody2D
 		}
 
 	}
-
+	private void OnAnimAnimationFinished()
+	{
+		isTransforming = false;
+		AishaToCat();
+	}
 
 }
+
+
+
+
+
+
