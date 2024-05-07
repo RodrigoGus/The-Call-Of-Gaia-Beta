@@ -271,6 +271,11 @@ animations = [{
 "name": &"fall",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"front_attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_subjx")
@@ -460,7 +465,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"test",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnh6c"]
@@ -480,6 +485,7 @@ scale = Vector2(0.203, 0.203)
 sprite_frames = SubResource("SpriteFrames_iy2vt")
 animation = &"test"
 autoplay = "idle"
+frame = 10
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
