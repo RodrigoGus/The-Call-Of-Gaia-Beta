@@ -118,7 +118,7 @@ public partial class player : CharacterBody2D
 		if (!IsOnFloor() && this.isJumping) state = "jump";
 		if (!IsOnFloor() && !this.isJumping) state = "fall";
 		if (this.isHited) state = "hurt";
-		if (this.isTransforming) state = "test";
+		if (this.isTransforming) state = "transform_to_cat";
 
 		if(this.animation.Name != state) this.animation.Play(state);
 	}

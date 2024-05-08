@@ -128,7 +128,7 @@ public partial class AishaCat : CharacterBody2D
 		if (!IsOnFloor() && this.isJumping) state = "jump";
 		if (!IsOnFloor() && !this.isJumping) state = "fall";
 
-		if (this.isTransforming) state = "test";
+		if (this.isTransforming) state = "transform_to_human";
 
 		if(this.animation.Name != state) this.animation.Play(state);
 		// if(this.catAnimation.Name != state) this.catAnimation.Play(state);

@@ -464,7 +464,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_u7gsc")
 }],
 "loop": false,
-"name": &"test",
+"name": &"transform_to_human",
 "speed": 15.0
 }]
 
@@ -483,9 +483,8 @@ texture_filter = 1
 position = Vector2(0, -15)
 scale = Vector2(0.203, 0.203)
 sprite_frames = SubResource("SpriteFrames_iy2vt")
-animation = &"test"
+animation = &"transform_to_human"
 autoplay = "idle"
-frame = 10
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
