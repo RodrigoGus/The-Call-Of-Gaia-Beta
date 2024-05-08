@@ -17,7 +17,7 @@ public partial class world1 : Node2D
 	}
 	public override void _Process(double delta)
 	{
-		if (player.isTransformedToCat)
+		if (player.isTransformedToCat && !AishaCat.isDeath)
 		{
 			AishaCat.FollowCamera(camera);
 		} 

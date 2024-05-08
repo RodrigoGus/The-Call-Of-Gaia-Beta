@@ -390,7 +390,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"front_attack",
 "speed": 5.0
 }, {
@@ -453,7 +453,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -610,7 +610,7 @@ animations = [{
 size = Vector2(32, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsvw8"]
-size = Vector2(32, 22)
+size = Vector2(34, 23)
 
 [node name="AishaCat" type="CharacterBody2D" groups=["players"]]
 collision_mask = 30
@@ -621,10 +621,8 @@ texture_filter = 1
 position = Vector2(0, -15)
 scale = Vector2(0.203, 0.203)
 sprite_frames = SubResource("SpriteFrames_iy2vt")
-animation = &"hurt"
+animation = &"transform_to_human"
 autoplay = "idle"
-frame = 4
-frame_progress = 1.0
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
@@ -636,7 +634,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_dsvw8")
 debug_color = Color(0.992157, 0, 0.247059, 0.419608)
 

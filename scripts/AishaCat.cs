@@ -10,7 +10,7 @@ public partial class AishaCat : CharacterBody2D
 	public world1 worldScene;
 	private NodePath worldScenePath = "/root/world1";
 	public static bool isTransformedToCat;
-	public const float Speed = 150.0f;
+	public const float Speed = 200.0f;
 	public const float JumpVelocity = -325.0f;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() / 1.5f;
 	private Vector2 direction;
@@ -127,7 +127,7 @@ public partial class AishaCat : CharacterBody2D
 		if (this.direction != Vector2.Zero) state = "run";
 		if (!IsOnFloor() && this.isJumping) state = "jump";
 		if (!IsOnFloor() && !this.isJumping) state = "fall";
-
+		if (this.isHited) state = "hurt";
 		if (this.isTransforming) state = "transform_to_human";
 
 		if(this.animation.Name != state) this.animation.Play(state);

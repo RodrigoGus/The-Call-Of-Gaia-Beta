@@ -68,10 +68,12 @@ public partial class player : CharacterBody2D
 		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 
 		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
-
+		
 		SetState();
+
 		Velocity = velocity;
 		MoveAndSlide();
+
 	}
 
 	private void OnHurtboxBodyEntered(Node2D body)
@@ -121,6 +123,7 @@ public partial class player : CharacterBody2D
 		if (this.isTransforming) state = "transform_to_cat";
 
 		if(this.animation.Name != state) this.animation.Play(state);
+		GD.Print(state);
 	}
 
 	public void AishaToCat(){
@@ -136,11 +139,17 @@ public partial class player : CharacterBody2D
 	}
 	private void OnAnimAnimationFinished()
 	{
-		isTransforming = false;
-		AishaToCat();
+		if (this.animation.Animation == "transform_to_cat")
+		{
+			isTransforming = false;
+			AishaToCat();
+		}
 	}
 
 }
+
+
+
 
 
 
