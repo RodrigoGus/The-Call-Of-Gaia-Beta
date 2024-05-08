@@ -1,9 +1,10 @@
-[gd_scene load_steps=86 format=3 uid="uid://dhnpcskc70te4"]
+[gd_scene load_steps=92 format=3 uid="uid://dhnpcskc70te4"]
 
 [ext_resource type="Script" path="res://scripts/AishaCat.cs" id="1_1db1b"]
 [ext_resource type="Texture2D" uid="uid://c08d187ica7f4" path="res://original assets/actors/Mofo black car/Aisha_Cat_Falling.png" id="2_3g2to"]
 [ext_resource type="Texture2D" uid="uid://5fp7dgf4oirt" path="res://original assets/actors/Mofo black car/Aisha_Cat_Attack.png" id="2_k1bve"]
 [ext_resource type="Texture2D" uid="uid://dfdvotuknb6p8" path="res://original assets/actors/Mofo black car/Aisha_Cat_Idle.png" id="3_rsq1l"]
+[ext_resource type="Texture2D" uid="uid://cqqylr6f7jkwe" path="res://original assets/actors/Mofo black car/Aisha_Cat_Damage.png" id="4_pxn5l"]
 [ext_resource type="Texture2D" uid="uid://i4yu7iesk3c0" path="res://original assets/actors/Mofo black car/Aisha_Cat_Jumping.png" id="4_wky6t"]
 [ext_resource type="Texture2D" uid="uid://8cpaaotccsee" path="res://original assets/actors/Mofo black car/Aisha_Cat_Runing.png" id="5_iy6km"]
 [ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/hurtbox.tscn" id="6_5sq12"]
@@ -76,6 +77,26 @@ region = Rect2(0, 320, 320, 320)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ioea0"]
 atlas = ExtResource("2_3g2to")
 region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofoto"]
+atlas = ExtResource("4_pxn5l")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m4ll"]
+atlas = ExtResource("4_pxn5l")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fejft"]
+atlas = ExtResource("4_pxn5l")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds0ib"]
+atlas = ExtResource("4_pxn5l")
+region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3bqj"]
+atlas = ExtResource("4_pxn5l")
+region = Rect2(0, 640, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_subjx"]
 atlas = ExtResource("3_rsq1l")
@@ -375,6 +396,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ofoto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m4ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fejft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds0ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3bqj")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_subjx")
 }, {
 "duration": 1.0,
@@ -580,9 +621,9 @@ texture_filter = 1
 position = Vector2(0, -15)
 scale = Vector2(0.203, 0.203)
 sprite_frames = SubResource("SpriteFrames_iy2vt")
-animation = &"basic_attack"
+animation = &"hurt"
 autoplay = "idle"
-frame = 12
+frame = 4
 frame_progress = 1.0
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
