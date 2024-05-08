@@ -1,12 +1,65 @@
-[gd_scene load_steps=72 format=3 uid="uid://dhnpcskc70te4"]
+[gd_scene load_steps=86 format=3 uid="uid://dhnpcskc70te4"]
 
 [ext_resource type="Script" path="res://scripts/AishaCat.cs" id="1_1db1b"]
 [ext_resource type="Texture2D" uid="uid://c08d187ica7f4" path="res://original assets/actors/Mofo black car/Aisha_Cat_Falling.png" id="2_3g2to"]
+[ext_resource type="Texture2D" uid="uid://5fp7dgf4oirt" path="res://original assets/actors/Mofo black car/Aisha_Cat_Attack.png" id="2_k1bve"]
 [ext_resource type="Texture2D" uid="uid://dfdvotuknb6p8" path="res://original assets/actors/Mofo black car/Aisha_Cat_Idle.png" id="3_rsq1l"]
 [ext_resource type="Texture2D" uid="uid://i4yu7iesk3c0" path="res://original assets/actors/Mofo black car/Aisha_Cat_Jumping.png" id="4_wky6t"]
 [ext_resource type="Texture2D" uid="uid://8cpaaotccsee" path="res://original assets/actors/Mofo black car/Aisha_Cat_Runing.png" id="5_iy6km"]
 [ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/hurtbox.tscn" id="6_5sq12"]
 [ext_resource type="Texture2D" uid="uid://v6g356l8ljy3" path="res://original assets/actors/Aisha/Aisha_-_Cat_Transform.png" id="6_dfxuh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqi2n"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew5o4"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7gxb"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fj2c"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhyag"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndpxs"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_162nu"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(640, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uulwx"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(960, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ukg"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(0, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qpw2"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(320, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkrgm"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(640, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w24aa"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(960, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2geb"]
+atlas = ExtResource("2_k1bve")
+region = Rect2(0, 960, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_riif1"]
 atlas = ExtResource("2_3g2to")
@@ -256,6 +309,50 @@ region = Rect2(0, 0, 320, 320)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qqi2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew5o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7gxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fj2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhyag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndpxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_162nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uulwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0ukg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qpw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkrgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w24aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2geb")
+}],
+"loop": false,
+"name": &"basic_attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_riif1")
 }, {
 "duration": 1.0,
@@ -483,8 +580,10 @@ texture_filter = 1
 position = Vector2(0, -15)
 scale = Vector2(0.203, 0.203)
 sprite_frames = SubResource("SpriteFrames_iy2vt")
-animation = &"transform_to_human"
+animation = &"basic_attack"
 autoplay = "idle"
+frame = 12
+frame_progress = 1.0
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)

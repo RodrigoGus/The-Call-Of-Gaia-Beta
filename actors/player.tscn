@@ -1,6 +1,7 @@
-[gd_scene load_steps=83 format=3 uid="uid://dgodjbf3tbeda"]
+[gd_scene load_steps=93 format=3 uid="uid://dgodjbf3tbeda"]
 
 [ext_resource type="Script" path="res://scripts/player.cs" id="1_8erth"]
+[ext_resource type="Texture2D" uid="uid://crh1bua1bof6c" path="res://original assets/actors/Aisha/Aisha_Attack_Neutral.png" id="2_2xxg5"]
 [ext_resource type="Texture2D" uid="uid://byivrna3as3bo" path="res://original assets/actors/Aisha/Aisha_Falling.png" id="2_fkrpq"]
 [ext_resource type="Texture2D" uid="uid://ctg3nqpdmhrtb" path="res://original assets/actors/Aisha/Aisha_Damage.png" id="3_82g3a"]
 [ext_resource type="Texture2D" uid="uid://ct4mp8nue2nxs" path="res://original assets/actors/Aisha/Aisha_Jumping.png" id="3_k0ulp"]
@@ -8,6 +9,42 @@
 [ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/hurtbox.tscn" id="5_0msut"]
 [ext_resource type="Texture2D" uid="uid://biobbdegqn45t" path="res://original assets/actors/Aisha/Aisha_Walking_Right.png" id="5_n5uoe"]
 [ext_resource type="Texture2D" uid="uid://v6g356l8ljy3" path="res://original assets/actors/Aisha/Aisha_-_Cat_Transform.png" id="6_jsoxk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsial"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(0, 0, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5k66"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(206, 0, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrr8l"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(412, 0, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg2od"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(0, 206, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8eiw"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(206, 206, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chhbk"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(412, 206, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8q3g"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(0, 412, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytdi1"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(206, 412, 206, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_revye"]
+atlas = ExtResource("2_2xxg5")
+region = Rect2(412, 412, 206, 206)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyfur"]
 atlas = ExtResource("2_fkrpq")
@@ -297,6 +334,38 @@ region = Rect2(0, 1280, 320, 320)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gsial")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5k66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrr8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg2od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8eiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chhbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8q3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytdi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_revye")
+}],
+"loop": false,
+"name": &"basic_attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fyfur")
 }, {
 "duration": 1.0,
@@ -536,7 +605,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"transform_to_cat",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q386c"]
@@ -554,8 +623,10 @@ script = ExtResource("1_8erth")
 position = Vector2(0, -17)
 scale = Vector2(0.203125, 0.203125)
 sprite_frames = SubResource("SpriteFrames_m3dgr")
-animation = &"transform_to_cat"
+animation = &"basic_attack"
 autoplay = "idle"
+frame = 8
+frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -17.8)
