@@ -123,7 +123,6 @@ public partial class player : CharacterBody2D
 		if (this.isTransforming) state = "transform_to_cat";
 
 		if(this.animation.Name != state) this.animation.Play(state);
-		GD.Print(state);
 	}
 
 	public void AishaToCat(){

@@ -610,7 +610,7 @@ animations = [{
 size = Vector2(32, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsvw8"]
-size = Vector2(34, 23)
+size = Vector2(34, 24)
 
 [node name="AishaCat" type="CharacterBody2D" groups=["players"]]
 collision_mask = 30
@@ -621,7 +621,7 @@ texture_filter = 1
 position = Vector2(0, -15)
 scale = Vector2(0.203, 0.203)
 sprite_frames = SubResource("SpriteFrames_iy2vt")
-animation = &"transform_to_human"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
@@ -634,7 +634,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 4.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_dsvw8")
 debug_color = Color(0.992157, 0, 0.247059, 0.419608)
 
