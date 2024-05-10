@@ -18,7 +18,6 @@ public partial class checkpoint : Area2D
 	{
 		if (body.IsInGroup("players"))
 		{
-			GD.Print("checkpoint");
 			Globals.player_position = Position;
 			save();
 			save_game();

@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 
 public partial class ObsidianSphere : CharacterBody2D
 {
-	private const float Speed = 400.0f;
+	private const float Speed = 1000.0f;
 	private const float JumpVelocity = -400.0f;
-	public int _direction = 1;
+	public int Direction = 1;
 	private float _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public AnimatedSprite2D Animation;
 	public RayCast2D WallDetector;
-	private bool _isDying = false;
+	private bool IsDying = false;
 	public bool PlayerDetected = false;
 
 	public override void _Ready()
@@ -21,9 +21,7 @@ public partial class ObsidianSphere : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_isDying) return;
 		ProcessMovement(delta);
-
 	}
 
 	private void ProcessMovement(double delta)
@@ -35,14 +33,7 @@ public partial class ObsidianSphere : CharacterBody2D
 		}
 
 		CheckWallCollision();
-		if (PlayerDetected)
-		{
-			Position += (player.position - Position)/Speed;
-		} else{
-			velocity.X = _direction * Speed * (float)delta;
-		}
-
-
+		velocity.X = Direction * Speed * (float)delta;
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -51,7 +42,7 @@ public partial class ObsidianSphere : CharacterBody2D
 	{
 		if (WallDetector.IsColliding())
 		{
-			_direction *= -1;
+			Direction *= -1;
 			WallDetector.Scale *= new Vector2(-1, 1);
 			Animation.FlipH = !Animation.FlipH;
 		}
@@ -59,19 +50,19 @@ public partial class ObsidianSphere : CharacterBody2D
 
 	private void OnAnimatedSprite2dAnimationFinished()
 	{
-		if (_isDying)
+		if (IsDying)
 		{
-			_isDying = false;
-			QueueFree();  // Remove the enemy from the scene
+			IsDying = false;
+			QueueFree();
 		}
 	}
 
 	private void OnHitboxBodyEntered(Node2D body)
 	{
-		if (!_isDying)  // Check to ensure we do not restart the animation if already dying
+		if (!IsDying)
 		{
 			Animation.Play("hurt");
-			_isDying = true;
+			IsDying = true;
 		}
 	}
 
@@ -79,13 +70,8 @@ public partial class ObsidianSphere : CharacterBody2D
 	{
 		if (body.Name == "player") PlayerDetected = true;
 	}
+	private void OnDetectionAreaBodyExited(Node2D body)
+	{
+		if (body.Name == "player") PlayerDetected = false;
+	}
 }
-
-
-
-
-
-
-
-
-

@@ -2049,4 +2049,4 @@ position = Vector2(1405, 94)
 [node name="player" parent="." instance=ExtResource("12_dt08t")]
 
 [node name="ObsidianSphere" parent="." instance=ExtResource("13_080e6")]
-position = Vector2(585, 60)
+position = Vector2(438, 67)

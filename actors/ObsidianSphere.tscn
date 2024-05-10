@@ -272,7 +272,7 @@ size = Vector2(192, 10)
 radius = 336.733
 
 [node name="ObsidianSphere" type="CharacterBody2D" groups=["Enemies"]]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.15, 0.15)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_0owqk")
@@ -290,6 +290,7 @@ shape = SubResource("RectangleShape2D_2jfh2")
 position = Vector2(1, 85)
 scale = Vector2(4, 4)
 target_position = Vector2(25.75, 0)
+collision_mask = 2
 
 [node name="Hitbox" parent="." instance=ExtResource("4_v6vuw")]
 
@@ -306,3 +307,4 @@ shape = SubResource("CircleShape2D_5hixm")
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimatedSprite2dAnimationFinished"]
 [connection signal="body_entered" from="Hitbox" to="." method="OnHitboxBodyEntered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="OnDetectionAreaBodyEntered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="OnDetectionAreaBodyExited"]
