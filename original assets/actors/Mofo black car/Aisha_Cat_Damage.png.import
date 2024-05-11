@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7ljsfba6kajo"
-path="res://.godot/imported/Aisha_Cat_Falling.webp-30dc2cc2d48261778ad3eba33245ba46.ctex"
+uid="uid://cqqylr6f7jkwe"
+path="res://.godot/imported/Aisha_Cat_Damage.png-1f22ee20b791a9be0daa6cb5a68aa3b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://original assets/actors/Mofo black car/Aisha_Cat_Falling.webp"
-dest_files=["res://.godot/imported/Aisha_Cat_Falling.webp-30dc2cc2d48261778ad3eba33245ba46.ctex"]
+source_file="res://original assets/actors/Mofo black car/Aisha_Cat_Damage.png"
+dest_files=["res://.godot/imported/Aisha_Cat_Damage.png-1f22ee20b791a9be0daa6cb5a68aa3b6.ctex"]
 
 [params]
 

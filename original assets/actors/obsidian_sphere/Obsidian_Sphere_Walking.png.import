@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw0rw23r6b4wd"
-path="res://.godot/imported/Aisha_Cat_Idle.webp-dd04f73f67426b67a4e2a6ac38f0cd56.ctex"
+uid="uid://co2mtjekxides"
+path="res://.godot/imported/Obsidian_Sphere_Walking.png-5c287fe8076d0b70352e561d53d679a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://original assets/actors/Mofo black car/Aisha_Cat_Idle.webp"
-dest_files=["res://.godot/imported/Aisha_Cat_Idle.webp-dd04f73f67426b67a4e2a6ac38f0cd56.ctex"]
+source_file="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Walking.png"
+dest_files=["res://.godot/imported/Obsidian_Sphere_Walking.png-5c287fe8076d0b70352e561d53d679a4.ctex"]
 
 [params]
 

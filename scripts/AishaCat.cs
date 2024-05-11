@@ -1,17 +1,20 @@
 using Godot;
+using Org.BouncyCastle.Asn1.Cmp;
+using System;
+using System.Data.Common;
 
-public partial class player : CharacterBody2D
+public partial class AishaCat : CharacterBody2D
 {
 	private bool isTransforming = false;
-	public PackedScene catScene = (PackedScene)ResourceLoader.Load("res://actors/AishaCat.tscn");
+	public PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://actors/player.tscn");
 	public world1 worldScene;
 	private NodePath worldScenePath = "/root/world1";
 	public static bool isTransformedToCat;
-	public const float Speed = 150.0f;
+	public const float Speed = 200.0f;
 	public const float JumpVelocity = -325.0f;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() / 1.5f;
 	private Vector2 direction;
-	private NodePath animationNodePath = "Anim";
+	private NodePath animationNodePath = "CatAnim";
 	public AnimatedSprite2D animation;
 	public bool isJumping = false;
 	public bool isHited = false;
@@ -26,6 +29,7 @@ public partial class player : CharacterBody2D
 	public static Vector2 position;
 	public static bool isDeath = false;
 
+
 	public override void _Ready()
 	{
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
@@ -33,8 +37,7 @@ public partial class player : CharacterBody2D
 		this.worldScene = GetNode<world1>(worldScenePath);
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
-		Position = position;
-		isTransformedToCat = false;
+		isTransformedToCat = true;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -60,24 +63,29 @@ public partial class player : CharacterBody2D
 		if (this.direction != Vector2.Zero)
 		{
 			velocity.X = this.direction.X * Speed;
-			if (Input.IsActionPressed("right")) this.inputDirection = 0.203f;
-			if (Input.IsActionPressed("left")) this.inputDirection = -0.203f;
-			
-			this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
+			if (Input.IsActionPressed("right")) {
+				this.inputDirection = 0.203f;
+				this.animation.FlipH = false;
+			}
+			if (Input.IsActionPressed("left")) {
+				this.inputDirection = -0.203f;
+				this.animation.FlipH = true;
+			}
+			// this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
+			// this.catAnimation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
 		}
 		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 
 		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
-		
-		SetState();
 
+		SetState();
 		Velocity = velocity;
 		MoveAndSlide();
-
 	}
 
 	private void OnHurtboxBodyEntered(Node2D body)
 	{
+
 		if (Globals.player_life <= 0) 
 		{
 			QueueFree(); 
@@ -120,38 +128,30 @@ public partial class player : CharacterBody2D
 		if (!IsOnFloor() && this.isJumping) state = "jump";
 		if (!IsOnFloor() && !this.isJumping) state = "fall";
 		if (this.isHited) state = "hurt";
-		if (this.isTransforming) state = "transform_to_cat";
+		if (this.isTransforming) state = "transform_to_human";
 
 		if(this.animation.Name != state) this.animation.Play(state);
+		// if(this.catAnimation.Name != state) this.catAnimation.Play(state);
 	}
 
-	public void AishaToCat(){
-		if (!isTransformedToCat){
-			CharacterBody2D cat = catScene.Instantiate<CharacterBody2D>();
-			GetParent().AddChild(cat);
-			cat.Position = this.Position;
+	public void CatToAisha(){
+		if(isTransformedToCat){
+			CharacterBody2D player = playerScene.Instantiate<CharacterBody2D>();
+			GetParent().AddChild(player);
+			player.Position = this.Position;
 			this.QueueFree();
-			isTransformedToCat = true;
+			isTransformedToCat = false;
 			GD.Print(isTransformedToCat);
 		}
-
 	}
-	private void OnAnimAnimationFinished()
+	private void OnCatAnimAnimationFinished()
 	{
-		if (this.animation.Animation == "transform_to_cat")
-		{
-			isTransforming = false;
-			AishaToCat();
-		}
+		isTransforming = false;
+		CatToAisha();
 	}
+
 
 }
-
-
-
-
-
-
 
 
 
