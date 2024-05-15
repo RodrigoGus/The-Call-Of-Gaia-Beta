@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=25 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
 [ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="9_m4koa"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
+[ext_resource type="PackedScene" uid="uid://dgrgkopahrb0a" path="res://scenes/pause_menu.tscn" id="13_ynq75"]
 [ext_resource type="PackedScene" uid="uid://bupw5s65ggsmt" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
@@ -2049,3 +2050,5 @@ position = Vector2(1405, 94)
 
 [node name="Player" parent="." instance=ExtResource("9_m4koa")]
 position = Vector2(851, -295)
+
+[node name="pause_menu" parent="." instance=ExtResource("13_ynq75")]

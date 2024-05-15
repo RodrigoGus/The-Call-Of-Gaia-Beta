@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="10_ftv2x"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="11_0l7nd"]
 [ext_resource type="Texture2D" uid="uid://cev65e42vtah" path="res://assets/components/logo_tcg.webp" id="11_fqp13"]
-[ext_resource type="Theme" uid="uid://bffga5nqj3bgx" path="res://assets/components/btn_tcg.tres" id="11_xmom4"]
-[ext_resource type="Theme" uid="uid://df40o4j1gr3ty" path="res://assets/components/hSeparator.tres" id="13_a34ql"]
+[ext_resource type="Theme" uid="uid://dqegucvfn20g6" path="res://assets/components/btn_tcg.tres" id="11_xmom4"]
+[ext_resource type="Theme" path="res://assets/components/hSeparator.tres" id="13_a34ql"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2nq6f"]
 
@@ -1963,6 +1963,21 @@ VSeparator/styles/separator = SubResource("StyleBoxEmpty_nfddh")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvhtd"]
 
+[sub_resource type="Animation" id="Animation_kjudu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_3d0f8"]
 resource_name = "new_animation"
 length = 1.2
@@ -1978,21 +1993,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3]
-}
-
-[sub_resource type="Animation" id="Animation_kjudu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axbsw"]
