@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=23 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
+[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="11_basq0"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
@@ -2034,3 +2035,5 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="HUD" parent="." instance=ExtResource("13_gb5p4")]
+
+[node name="player" parent="." instance=ExtResource("11_basq0")]
