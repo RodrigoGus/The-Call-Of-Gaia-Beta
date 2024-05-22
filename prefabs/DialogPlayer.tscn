@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://21fdtwpj0lse"]
+
+[ext_resource type="Texture2D" uid="uid://c5de2rtrort3" path="res://assets/Dialogue-Background.png" id="1_7p66d"]
+[ext_resource type="Script" path="res://scripts/DialogPlayer.cs" id="1_wthn1"]
+
+[node name="DialogPlayer" type="CanvasLayer"]
+process_mode = 1
+script = ExtResource("1_wthn1")
+
+[node name="BackGround" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.5
+offset_top = -108.0
+offset_right = 106.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_7p66d")
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = 506.0
+offset_top = 554.0
+offset_right = 648.0
+offset_bottom = 603.0
+text = "ooisijda ijdsajinc ndc"
+autowrap_mode = 3

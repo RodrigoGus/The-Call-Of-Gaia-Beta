@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scripts/Globals.cs"
+SignalBus="*res://scripts/singletons/SignalBus.cs"
 
 [dotnet]
 
@@ -75,6 +76,7 @@ interact={
 2d_physics/layer_4="items"
 2d_physics/layer_5="hitbox"
 2d_physics/layer_6="hurtbox"
+2d_physics/layer_7="Dialog"
 
 [rendering]
 

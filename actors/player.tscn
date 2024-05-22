@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dgodjbf3tbeda"]
+[gd_scene load_steps=94 format=3 uid="uid://dgodjbf3tbeda"]
 
 [ext_resource type="Script" path="res://scripts/player.cs" id="1_8erth"]
 [ext_resource type="Texture2D" uid="uid://crh1bua1bof6c" path="res://original assets/actors/Aisha/Aisha_Attack_Neutral.png" id="2_2xxg5"]
@@ -614,6 +614,9 @@ size = Vector2(19, 35.6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdita"]
 size = Vector2(23, 34.6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ykb"]
+size = Vector2(20, 35)
+
 [node name="player" type="CharacterBody2D" groups=["players"]]
 collision_mask = 30
 floor_constant_speed = true
@@ -650,6 +653,15 @@ collision_mask = 4
 position = Vector2(-5, -3)
 target_position = Vector2(-8, 0)
 collision_mask = 4
+
+[node name="DialogInteractionArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogInteractionArea"]
+position = Vector2(0, -17.5)
+shape = SubResource("RectangleShape2D_i2ykb")
+debug_color = Color(2.64719e-06, 0.621692, 0.55225, 0.42)
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

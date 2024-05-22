@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=25 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
 [ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="11_basq0"]
-[ext_resource type="PackedScene" uid="uid://7cax58wucp2x" path="res://prefabs/interact_text_box_area.tscn" id="12_3khuf"]
+[ext_resource type="PackedScene" uid="uid://c422hyhu3u0f4" path="res://prefabs/DialogArea.tscn" id="12_f6j0w"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
@@ -1962,6 +1962,9 @@ pattern_2 = SubResource("TileMapPattern_6ab46")
 pattern_3 = SubResource("TileMapPattern_qpr8i")
 pattern_4 = SubResource("TileMapPattern_aifjm")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mav02"]
+size = Vector2(20, 38)
+
 [node name="world1" type="Node2D"]
 script = ExtResource("1_0auo0")
 metadata/_edit_horizontal_guides_ = [-882.0]
@@ -2039,18 +2042,10 @@ editor_draw_drag_margin = true
 
 [node name="player" parent="." instance=ExtResource("11_basq0")]
 
-[node name="InteractTextBoxArea" parent="." instance=ExtResource("12_3khuf")]
-position = Vector2(881, 89)
-text = "olá"
+[node name="DialogArea" parent="." instance=ExtResource("12_f6j0w")]
+position = Vector2(777, 101)
+dialogKey = "door"
 
-[node name="InteractTextBoxArea2" parent="." instance=ExtResource("12_3khuf")]
-position = Vector2(959, 89)
-text = "você"
-
-[node name="InteractTextBoxArea3" parent="." instance=ExtResource("12_3khuf")]
-position = Vector2(1018, 91)
-text = "é"
-
-[node name="InteractTextBoxArea4" parent="." instance=ExtResource("12_3khuf")]
-position = Vector2(1084, 91)
-text = "gay?"
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DialogArea"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_mav02")
