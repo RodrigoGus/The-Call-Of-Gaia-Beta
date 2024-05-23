@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=26 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
 [ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="11_basq0"]
-[ext_resource type="PackedScene" uid="uid://c422hyhu3u0f4" path="res://prefabs/DialogArea.tscn" id="12_f6j0w"]
+[ext_resource type="PackedScene" uid="uid://du4xv8ll5g74i" path="res://prefabs/DialogArea.tscn" id="12_iae0q"]
+[ext_resource type="PackedScene" uid="uid://k247i8k3m8bi" path="res://prefabs/DialogPlayer.tscn" id="13_fdh0k"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
@@ -1962,8 +1963,7 @@ pattern_2 = SubResource("TileMapPattern_6ab46")
 pattern_3 = SubResource("TileMapPattern_qpr8i")
 pattern_4 = SubResource("TileMapPattern_aifjm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mav02"]
-size = Vector2(20, 38)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l70ad"]
 
 [node name="world1" type="Node2D"]
 script = ExtResource("1_0auo0")
@@ -2041,11 +2041,16 @@ editor_draw_drag_margin = true
 [node name="HUD" parent="." instance=ExtResource("13_gb5p4")]
 
 [node name="player" parent="." instance=ExtResource("11_basq0")]
+position = Vector2(53, 1)
 
-[node name="DialogArea" parent="." instance=ExtResource("12_f6j0w")]
-position = Vector2(855, 94)
+[node name="DialogAreaDoor" parent="." instance=ExtResource("12_iae0q")]
+position = Vector2(853, 88)
 dialogKey = "door"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DialogArea"]
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_mav02")
+[node name="CollisionShape2D" parent="DialogAreaDoor" index="0"]
+shape = SubResource("RectangleShape2D_l70ad")
+
+[node name="DialogPlayer" parent="." instance=ExtResource("13_fdh0k")]
+SceneTextFile = "res://dialogs texts/teste.json"
+
+[editable path="DialogAreaDoor"]

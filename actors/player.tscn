@@ -614,8 +614,8 @@ size = Vector2(19, 35.6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdita"]
 size = Vector2(23, 34.6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ykb"]
-size = Vector2(20, 35)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n66c"]
+size = Vector2(19, 35)
 
 [node name="player" type="CharacterBody2D" groups=["players"]]
 collision_mask = 30
@@ -659,9 +659,9 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogInteractionArea"]
-position = Vector2(0, -17.5)
-shape = SubResource("RectangleShape2D_i2ykb")
-debug_color = Color(2.64719e-06, 0.621692, 0.55225, 0.42)
+position = Vector2(-0.5, -17.5)
+shape = SubResource("RectangleShape2D_3n66c")
+debug_color = Color(4.33177e-07, 0.630895, 0.467838, 0.42)
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

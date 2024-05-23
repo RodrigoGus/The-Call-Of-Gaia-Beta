@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://du4xv8ll5g74i"]
+
+[ext_resource type="Script" path="res://scripts/DialogArea.cs" id="1_svfy2"]
+
+[node name="DialogArea" type="Area2D"]
+process_mode = 3
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("1_svfy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="area_exited" from="." to="." method="OnAreaExited"]
