@@ -2043,7 +2043,7 @@ editor_draw_drag_margin = true
 [node name="player" parent="." instance=ExtResource("11_basq0")]
 
 [node name="DialogArea" parent="." instance=ExtResource("12_f6j0w")]
-position = Vector2(777, 101)
+position = Vector2(855, 94)
 dialogKey = "door"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DialogArea"]
