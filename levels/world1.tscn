@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=22 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -9,10 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
-[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="9_m4koa"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
-[ext_resource type="PackedScene" uid="uid://dgrgkopahrb0a" path="res://scenes/pause_menu.tscn" id="13_ynq75"]
-[ext_resource type="PackedScene" uid="uid://bupw5s65ggsmt" path="res://actors/checkpoint.tscn" id="14_6tbuf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)
@@ -2018,9 +2015,6 @@ layer_1/tile_data = PackedInt32Array(458752, 458752, 2, 458753, 524288, 2, 45875
 layer_2/name = "items"
 layer_2/tile_data = PackedInt32Array()
 
-[node name="player" parent="." instance=ExtResource("9_m4koa")]
-position = Vector2(233, 103)
-
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(356, 20)
 zoom = Vector2(2.5, 2.5)
@@ -2039,16 +2033,3 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="HUD" parent="." instance=ExtResource("13_gb5p4")]
-
-[node name="Checkpoints" type="Node2D" parent="."]
-
-[node name="checkpoint" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
-position = Vector2(777, 95)
-
-[node name="checkpoint2" parent="Checkpoints" instance=ExtResource("14_6tbuf")]
-position = Vector2(1405, 94)
-
-[node name="Player" parent="." instance=ExtResource("9_m4koa")]
-position = Vector2(851, -295)
-
-[node name="pause_menu" parent="." instance=ExtResource("13_ynq75")]
