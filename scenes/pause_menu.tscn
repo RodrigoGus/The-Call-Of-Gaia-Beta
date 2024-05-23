@@ -1,0 +1,98 @@
+[gd_scene load_steps=17 format=3 uid="uid://dgrgkopahrb0a"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.cs" id="1_hg8t1"]
+[ext_resource type="FontFile" uid="uid://c6bosne1wvd2l" path="res://assets/Fonts/at01.ttf" id="1_kwmng"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltp12"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yw7ey"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whi24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_il0ax"]
+
+[sub_resource type="Theme" id="Theme_krkqa"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0, 0.854902, 0, 1)
+Button/colors/font_hover_color = Color(0, 0.854902, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0.854902, 0, 1)
+Button/font_sizes/font_size = 100
+Button/fonts/font = ExtResource("1_kwmng")
+Button/styles/focus = SubResource("StyleBoxEmpty_ltp12")
+Button/styles/hover = SubResource("StyleBoxEmpty_yw7ey")
+Button/styles/normal = SubResource("StyleBoxEmpty_whi24")
+Button/styles/pressed = SubResource("StyleBoxEmpty_il0ax")
+
+[sub_resource type="InputEventAction" id="InputEventAction_2hrsn"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_vtcdi"]
+events = [SubResource("InputEventAction_2hrsn")]
+
+[sub_resource type="Theme" id="Theme_de3po"]
+MarginContainer/constants/margin_bottom = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ay81x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ogjns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrj4f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b52b6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8w54h"]
+
+[sub_resource type="Theme" id="Theme_tuvlq"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.937255, 0, 0.160784, 1)
+Button/colors/font_hover_color = Color(0.937255, 0, 0.160784, 1)
+Button/colors/font_pressed_color = Color(0.937255, 0, 0.160784, 1)
+Button/font_sizes/font_size = 100
+Button/fonts/font = ExtResource("1_kwmng")
+Button/styles/disabled = SubResource("StyleBoxEmpty_ay81x")
+Button/styles/focus = SubResource("StyleBoxEmpty_ogjns")
+Button/styles/hover = SubResource("StyleBoxEmpty_vrj4f")
+Button/styles/normal = SubResource("StyleBoxEmpty_b52b6")
+Button/styles/pressed = SubResource("StyleBoxEmpty_8w54h")
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_hg8t1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume_btb" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_krkqa")
+shortcut = SubResource("Shortcut_vtcdi")
+text = "Resume
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_de3po")
+
+[node name="quit_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_tuvlq")
+text = "Quit Game
+"
+
+[connection signal="pressed" from="VBoxContainer/resume_btb" to="." method="_on_resume_btb_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
