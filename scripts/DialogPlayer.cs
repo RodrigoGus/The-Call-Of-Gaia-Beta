@@ -6,7 +6,7 @@ public partial class DialogPlayer : CanvasLayer
 {
 	[Export(PropertyHint.File, "*.json")]
 	public string SceneTextFile;
-	public Dictionary<string, string> sceneText = new();
+	public Dictionary<string, Array<string>> sceneText = new();
 	public Array<string> selectedText = new();
 	public bool inProgress = false;
 	public TextureRect background;
@@ -23,17 +23,14 @@ public partial class DialogPlayer : CanvasLayer
 
 	}
 
-	public override void _Process(double delta)
-	{
-	}
-
-	public Dictionary<string, string> LoadSceneText(){
+	public Dictionary<string, Array<string>> LoadSceneText(){
 		FileAccess file = FileAccess.Open(SceneTextFile, FileAccess.ModeFlags.Read);
 		var jsonString = file.GetAsText();
 		var json = new Json();
 		var parseResult = json.Parse(jsonString);
-		var nodeData = new Dictionary<string, string>((Dictionary)json.Data);
+		var nodeData = new Dictionary<string, Array<string>>((Dictionary)json.Data);
 		return nodeData;
+
 	}
 
 	private void ShowText()
@@ -70,7 +67,7 @@ public partial class DialogPlayer : CanvasLayer
 			GetTree().Paused = true;
 			background.Visible = true;
 			inProgress = true;
-			selectedText.Add(sceneText[textKey]);
+			selectedText = sceneText[textKey].Duplicate();
 			ShowText();
 		}
 	}
