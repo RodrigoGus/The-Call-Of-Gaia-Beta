@@ -4,8 +4,8 @@ using System;
 public partial class DialogArea : Area2D
 {
 	[Export]
-	public string dialogKey = "";
-	public static bool areaActive = false;
+	private string dialogKey = "";
+	public bool areaActive = false;
 	public SignalBus signalBus; 
 	public override void _Ready()
 	{
@@ -14,8 +14,10 @@ public partial class DialogArea : Area2D
 
 	public override void _Process(double delta)
 	{
+
 		if (areaActive && Input.IsActionJustPressed("interact"))
 		{
+			GD.Print(dialogKey);
 			signalBus.EmitSignal(nameof(SignalBus.DisplayDialog), dialogKey);
 		}
 		
