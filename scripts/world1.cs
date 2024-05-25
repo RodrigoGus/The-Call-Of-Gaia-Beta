@@ -26,26 +26,4 @@ public partial class world1 : Node2D
 		 	Player.FollowCamera(camera);
 		}
 	}
-
-	// public void AishaToCat()
-	// {
-	// 	if (!player.isTransformedToCat)
-	// 	{
-	// 		player.QueueFree();
-	// 		AishaCat.Visible = true;
-	// 		AishaCat.Position = player.Position;
-	// 		player.isTransformedToCat = !player.isTransformedToCat;
-	// 		CharacterBody2D characterInstance = catScene.Instantiate<CharacterBody2D>();
-	// 		AddChild(characterInstance);
-	// 		characterInstance.Position = player.Position;
-	// 	}
-	// 	else if (player.isTransformedToCat)
-	// 	{
-	// 		AishaCat.QueueFree();
-	// 		CharacterBody2D playerInstance = playerScene.Instantiate<CharacterBody2D>();
-	// 		AddChild(playerInstance);
-	// 		playerInstance.Position = AishaCat.Position;
-
-	// 	}
-	// }
 }
