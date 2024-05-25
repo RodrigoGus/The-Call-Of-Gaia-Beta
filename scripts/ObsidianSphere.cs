@@ -68,10 +68,10 @@ public partial class ObsidianSphere : CharacterBody2D
 
 	private void OnDetectionAreaBodyEntered(Node2D body)
 	{
-		if (body.Name == "player") PlayerDetected = true;
+		if (body.Name == "Player") PlayerDetected = true;
 	}
 	private void OnDetectionAreaBodyExited(Node2D body)
 	{
-		if (body.Name == "player") PlayerDetected = false;
+		if (body.Name == "Player") PlayerDetected = false;
 	}
 }

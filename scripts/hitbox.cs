@@ -12,7 +12,7 @@ public partial class Hitbox : Area2D
 
 	public void OnBodyEntered(Node2D body)
 	{
-		if ("player" == body.Name)
+		if ("Player" == body.Name)
 		{
 			this._player = (Player)body;
 			Vector2 velocity = this._player.Velocity;

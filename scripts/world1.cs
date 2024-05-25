@@ -2,7 +2,7 @@ using Godot;
 
 public partial class world1 : Node2D
 {
-	public NodePath playerPath = "player";
+	public NodePath playerPath = "Player";
 	public NodePath CatPath = "AishaCat";
 	private NodePath cameraPath = "camera";
 	public Camera2D camera;
