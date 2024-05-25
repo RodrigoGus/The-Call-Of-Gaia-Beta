@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d2k22vba2s68"]
 
-[ext_resource type="Script" path="res://scripts/enemy.cs" id="1_k0l5m"]
+[ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_k0l5m"]
 [ext_resource type="Texture2D" uid="uid://ckkatvbbhai80" path="res://assets/Stinky Rat/MouseRun.png" id="1_u32ap"]
 [ext_resource type="Texture2D" uid="uid://dufomqsi6ry67" path="res://assets/Stinky Rat/MouseDamage.png" id="3_6gpnb"]
 [ext_resource type="Texture2D" uid="uid://ctmimskjw271g" path="res://assets/Stinky Rat/MouseIdle.png" id="4_nk2vd"]

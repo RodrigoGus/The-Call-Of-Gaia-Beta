@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class coin : Area2D
+public partial class Coin : Area2D
 {
 
     public int coins = 1;

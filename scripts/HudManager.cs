@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class hud_manager : Control
+public partial class HudManager : Control
 {
 	public Label _coins_counter;
 	public Timer _clock_timer;

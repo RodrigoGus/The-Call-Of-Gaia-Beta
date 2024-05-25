@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dimbjoknxkr7p"
-path="res://.godot/imported/Life_and_Mana_bars_Frame.webp-c71b4b80d272db79f061a4115e448921.ctex"
+uid="uid://b7wpj3m7sb16x"
+path="res://.godot/imported/Mana_bar.webp-1b38fbd49c969e44658b43e5492cd085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Life_and_Mana_bars_Frame.webp"
-dest_files=["res://.godot/imported/Life_and_Mana_bars_Frame.webp-c71b4b80d272db79f061a4115e448921.ctex"]
+source_file="res://original assets/ui/bars/Mana_bar.webp"
+dest_files=["res://.godot/imported/Mana_bar.webp-1b38fbd49c969e44658b43e5492cd085.ctex"]
 
 [params]
 

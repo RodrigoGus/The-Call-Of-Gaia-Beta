@@ -22,6 +22,11 @@ config/icon="res://icon.svg"
 Globals="*res://scripts/Globals.cs"
 SignalBus="*res://scripts/singletons/SignalBus.cs"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [dotnet]
 
 project/assembly_name="PlatformPrototipe"

@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 
 
-public partial class checkpoint : Area2D
+public partial class Checkpoint : Area2D
 {
 
 	public override void _Ready()

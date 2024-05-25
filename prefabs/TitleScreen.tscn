@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://dima1b85ph8nh"]
 
-[ext_resource type="Script" path="res://scripts/title_screen.cs" id="1_e1yp1"]
+[ext_resource type="Script" path="res://scripts/TitleScreen.cs" id="1_e1yp1"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_obeeb"]
-[ext_resource type="Shader" path="res://shaders/title_screen.gdshader" id="2_3mtee"]
+[ext_resource type="Shader" path="res://shaders/TitleScreen.gdshader" id="2_3mtee"]
 [ext_resource type="Texture2D" uid="uid://dvfj7n814gq7u" path="res://assets/Background/CloudsFront.png" id="2_s4yka"]
 [ext_resource type="Texture2D" uid="uid://bb0ov4xv8acj4" path="res://assets/Background/BGBack.png" id="3_thsgs"]
 [ext_resource type="Texture2D" uid="uid://uhc3oxrby6kg" path="res://assets/Background/BGFront.png" id="4_sfsjq"]
@@ -2001,7 +2001,7 @@ _data = {
 "new_animation": SubResource("Animation_3d0f8")
 }
 
-[node name="titleScreen" type="Control"]
+[node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

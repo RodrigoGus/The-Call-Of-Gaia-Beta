@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=24 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -9,11 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
-[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="11_basq0"]
-[ext_resource type="PackedScene" uid="uid://dpmalc6u7322k" path="res://prefabs/DialogArea.tscn" id="12_iae0q"]
+[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/Player.tscn" id="12_cqm5s"]
 [ext_resource type="PackedScene" uid="uid://k247i8k3m8bi" path="res://prefabs/DialogPlayer.tscn" id="13_fdh0k"]
-[ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
-[ext_resource type="PackedScene" uid="uid://bupw5s65ggsmt" path="res://actors/checkpoint.tscn" id="14_k0pma"]
+[ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/Hud.tscn" id="13_gb5p4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)
@@ -1964,10 +1962,6 @@ pattern_2 = SubResource("TileMapPattern_6ab46")
 pattern_3 = SubResource("TileMapPattern_qpr8i")
 pattern_4 = SubResource("TileMapPattern_aifjm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ohsh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb5iq"]
-
 [node name="world1" type="Node2D"]
 script = ExtResource("1_0auo0")
 metadata/_edit_horizontal_guides_ = [-882.0]
@@ -2026,7 +2020,7 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(356, 20)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(3.5, 3.5)
 limit_left = 0
 limit_top = -368
 limit_bottom = 155
@@ -2043,28 +2037,7 @@ editor_draw_drag_margin = true
 
 [node name="HUD" parent="." instance=ExtResource("13_gb5p4")]
 
-[node name="player" parent="." instance=ExtResource("11_basq0")]
-position = Vector2(53, 1)
-
 [node name="DialogPlayer" parent="." instance=ExtResource("13_fdh0k")]
 SceneTextFile = "res://dialogs texts/teste.json"
 
-[node name="checkpoint" parent="." instance=ExtResource("14_k0pma")]
-position = Vector2(766, 84)
-
-[node name="DialogAreaDoor" parent="." instance=ExtResource("12_iae0q")]
-position = Vector2(857, 84)
-dialogKey = "door"
-
-[node name="CollisionShape2D" parent="DialogAreaDoor" index="0"]
-shape = SubResource("RectangleShape2D_0ohsh")
-
-[node name="DialogAreaPictures" parent="." instance=ExtResource("12_iae0q")]
-dialogKey = "pictures"
-
-[node name="CollisionShape2D" parent="DialogAreaPictures" index="0"]
-position = Vector2(859, 10)
-shape = SubResource("RectangleShape2D_jb5iq")
-
-[editable path="DialogAreaDoor"]
-[editable path="DialogAreaPictures"]
+[node name="Player" parent="." instance=ExtResource("12_cqm5s")]
