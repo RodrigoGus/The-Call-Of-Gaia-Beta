@@ -6,7 +6,7 @@ using System.Data.Common;
 public partial class AishaCat : CharacterBody2D
 {
 	private bool isTransforming = false;
-	public PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://actors/player.tscn");
+	public PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://actors/Player.tscn");
 	public world1 worldScene;
 	private NodePath worldScenePath = "/root/world1";
 	public static bool isTransformedToCat;
@@ -141,7 +141,6 @@ public partial class AishaCat : CharacterBody2D
 			player.Position = this.Position;
 			this.QueueFree();
 			isTransformedToCat = false;
-			GD.Print(isTransformedToCat);
 		}
 	}
 	private void OnCatAnimAnimationFinished()

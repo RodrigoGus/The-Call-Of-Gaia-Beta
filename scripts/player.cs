@@ -132,7 +132,6 @@ public partial class Player : CharacterBody2D
 			cat.Position = this.Position;
 			this.QueueFree();
 			isTransformedToCat = true;
-			GD.Print(isTransformedToCat);
 		}
 
 	}

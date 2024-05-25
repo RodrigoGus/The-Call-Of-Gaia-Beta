@@ -17,7 +17,6 @@ public partial class DialogArea : Area2D
 
 		if (areaActive && Input.IsActionJustPressed("interact"))
 		{
-			GD.Print(dialogKey);
 			signalBus.EmitSignal(nameof(SignalBus.DisplayDialog), dialogKey);
 		}
 		

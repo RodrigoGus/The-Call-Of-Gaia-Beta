@@ -48,7 +48,6 @@ public partial class Checkpoint : Area2D
 
 	public static void load_game(){
 		if(!FileAccess.FileExists("user://savegame.txt")){
-			GD.Print("no savegame");
 			save_game();
 		}else{
 			FileAccess save_game = FileAccess.Open("user://savegame.txt", FileAccess.ModeFlags.Read);
