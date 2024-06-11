@@ -1,6 +1,6 @@
 [gd_scene load_steps=94 format=3 uid="uid://dgodjbf3tbeda"]
 
-[ext_resource type="Script" path="res://scripts/Player.cs" id="1_8erth"]
+[ext_resource type="Script" path="res://scripts/player.cs" id="1_8erth"]
 [ext_resource type="Texture2D" uid="uid://crh1bua1bof6c" path="res://original assets/actors/Aisha/Aisha_Attack_Neutral.png" id="2_2xxg5"]
 [ext_resource type="Texture2D" uid="uid://byivrna3as3bo" path="res://original assets/actors/Aisha/Aisha_Falling.png" id="2_fkrpq"]
 [ext_resource type="Texture2D" uid="uid://ctg3nqpdmhrtb" path="res://original assets/actors/Aisha/Aisha_Damage.png" id="3_82g3a"]

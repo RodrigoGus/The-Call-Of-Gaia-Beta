@@ -2,7 +2,7 @@ using Godot;
 
 public partial class Hitbox : Area2D
 {
-	private Player _player;
+	private player _player;
 	private AishaCat _aishaCat;
 	public const float JumpVelocity = -400.0f;
 
@@ -14,7 +14,7 @@ public partial class Hitbox : Area2D
 	{
 		if ("Player" == body.Name)
 		{
-			this._player = (Player)body;
+			this._player = (player)body;
 			Vector2 velocity = this._player.Velocity;
 			velocity.Y = JumpVelocity / 2;
 			this._player.Velocity = velocity;

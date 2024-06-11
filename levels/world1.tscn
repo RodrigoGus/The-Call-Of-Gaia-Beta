@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=25 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -9,9 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
-[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/Player.tscn" id="12_cqm5s"]
+[ext_resource type="PackedScene" uid="uid://dgodjbf3tbeda" path="res://actors/player.tscn" id="12_cqm5s"]
 [ext_resource type="PackedScene" uid="uid://k247i8k3m8bi" path="res://prefabs/DialogPlayer.tscn" id="13_fdh0k"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/hud.tscn" id="13_gb5p4"]
+[ext_resource type="Script" path="res://scripts/player.cs" id="13_ydb3e"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)
@@ -2041,3 +2042,4 @@ editor_draw_drag_margin = true
 SceneTextFile = "res://dialogs texts/teste.json"
 
 [node name="Player" parent="." instance=ExtResource("12_cqm5s")]
+script = ExtResource("13_ydb3e")
