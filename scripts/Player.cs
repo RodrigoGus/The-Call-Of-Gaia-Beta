@@ -145,12 +145,3 @@ public partial class Player : CharacterBody2D
 	}
 
 }
-
-
-
-
-
-
-
-
-

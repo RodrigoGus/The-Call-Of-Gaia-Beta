@@ -151,6 +151,3 @@ public partial class AishaCat : CharacterBody2D
 
 
 }
-
-
-

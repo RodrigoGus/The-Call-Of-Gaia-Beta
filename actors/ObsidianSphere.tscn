@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://esjuht8nttur" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Damage.png" id="1_lqda2"]
 [ext_resource type="Texture2D" uid="uid://dh58cxjodwmgp" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Idle.png" id="2_x74e4"]
 [ext_resource type="Texture2D" uid="uid://co2mtjekxides" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Walking.png" id="3_m4kxh"]
-[ext_resource type="PackedScene" path="res://prefabs/Hitbox.tscn" id="5_aqx56"]
+[ext_resource type="PackedScene" uid="uid://bds7kfnuusmn4" path="res://prefabs/Hitbox.tscn" id="5_aqx56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5nt3"]
 atlas = ExtResource("1_lqda2")
@@ -269,7 +269,7 @@ size = Vector2(192, 179)
 radius = 336.733
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjgw"]
-size = Vector2(192, 10)
+size = Vector2(140, 10)
 
 [node name="ObsidianSphere" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(0.15, 0.15)
@@ -300,7 +300,7 @@ shape = SubResource("CircleShape2D_5hixm")
 [node name="Hitbox" parent="." instance=ExtResource("5_aqx56")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -58)
+position = Vector2(3.33333, -58)
 shape = SubResource("RectangleShape2D_cxjgw")
 debug_color = Color(1, 0, 0, 0.419608)
 

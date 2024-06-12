@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://k6vjj28w08db" path="res://original assets/actors/Aisha/Aisha_Idle.png" id="4_m7dsa"]
 [ext_resource type="Texture2D" uid="uid://biobbdegqn45t" path="res://original assets/actors/Aisha/Aisha_Walking_Right.png" id="5_n5uoe"]
 [ext_resource type="Texture2D" uid="uid://v6g356l8ljy3" path="res://original assets/actors/Aisha/Aisha_-_Cat_Transform.png" id="6_jsoxk"]
-[ext_resource type="PackedScene" path="res://prefabs/Hurtbox.tscn" id="9_76l45"]
+[ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/Hurtbox.tscn" id="9_76l45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsial"]
 atlas = ExtResource("2_2xxg5")
@@ -664,3 +664,4 @@ shape = SubResource("RectangleShape2D_gdita")
 debug_color = Color(0.992157, 0, 0.247059, 0.419608)
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]
+[connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

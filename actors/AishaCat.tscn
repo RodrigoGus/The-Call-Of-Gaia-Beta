@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://i4yu7iesk3c0" path="res://original assets/actors/Mofo black car/Aisha_Cat_Jumping.png" id="4_wky6t"]
 [ext_resource type="Texture2D" uid="uid://8cpaaotccsee" path="res://original assets/actors/Mofo black car/Aisha_Cat_Runing.png" id="5_iy6km"]
 [ext_resource type="Texture2D" uid="uid://bfuyfd1jpi1b4" path="res://original assets/actors/Mofo black car/Cat_-_Aisha_Transform.png" id="8_rufnh"]
-[ext_resource type="PackedScene" path="res://prefabs/Hurtbox.tscn" id="9_3iyfs"]
+[ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/Hurtbox.tscn" id="9_3iyfs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqi2n"]
 atlas = ExtResource("2_k1bve")
@@ -651,3 +651,4 @@ target_position = Vector2(8, 0)
 collision_mask = 4
 
 [connection signal="animation_finished" from="CatAnim" to="." method="OnCatAnimAnimationFinished"]
+[connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]
