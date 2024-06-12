@@ -15,9 +15,9 @@ public partial class HudManager : Control
 
 	public override void _Ready()
 	{
-		_coins_counter = GetNode<Label>("/root/world1/HUD/control/coins_counter");
-		_clock_timer = GetNode<Timer>("/root/world1/HUD/control/clock_timer");
-		_timer_counter = GetNode<Label>("/root/world1/HUD/control/timer_container/timer_counter");
+		_coins_counter = GetNode<Label>("/root/world1/Hud/control/coins_counter");
+		_clock_timer = GetNode<Timer>("/root/world1/Hud/control/clock_timer");
+		_timer_counter = GetNode<Label>("/root/world1/Hud/control/timer_container/timer_counter");
 		_coins_counter.Text = Globals.coins.ToString();
 		_timer_counter.Text = default_minutes + ":" + default_seconds;
 

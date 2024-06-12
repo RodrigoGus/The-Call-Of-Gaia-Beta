@@ -18,7 +18,7 @@ public partial class Globals : Node
     public override void _Ready()
     {
         Checkpoint.load_game();
-        player.position = player_position;
+        Player.position = player_position;
     }
     
 }

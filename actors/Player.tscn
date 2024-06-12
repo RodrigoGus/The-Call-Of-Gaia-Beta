@@ -1,14 +1,14 @@
-[gd_scene load_steps=94 format=3 uid="uid://dgodjbf3tbeda"]
+[gd_scene load_steps=94 format=3 uid="uid://5xv63qam47f6"]
 
-[ext_resource type="Script" path="res://scripts/player.cs" id="1_8erth"]
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_8erth"]
 [ext_resource type="Texture2D" uid="uid://crh1bua1bof6c" path="res://original assets/actors/Aisha/Aisha_Attack_Neutral.png" id="2_2xxg5"]
 [ext_resource type="Texture2D" uid="uid://byivrna3as3bo" path="res://original assets/actors/Aisha/Aisha_Falling.png" id="2_fkrpq"]
 [ext_resource type="Texture2D" uid="uid://ctg3nqpdmhrtb" path="res://original assets/actors/Aisha/Aisha_Damage.png" id="3_82g3a"]
 [ext_resource type="Texture2D" uid="uid://ct4mp8nue2nxs" path="res://original assets/actors/Aisha/Aisha_Jumping.png" id="3_k0ulp"]
 [ext_resource type="Texture2D" uid="uid://k6vjj28w08db" path="res://original assets/actors/Aisha/Aisha_Idle.png" id="4_m7dsa"]
-[ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/hurtbox.tscn" id="5_0msut"]
 [ext_resource type="Texture2D" uid="uid://biobbdegqn45t" path="res://original assets/actors/Aisha/Aisha_Walking_Right.png" id="5_n5uoe"]
 [ext_resource type="Texture2D" uid="uid://v6g356l8ljy3" path="res://original assets/actors/Aisha/Aisha_-_Cat_Transform.png" id="6_jsoxk"]
+[ext_resource type="PackedScene" path="res://prefabs/Hurtbox.tscn" id="9_76l45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsial"]
 atlas = ExtResource("2_2xxg5")
@@ -611,11 +611,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q386c"]
 size = Vector2(19, 35.6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdita"]
-size = Vector2(23, 34.6)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3n66c"]
 size = Vector2(19, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdita"]
+size = Vector2(23, 34.6)
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_mask = 30
@@ -632,15 +632,6 @@ autoplay = "idle"
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -17.8)
 shape = SubResource("RectangleShape2D_q386c")
-
-[node name="Hurtbox" parent="." instance=ExtResource("5_0msut")]
-collision_layer = 0
-collision_mask = 4
-
-[node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-0.5, -18.3)
-shape = SubResource("RectangleShape2D_gdita")
-debug_color = Color(0.992157, 0, 0.247059, 0.419608)
 
 [node name="Remote" type="RemoteTransform2D" parent="."]
 
@@ -663,5 +654,13 @@ position = Vector2(-0.5, -17.5)
 shape = SubResource("RectangleShape2D_3n66c")
 debug_color = Color(4.33177e-07, 0.630895, 0.467838, 0.42)
 
+[node name="Hurtbox" parent="." instance=ExtResource("9_76l45")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, -18.3)
+shape = SubResource("RectangleShape2D_gdita")
+debug_color = Color(0.992157, 0, 0.247059, 0.419608)
+
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]
-[connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

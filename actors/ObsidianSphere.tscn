@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://esjuht8nttur" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Damage.png" id="1_lqda2"]
 [ext_resource type="Texture2D" uid="uid://dh58cxjodwmgp" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Idle.png" id="2_x74e4"]
 [ext_resource type="Texture2D" uid="uid://co2mtjekxides" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Walking.png" id="3_m4kxh"]
-[ext_resource type="PackedScene" uid="uid://bds7kfnuusmn4" path="res://prefabs/hitbox.tscn" id="4_v6vuw"]
+[ext_resource type="PackedScene" path="res://prefabs/Hitbox.tscn" id="5_aqx56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5nt3"]
 atlas = ExtResource("1_lqda2")
@@ -265,11 +265,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jfh2"]
 size = Vector2(192, 179)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjgw"]
-size = Vector2(192, 10)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_5hixm"]
 radius = 336.733
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjgw"]
+size = Vector2(192, 10)
 
 [node name="ObsidianSphere" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(0.15, 0.15)
@@ -292,19 +292,19 @@ scale = Vector2(4, 4)
 target_position = Vector2(25.75, 0)
 collision_mask = 2
 
-[node name="Hitbox" parent="." instance=ExtResource("4_v6vuw")]
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_5hixm")
+
+[node name="Hitbox" parent="." instance=ExtResource("5_aqx56")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -58)
 shape = SubResource("RectangleShape2D_cxjgw")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_5hixm")
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimatedSprite2dAnimationFinished"]
-[connection signal="body_entered" from="Hitbox" to="." method="OnHitboxBodyEntered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="OnDetectionAreaBodyEntered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="OnDetectionAreaBodyExited"]
+[connection signal="body_entered" from="Hitbox" to="." method="OnHitboxBodyEntered"]

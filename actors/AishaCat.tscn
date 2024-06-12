@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cqqylr6f7jkwe" path="res://original assets/actors/Mofo black car/Aisha_Cat_Damage.png" id="4_pxn5l"]
 [ext_resource type="Texture2D" uid="uid://i4yu7iesk3c0" path="res://original assets/actors/Mofo black car/Aisha_Cat_Jumping.png" id="4_wky6t"]
 [ext_resource type="Texture2D" uid="uid://8cpaaotccsee" path="res://original assets/actors/Mofo black car/Aisha_Cat_Runing.png" id="5_iy6km"]
-[ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/Hurtbox.tscn" id="6_5sq12"]
 [ext_resource type="Texture2D" uid="uid://bfuyfd1jpi1b4" path="res://original assets/actors/Mofo black car/Cat_-_Aisha_Transform.png" id="8_rufnh"]
+[ext_resource type="PackedScene" path="res://prefabs/Hurtbox.tscn" id="9_3iyfs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqi2n"]
 atlas = ExtResource("2_k1bve")
@@ -628,7 +628,7 @@ autoplay = "idle"
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_mnh6c")
 
-[node name="Hurtbox" parent="." instance=ExtResource("6_5sq12")]
+[node name="Hurtbox" parent="." instance=ExtResource("9_3iyfs")]
 position = Vector2(0, -20)
 collision_layer = 0
 collision_mask = 4
@@ -651,4 +651,3 @@ target_position = Vector2(8, 0)
 collision_mask = 4
 
 [connection signal="animation_finished" from="CatAnim" to="." method="OnCatAnimAnimationFinished"]
-[connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]
