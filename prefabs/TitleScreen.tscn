@@ -1,8 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://dima1b85ph8nh"]
+[gd_scene load_steps=27 format=3 uid="uid://dima1b85ph8nh"]
 
-[ext_resource type="Script" path="res://scripts/TitleScreen.cs" id="1_e1yp1"]
+[ext_resource type="Script" path="res://scripts/title_screen.cs" id="1_e1yp1"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_obeeb"]
-[ext_resource type="Shader" path="res://shaders/TitleScreen.gdshader" id="2_3mtee"]
+[ext_resource type="Shader" path="res://shaders/title_screen.gdshader" id="2_3mtee"]
 [ext_resource type="Texture2D" uid="uid://dvfj7n814gq7u" path="res://assets/Background/CloudsFront.png" id="2_s4yka"]
 [ext_resource type="Texture2D" uid="uid://bb0ov4xv8acj4" path="res://assets/Background/BGBack.png" id="3_thsgs"]
 [ext_resource type="Texture2D" uid="uid://uhc3oxrby6kg" path="res://assets/Background/BGFront.png" id="4_sfsjq"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="11_0l7nd"]
 [ext_resource type="Texture2D" uid="uid://cev65e42vtah" path="res://assets/components/logo_tcg.webp" id="11_fqp13"]
 [ext_resource type="Theme" uid="uid://dqegucvfn20g6" path="res://assets/components/btn_tcg.tres" id="11_xmom4"]
-[ext_resource type="Theme" path="res://assets/components/hSeparator.tres" id="13_a34ql"]
+[ext_resource type="Theme" uid="uid://df40o4j1gr3ty" path="res://assets/components/hSeparator.tres" id="13_a34ql"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2nq6f"]
 
@@ -1953,12 +1953,6 @@ shader_parameter/move_speed = 0.025
 
 [sub_resource type="Theme" id="Theme_prgfr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfddh"]
-
-[sub_resource type="Theme" id="Theme_w0ylc"]
-VSeparator/constants/separation = 20
-VSeparator/styles/separator = SubResource("StyleBoxEmpty_nfddh")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_452sa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvhtd"]
@@ -2009,6 +2003,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e1yp1")
+debugSaveNotFoundPath = NodePath("DebugSaveNotFound")
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -2062,9 +2057,12 @@ color = Color(0.239216, 0.223529, 0.415686, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -159.5
+offset_right = 159.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 20
@@ -2072,19 +2070,13 @@ theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
 theme = SubResource("Theme_prgfr")
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer"]
-position = Vector2(168, -125)
+position = Vector2(148.5, 110)
 texture = ExtResource("11_fqp13")
 hframes = 2
 vframes = 2
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_w0ylc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -2115,11 +2107,13 @@ theme = ExtResource("13_a34ql")
 theme_override_styles/separator = SubResource("StyleBoxEmpty_452sa")
 
 [node name="bestiario_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("11_xmom4")
 text = "BESTIARIO"
 
 [node name="HSeparator5" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("13_a34ql")
 theme_override_styles/separator = SubResource("StyleBoxEmpty_452sa")
@@ -2136,11 +2130,13 @@ theme = ExtResource("13_a34ql")
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cvhtd")
 
 [node name="creditos_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("11_xmom4")
 text = "CREDITOS"
 
 [node name="HSeparator6" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("13_a34ql")
 theme_override_styles/separator = SubResource("StyleBoxEmpty_452sa")
@@ -2151,17 +2147,21 @@ layout_mode = 2
 theme = ExtResource("11_xmom4")
 text = "SAIR"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
 libraries = {
 "": SubResource("AnimationLibrary_axbsw")
 }
 autoplay = "new_animation"
 
+[node name="DebugSaveNotFound" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 348.0
+offset_top = 420.0
+offset_right = 666.0
+offset_bottom = 443.0
+text = "Não foi possível encontrar um jogo salvo."
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/newGame_btn" to="." method="_on_new_game_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/carrega_btn" to="." method="_on_new_game_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/bestiario_btn" to="." method="_on_new_game_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/creditos_btn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/carrega_btn" to="." method="OnCarregaBtnPressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8dbvfw5xxnbt" path="res://assets/Foreground/TilesExamples.png" id="6_lbrgy"]
 [ext_resource type="Texture2D" uid="uid://bpg65fery4ssx" path="res://assets/Foreground/Trees.png" id="7_pja5o"]
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
-[ext_resource type="PackedScene" path="res://prefabs/Hud.tscn" id="12_lludn"]
+[ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/Hud.tscn" id="12_lludn"]
 [ext_resource type="PackedScene" uid="uid://5xv63qam47f6" path="res://actors/Player.tscn" id="12_rfnvt"]
 [ext_resource type="PackedScene" uid="uid://k247i8k3m8bi" path="res://prefabs/DialogPlayer.tscn" id="13_fdh0k"]
 
