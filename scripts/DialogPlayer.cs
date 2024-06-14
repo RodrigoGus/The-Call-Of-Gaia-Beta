@@ -33,11 +33,18 @@ public partial class DialogPlayer : CanvasLayer
 
 	}
 
-	private void ShowText()
-	{
-		textLabel.Text = selectedText[0];
-		selectedText.RemoveAt(0);
-	}
+    private async void ShowText()
+    {
+        string text = selectedText[0];
+        selectedText.RemoveAt(0);
+        textLabel.Text = "";
+
+        foreach (char letter in text)
+        {
+            textLabel.Text += letter;
+            await ToSignal(GetTree().CreateTimer(0.05f), "timeout"); // Adjust the speed by changing the timer value
+        }
+    }
 
 	private void NextLine()
 	{
@@ -59,16 +66,16 @@ public partial class DialogPlayer : CanvasLayer
 		GetTree().Paused = false;
 	}
 
-	public void OnDisplayDialog(string textKey)
-	{
-		if(inProgress){
-			NextLine();
-		} else {
-			GetTree().Paused = true;
-			background.Visible = true;
-			inProgress = true;
-			selectedText = sceneText[textKey].Duplicate();
-			ShowText();
-		}
-	}
+    public void OnDisplayDialog(string textKey)
+    {
+        if(inProgress){
+            NextLine();
+        } else {
+            GetTree().Paused = true;
+            background.Visible = true;
+            inProgress = true;
+            selectedText = sceneText[textKey].Duplicate();
+            ShowText();
+        }
+    }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=29 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://k247i8k3m8bi" path="res://prefabs/DialogPlayer.tscn" id="13_fdh0k"]
 [ext_resource type="PackedScene" uid="uid://ch1u30tk4kkru" path="res://prefabs/Coin.tscn" id="14_3fntv"]
 [ext_resource type="PackedScene" uid="uid://31p2y4nsl8xj" path="res://actors/ObsidianSphere.tscn" id="15_slo7h"]
+[ext_resource type="PackedScene" uid="uid://dpmalc6u7322k" path="res://prefabs/DialogArea.tscn" id="16_eglf3"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)
@@ -1965,6 +1966,8 @@ pattern_2 = SubResource("TileMapPattern_6ab46")
 pattern_3 = SubResource("TileMapPattern_qpr8i")
 pattern_4 = SubResource("TileMapPattern_aifjm")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ide"]
+
 [node name="world1" type="Node2D"]
 script = ExtResource("1_0auo0")
 metadata/_edit_horizontal_guides_ = [-882.0]
@@ -2063,3 +2066,13 @@ position = Vector2(855, -66)
 
 [node name="ObsidianSphere" parent="." instance=ExtResource("15_slo7h")]
 position = Vector2(632, 89)
+
+[node name="DialogArea" parent="." instance=ExtResource("16_eglf3")]
+position = Vector2(686, -73)
+dialogKey = "door"
+
+[node name="CollisionShape2D" parent="DialogArea" index="0"]
+position = Vector2(90, 164)
+shape = SubResource("RectangleShape2D_h1ide")
+
+[editable path="DialogArea"]
