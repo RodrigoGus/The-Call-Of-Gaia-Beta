@@ -6,7 +6,7 @@ public partial class title_screen : Control
 {
 	[Export] public NodePath debugSaveNotFoundPath;
 	private const string SaveFilePath = "user://savegame.txt";
-	private const string FirstLevelPath = "res://levels/world1.tscn";
+	private const string FirstLevelPath = "res://levels/World1.tscn";
 
 	public override void _Ready()
 	{
