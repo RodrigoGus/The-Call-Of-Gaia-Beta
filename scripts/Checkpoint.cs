@@ -1,14 +1,15 @@
 using Godot;
 using Godot.Collections;
 
-
 public partial class Checkpoint : Area2D
 {
+	private const string PlayerGroupName = "players";
+	private const string SaveFilePath = "user://savegame.txt";
 
 	public override void _Ready()
 	{
-	}
 
+	}
 
 	public override void _Process(double delta)
 	{
@@ -16,56 +17,36 @@ public partial class Checkpoint : Area2D
 
 	private void _on_body_entered(Node2D body)
 	{
-		if (body.IsInGroup("players"))
+		if (body.IsInGroup(PlayerGroupName))
 		{
-			Globals.player_position = Position;
-			save();
-			save_game();
+			Globals.playerPosition = Position;
+			var saveData = CreateSaveData();
+			SaveGameToFile(saveData);
 		}
 	}
-	public static Dictionary save(){
-		Dictionary save_dictionary = new Dictionary{
+
+	private Dictionary CreateSaveData()
+	{
+		return new Dictionary
+		{
 			{"username", "Anderson"},
-	 		{"position_X", Globals.player_position.X},
-			{"position_Y", Globals.player_position.Y},
-			{"coins" , Globals.coins},
+			{"level", GetTree().CurrentScene.Name},
+			{"position_X", Globals.playerPosition.X},
+			{"position_Y", Globals.playerPosition.Y},
+			{"coins", Globals.coins},
 			{"score", Globals.score},
-			{"player_life", Globals.player_life},
+			{"player_life", Globals.playerLife},
 			{"game_time_hours", Globals.hours},
 			{"game_time_minutes", Globals.minutes},
-			{"game_time_seconds", Globals.seconds},
+			{"game_time_seconds", Globals.seconds}
 		};
-		return save_dictionary;
-		
 	}
 
-	public static void save_game(){
-		var save_game = FileAccess.Open("user://savegame.txt", FileAccess.ModeFlags.Write);
-		var json_string = Json.Stringify(save());
-		save_game.StoreLine(json_string);
-		save_game.Close();
+	private static void SaveGameToFile(Dictionary saveData)
+	{
+		var saveFile = FileAccess.Open(SaveFilePath, FileAccess.ModeFlags.Write);
+		var jsonString = Json.Stringify(saveData);
+		saveFile.StoreLine(jsonString);
+		saveFile.Close();
 	}
-
-	public static void load_game(){
-		if(!FileAccess.FileExists("user://savegame.txt")){
-			save_game();
-		}else{
-			FileAccess save_game = FileAccess.Open("user://savegame.txt", FileAccess.ModeFlags.Read);
-			var jsonString = save_game.GetLine();
-			var json = new Json();
-			var parseResult = json.Parse(jsonString);
-			var nodeData = new Dictionary<string, float>((Dictionary)json.Data);
-			Globals.player_position = new Vector2(nodeData["position_X"], nodeData["position_Y"]);
-			Globals.coins = (int)nodeData["coins"];
-			Globals.score = (int)nodeData["score"];
-			Globals.player_life = (int)nodeData["player_life"];
-			Globals.hours = (int)nodeData["game_time_hours"];
-			Globals.minutes = (int)nodeData["game_time_minutes"];
-			Globals.seconds = (int)nodeData["game_time_seconds"];
-		}
-
-	}
-	
 }
-
-

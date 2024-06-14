@@ -86,7 +86,7 @@ public partial class AishaCat : CharacterBody2D
 	private void OnHurtboxBodyEntered(Node2D body)
 	{
 
-		if (Globals.player_life <= 0) 
+		if (Globals.playerLife <= 0) 
 		{
 			QueueFree(); 
 			isDeath = true;
@@ -105,7 +105,7 @@ public partial class AishaCat : CharacterBody2D
 
 	public async void TakeDamage(Vector2 knockbackForce)
 	{
-		Globals.player_life -= 1;
+		Globals.playerLife -= 1;
 		if(knockbackForce != Vector2.Zero)
 		{
 			this.knockbackVector = knockbackForce;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=27 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
@@ -11,7 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://c71qcqqxu0bce" path="res://assets/Tiles/Assets/Assets.png" id="8_ahbp7"]
 [ext_resource type="PackedScene" uid="uid://u3lf3qudnkdl" path="res://prefabs/Hud.tscn" id="12_lludn"]
 [ext_resource type="PackedScene" uid="uid://5xv63qam47f6" path="res://actors/Player.tscn" id="12_rfnvt"]
+[ext_resource type="PackedScene" uid="uid://bjotgriltm31l" path="res://prefabs/Checkpoint.tscn" id="13_bgbnr"]
 [ext_resource type="PackedScene" uid="uid://k247i8k3m8bi" path="res://prefabs/DialogPlayer.tscn" id="13_fdh0k"]
+[ext_resource type="PackedScene" uid="uid://ch1u30tk4kkru" path="res://prefabs/Coin.tscn" id="14_3fntv"]
+[ext_resource type="PackedScene" uid="uid://31p2y4nsl8xj" path="res://actors/ObsidianSphere.tscn" id="15_slo7h"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ctcij"]
 tile_data = PackedInt32Array(0, 131074, 3)
@@ -2041,3 +2044,22 @@ SceneTextFile = "res://dialogs texts/teste.json"
 [node name="Hud" parent="." instance=ExtResource("12_lludn")]
 
 [node name="Player" parent="." instance=ExtResource("12_rfnvt")]
+position = Vector2(435, -99)
+
+[node name="Checkpoint" parent="." instance=ExtResource("13_bgbnr")]
+position = Vector2(413, 86)
+
+[node name="Coin" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(779, 18)
+
+[node name="Coin2" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(854, 18)
+
+[node name="Coin3" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(779, -63)
+
+[node name="Coin4" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(855, -66)
+
+[node name="ObsidianSphere" parent="." instance=ExtResource("15_slo7h")]
+position = Vector2(632, 89)

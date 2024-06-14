@@ -2086,7 +2086,7 @@ size_flags_vertical = 4
 [node name="Title" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="newGame_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="NewGameBtn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("11_xmom4")
 text = "NOVO JOGO"
@@ -2096,7 +2096,7 @@ layout_mode = 2
 theme = ExtResource("13_a34ql")
 theme_override_styles/separator = SubResource("StyleBoxEmpty_452sa")
 
-[node name="carrega_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="LoadGameBtn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("11_xmom4")
 text = "     CARREGAR JOGO     "
@@ -2162,6 +2162,6 @@ offset_right = 666.0
 offset_bottom = 443.0
 text = "Não foi possível encontrar um jogo salvo."
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/newGame_btn" to="." method="_on_new_game_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/carrega_btn" to="." method="OnCarregaBtnPressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGameBtn" to="." method="OnNewGameBtnPressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LoadGameBtn" to="." method="OnLoadGameBtnPressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

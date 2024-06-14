@@ -12,6 +12,7 @@ public partial class world1 : Node2D
 	public override void _Ready()
 	{
 		this.camera = GetNode<Camera2D>(cameraPath);
+		Player.position = Globals.playerPosition;
 	}
 	public override void _Process(double delta)
 	{

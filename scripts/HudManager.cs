@@ -19,9 +19,9 @@ public partial class HudManager : Control
 		_clock_timer = GetNode<Timer>("/root/world1/Hud/control/clock_timer");
 		_timer_counter = GetNode<Label>("/root/world1/Hud/control/timer_container/timer_counter");
 		_coins_counter.Text = Globals.coins.ToString();
-		_timer_counter.Text = default_minutes + ":" + default_seconds;
+		_timer_counter.Text = Globals.minutes + ":" + Globals.seconds;
 
-		reset_clock_timer();
+
 	}
 
 	public override void _Process(double delta)
@@ -46,13 +46,6 @@ public partial class HudManager : Control
 		}
 		Globals.seconds += 1;
 		_timer_counter.Text = Globals.minutes.ToString("D2") + ":" + Globals.seconds.ToString("D2");
-	}
-
-	private void reset_clock_timer()
-	{
-		Globals.minutes = default_minutes;
-		Globals.seconds = default_seconds;
-
 	}
 }
 
