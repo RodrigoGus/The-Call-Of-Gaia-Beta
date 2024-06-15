@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://mr4iyjksou5p"]
 
-[ext_resource type="Script" path="res://scripts/world1.cs" id="1_0auo0"]
+[ext_resource type="Script" path="res://scripts/World1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_aw40g"]
 [ext_resource type="Texture2D" uid="uid://dvfj7n814gq7u" path="res://assets/Background/CloudsFront.png" id="2_roggu"]
 [ext_resource type="Texture2D" uid="uid://bb0ov4xv8acj4" path="res://assets/Background/BGBack.png" id="3_45vns"]
@@ -1968,7 +1968,7 @@ pattern_4 = SubResource("TileMapPattern_aifjm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ide"]
 
-[node name="world1" type="Node2D"]
+[node name="World1" type="Node2D"]
 script = ExtResource("1_0auo0")
 metadata/_edit_horizontal_guides_ = [-882.0]
 
