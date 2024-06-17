@@ -4,8 +4,8 @@ public partial class Player : CharacterBody2D
 {
 	private bool isTransforming = false;
 	public PackedScene catScene = (PackedScene)ResourceLoader.Load("res://actors/AishaCat.tscn");
-	public world1 worldScene;
-	private NodePath worldScenePath = "/root/world1";
+	public World1 worldScene;
+	private NodePath worldScenePath = "/root/World1";
 	public static bool isTransformedToCat;
 	public const float Speed = 150.0f;
 	public const float JumpVelocity = -325.0f;
@@ -30,7 +30,7 @@ public partial class Player : CharacterBody2D
 	{
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
 		remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
-		this.worldScene = GetNode<world1>(worldScenePath);
+		this.worldScene = GetNode<World1>(worldScenePath);
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
 		Position = Globals.playerPosition;

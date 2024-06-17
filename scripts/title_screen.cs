@@ -7,9 +7,9 @@ public partial class title_screen : Control
 {
 	[Export] public NodePath debugSaveNotFoundPath;
 	private const string SaveFilePath = "user://savegame.txt";
-	private const string FirstLevelPath = "res://levels/world1.tscn";
 	private MySqlConnection conn;
 	public string connectionString = "server=tcog_db.mysql.dbaas.com.br;user=tcog_db;database=tcog_db;password=tcogdb@T1";
+	private const string FirstLevelPath = "res://levels/World1.tscn";
 
 	public override void _Ready()
 	{

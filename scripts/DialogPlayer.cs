@@ -42,7 +42,7 @@ public partial class DialogPlayer : CanvasLayer
         foreach (char letter in text)
         {
             textLabel.Text += letter;
-            await ToSignal(GetTree().CreateTimer(0.05f), "timeout"); // Adjust the speed by changing the timer value
+            await ToSignal(GetTree().CreateTimer(0.05f), "timeout");
         }
     }
 

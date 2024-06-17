@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class world1 : Node2D
+public partial class World1 : Node2D
 {
 	public NodePath playerPath = "Player";
 	public NodePath CatPath = "AishaCat";
