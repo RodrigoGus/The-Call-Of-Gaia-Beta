@@ -91,8 +91,6 @@ public partial class title_screen : Control
 		}
 		catch (Exception e)
 		{
-			GD.PrintErr("Erro ao salvar checkpoint no banco de dados: ", e.Message);
-			GD.PrintErr("Stack Trace: ", e.StackTrace);
 		}
 		finally
 		{
@@ -115,5 +113,12 @@ public partial class title_screen : Control
 			Globals.minutes = (int)nodeData["game_time_minutes"];
 			Globals.seconds = (int)nodeData["game_time_seconds"];
 	}
+	private void OnLoginButtonPressed()
+	{
+		GetTree().ChangeSceneToFile("res://levels/LoginMenu");
+	}
 }
+
+
+
 

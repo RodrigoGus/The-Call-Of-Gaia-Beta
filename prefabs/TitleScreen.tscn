@@ -2162,6 +2162,11 @@ offset_right = 666.0
 offset_bottom = 443.0
 text = "Não foi possível encontrar um jogo salvo."
 
+[node name="LoginButton" type="Button" parent="."]
+theme = ExtResource("11_xmom4")
+text = "NOVO JOGO"
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGameBtn" to="." method="OnNewGameBtnPressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LoadGameBtn" to="." method="OnLoadGameBtnPressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="LoginButton" to="." method="OnLoginButtonPressed"]
