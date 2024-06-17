@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using MySqlConnector;
 using System;
 
 public partial class title_screen : Control
@@ -7,25 +8,25 @@ public partial class title_screen : Control
 	[Export] public NodePath debugSaveNotFoundPath;
 	private const string SaveFilePath = "user://savegame.txt";
 	private const string FirstLevelPath = "res://levels/world1.tscn";
+	private MySqlConnection conn;
+	public string connectionString = "server=tcog_db.mysql.dbaas.com.br;user=tcog_db;database=tcog_db;password=tcogdb@T1";
 
 	public override void _Ready()
 	{
-		// Setup code if needed
+		conn = new MySqlConnection(connectionString);
 	}
 
 	public override void _Process(double delta)
 	{
-		// Frame-by-frame code if needed
+
 	}
 
-	// Método chamado quando o botão de novo jogo é pressionado
 	private void OnNewGameBtnPressed()
 	{
 		CreateSaveGame();
 		GetTree().ChangeSceneToFile(FirstLevelPath);
 	}
 
-	// Método chamado quando o botão de carregar jogo é pressionado
 	private void OnLoadGameBtnPressed()
 	{
 		if (FileAccess.FileExists(SaveFilePath))
@@ -39,24 +40,21 @@ public partial class title_screen : Control
 		}
 	}
 
-	// Método chamado quando o botão de sair é pressionado
 	private void OnQuitBtnPressed()
 	{
 		GetTree().Quit();
 	}
 	
-	// Cria um novo arquivo de save
+
 	public void CreateSaveGame()
 	{
-		var firstSaveDic = new Dictionary
+		Dictionary firstSaveDic = new Dictionary
 		{
-			{"username", "Anderson"},
 			{"level", "World1.tscn"},
 			{"position_X", Globals.playerPosition.X},
 			{"position_Y", Globals.playerPosition.Y},
 			{"coins", Globals.coins},
 			{"score", Globals.score},
-			{"player_life", Globals.playerLife},
 			{"game_time_hours", Globals.hours},
 			{"game_time_minutes", Globals.minutes},
 			{"game_time_seconds", Globals.seconds}
@@ -65,6 +63,41 @@ public partial class title_screen : Control
 		var json_string = Json.Stringify(firstSaveDic);
 		save_game.StoreLine(json_string);
 		save_game.Close();
+
+		try
+		{
+			conn.Open();
+			string query = "INSERT INTO UserStats (user_email ,level, position_X, position_Y, coins, score, game_time_hours, game_time_minutes, game_time_seconds) VALUES(@userEmail, @level, @position_X, @position_Y, @coins, @score, @game_time_hours, @game_time_minutes, @game_time_seconds)";
+
+			using (var cmd = new MySqlCommand(query, conn))
+			{
+				var userSession = (UserSession)GetNode("/root/UserSession");
+				string userEmail = userSession.userSessionEmail;
+				cmd.Parameters.AddWithValue("@userEmail", userEmail.ToString());
+				cmd.Parameters.AddWithValue("@level", firstSaveDic["level"].ToString());
+				cmd.Parameters.AddWithValue("@position_X", (int)firstSaveDic["position_X"]);
+				cmd.Parameters.AddWithValue("@position_Y", (int)firstSaveDic["position_Y"]);
+				cmd.Parameters.AddWithValue("@coins", (int)firstSaveDic["coins"]);
+				cmd.Parameters.AddWithValue("@score", (int)firstSaveDic["score"]);
+				cmd.Parameters.AddWithValue("@game_time_hours", (int)firstSaveDic["game_time_hours"]);
+				cmd.Parameters.AddWithValue("@game_time_minutes", (int)firstSaveDic["game_time_minutes"]);
+				cmd.Parameters.AddWithValue("@game_time_seconds", (int)firstSaveDic["game_time_seconds"]);
+
+
+
+				cmd.ExecuteNonQuery();
+			}
+			GD.Print("Checkpoint salvo com sucesso no banco de dados!");
+		}
+		catch (Exception e)
+		{
+			GD.PrintErr("Erro ao salvar checkpoint no banco de dados: ", e.Message);
+			GD.PrintErr("Stack Trace: ", e.StackTrace);
+		}
+		finally
+		{
+			conn.Close();
+		}
 	}
 
 	public void LoadGame()
@@ -78,7 +111,6 @@ public partial class title_screen : Control
 			Globals.playerPosition = new Vector2(nodeData["position_X"], nodeData["position_Y"]);
 			Globals.coins = (int)nodeData["coins"];
 			Globals.score = (int)nodeData["score"];
-			Globals.playerLife = (int)nodeData["player_life"];
 			Globals.hours = (int)nodeData["game_time_hours"];
 			Globals.minutes = (int)nodeData["game_time_minutes"];
 			Globals.seconds = (int)nodeData["game_time_seconds"];
