@@ -24,15 +24,16 @@ public partial class signUp_menu : Control
 
 	   try
 	   {
-		   string query = "INSERT INTO Users (email, user_password) VALUES (@email, @password)";
-		   using (var cmd = new MySqlCommand(query, UserSession.conn))
-		   {
-			   cmd.Parameters.AddWithValue("@email", email);
-			   cmd.Parameters.AddWithValue("@password", password);
-			   cmd.ExecuteNonQuery();
-		   }
-		   GD.Print("Usuário cadastrado com sucesso!");
-		   GetTree().ChangeSceneToFile("res://levels/LoginMenu.tscn");
+			UserSession.conn.Open();
+			string query = "INSERT INTO Users (email, user_password) VALUES (@email, @password)";
+			using (var cmd = new MySqlCommand(query, UserSession.conn))
+			{
+				cmd.Parameters.AddWithValue("@email", email);
+				cmd.Parameters.AddWithValue("@password", password);
+				cmd.ExecuteNonQuery();
+			}
+			GD.Print("Usuário cadastrado com sucesso!");
+			GetTree().ChangeSceneToFile("res://levels/LoginMenu.tscn");
 	   }
 	   catch (Exception e)
 	   {

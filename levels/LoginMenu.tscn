@@ -114,3 +114,4 @@ theme_override_colors/font_hover_color = Color(0.202723, 0.202723, 0.202723, 1)
 text = "Crie uma."
 
 [connection signal="pressed" from="ColorRect/SignInButton" to="." method="OnSignInButtonPressed"]
+[connection signal="button_down" from="ColorRect/SignUpButton" to="." method="OnSignUpButtonButtonDown"]

@@ -16,6 +16,10 @@ public partial class LoginMenu : Control
 	public override void _Process(double delta)
 	{
 	}
+	private void OnSignUpButtonButtonDown()
+	{
+		GetTree().ChangeSceneToFile("res://levels/signUp_menu.tscn");
+	}
 
 	private void OnSignInButtonPressed()
 	{
@@ -62,6 +66,9 @@ public partial class LoginMenu : Control
 		}
 	}
 }
+
+
+
 
 
 
