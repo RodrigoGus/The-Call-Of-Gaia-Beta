@@ -7,18 +7,23 @@ public partial class title_screen : Control
 {
 	[Export] public NodePath debugSaveNotFoundPath;
 	private const string SaveFilePath = "user://savegame.txt";
-	private MySqlConnection conn;
-	public string connectionString = "server=tcog_db.mysql.dbaas.com.br;user=tcog_db;database=tcog_db;password=tcogdb@T1";
 	private const string FirstLevelPath = "res://levels/World1.tscn";
 
 	public override void _Ready()
 	{
-		conn = new MySqlConnection(connectionString);
 	}
 
 	public override void _Process(double delta)
 	{
-
+		if(UserSession.isLogin)
+		{
+			GetNode<Button>("LoginButton").Visible = false;
+			GetNode<Button>("LogoutButton").Visible = true;
+		} else
+		{
+			GetNode<Button>("LoginButton").Visible = true;
+			GetNode<Button>("LogoutButton").Visible = false;
+		}
 	}
 
 	private void OnNewGameBtnPressed()
@@ -66,10 +71,9 @@ public partial class title_screen : Control
 
 		try
 		{
-			conn.Open();
 			string query = "INSERT INTO UserStats (user_email ,level, position_X, position_Y, coins, score, game_time_hours, game_time_minutes, game_time_seconds) VALUES(@userEmail, @level, @position_X, @position_Y, @coins, @score, @game_time_hours, @game_time_minutes, @game_time_seconds)";
 
-			using (var cmd = new MySqlCommand(query, conn))
+			using (var cmd = new MySqlCommand(query, UserSession.conn))
 			{
 				var userSession = (UserSession)GetNode("/root/UserSession");
 				string userEmail = userSession.userSessionEmail;
@@ -94,7 +98,6 @@ public partial class title_screen : Control
 		}
 		finally
 		{
-			conn.Close();
 		}
 	}
 
@@ -113,11 +116,14 @@ public partial class title_screen : Control
 			Globals.minutes = (int)nodeData["game_time_minutes"];
 			Globals.seconds = (int)nodeData["game_time_seconds"];
 	}
-	private void OnLoginButtonPressed()
+	
+	private void OnLoginButtonButtonDown()
 	{
-		GetTree().ChangeSceneToFile("res://levels/LoginMenu");
+		GetTree().ChangeSceneToFile("res://levels/LoginMenu.tscn");
 	}
 }
+
+
 
 
 

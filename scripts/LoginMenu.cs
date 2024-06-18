@@ -6,14 +6,11 @@ public partial class LoginMenu : Control
 {
 	private TextEdit _emailTextbox;
 	private TextEdit _passwordTextbox;
-	public MySqlConnection conn;
-	public string connectionString = "server=tcog_db.mysql.dbaas.com.br;user=tcog_db;database=tcog_db;password=tcogdb@T1";
 
 	public override void _Ready()
 	{
 		_emailTextbox = GetNode<TextEdit>("ColorRect/email_box");
 		_passwordTextbox = GetNode<TextEdit>("ColorRect/password_box");
-		conn = new MySqlConnection(connectionString);
 	}
 
 	public override void _Process(double delta)
@@ -22,14 +19,14 @@ public partial class LoginMenu : Control
 
 	private void OnSignInButtonPressed()
 	{
-		conn.Open();
+		UserSession.conn.Open();
 		var email = _emailTextbox.Text;
 		var password = _passwordTextbox.Text;
 
 		try
 		{
 			string query = "SELECT email FROM Users WHERE email = @Email AND user_password = @Password";
-			using (var cmd = new MySqlCommand(query, conn))
+			using (var cmd = new MySqlCommand(query, UserSession.conn))
 			{
 				cmd.Parameters.AddWithValue("@Email", email);
 				cmd.Parameters.AddWithValue("@Password", password);
@@ -45,6 +42,7 @@ public partial class LoginMenu : Control
 						userSession.userSessionEmail = userEmail;
 
 						GD.Print("Login bem-sucedido! Bem-vindo");
+						UserSession.isLogin = true;
 						GetTree().ChangeSceneToFile("res://prefabs/TitleScreen.tscn");
 					}
 					else
@@ -61,7 +59,6 @@ public partial class LoginMenu : Control
 		}
 		finally
 		{
-			conn.Close();
 		}
 	}
 }

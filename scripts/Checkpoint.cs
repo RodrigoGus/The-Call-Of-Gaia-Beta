@@ -7,12 +7,9 @@ public partial class Checkpoint : Area2D
 {
 	private const string PlayerGroupName = "players";
 	private const string SaveFilePath = "user://savegame.txt";
-	private MySqlConnection conn;
-	public string connectionString = "server=tcog_db.mysql.dbaas.com.br;user=tcog_db;database=tcog_db;password=tcogdb@T1";
 
 	public override void _Ready()
 	{
-		conn = new MySqlConnection(connectionString);
 	}
 
 	public override void _Process(double delta)
@@ -57,7 +54,6 @@ public partial class Checkpoint : Area2D
 	{
 		try
 		{
-			conn.Open();
 			string query = @"UPDATE UserStats 
 							SET level = @level, 
 								position_X = @position_X, 
@@ -69,7 +65,7 @@ public partial class Checkpoint : Area2D
 								game_time_seconds = @game_time_seconds 
 							WHERE user_email = @userEmail";
 
-			using (var cmd = new MySqlCommand(query, conn))
+			using (var cmd = new MySqlCommand(query, UserSession.conn))
 			{
 				cmd.Parameters.AddWithValue("@level", saveData["level"].ToString());
 				cmd.Parameters.AddWithValue("@position_X", (int)saveData["position_X"]);
@@ -95,7 +91,6 @@ public partial class Checkpoint : Area2D
 		}
 		finally
 		{
-			conn.Close();
 		}
 	}
 
