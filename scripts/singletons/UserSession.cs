@@ -7,7 +7,7 @@ public partial class UserSession : Node
     public string passwordUserSession;
     public static bool isLogin = false;
 	public static MySqlConnection conn;
-	public string connectionString = "server=tcog_db.mysql.dbaas.com.br;user=tcog_db;database=tcog_db;password=tcogdb@T1";
+	public string connectionString = "Server=tcog_db.mysql.dbaas.com.br;Database=tcog_db;Uid=tcog_db;Pwd=tcogdb@T1";
 
     public override void _Ready()
     {

@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using MySqlConnector;
-
 public partial class signUp_menu : Control
 {
    private TextEdit _emailTextbox;
@@ -33,6 +32,7 @@ public partial class signUp_menu : Control
 			   cmd.ExecuteNonQuery();
 		   }
 		   GD.Print("Usuário cadastrado com sucesso!");
+		   GetTree().ChangeSceneToFile("res://levels/LoginMenu.tscn");
 	   }
 	   catch (Exception e)
 	   {

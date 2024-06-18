@@ -68,36 +68,39 @@ public partial class title_screen : Control
 		var json_string = Json.Stringify(firstSaveDic);
 		save_game.StoreLine(json_string);
 		save_game.Close();
-
-		try
+		if (UserSession.isLogin)
 		{
-			string query = "INSERT INTO UserStats (user_email ,level, position_X, position_Y, coins, score, game_time_hours, game_time_minutes, game_time_seconds) VALUES(@userEmail, @level, @position_X, @position_Y, @coins, @score, @game_time_hours, @game_time_minutes, @game_time_seconds)";
-
-			using (var cmd = new MySqlCommand(query, UserSession.conn))
+			try
 			{
-				var userSession = (UserSession)GetNode("/root/UserSession");
-				string userEmail = userSession.userSessionEmail;
-				cmd.Parameters.AddWithValue("@userEmail", userEmail.ToString());
-				cmd.Parameters.AddWithValue("@level", firstSaveDic["level"].ToString());
-				cmd.Parameters.AddWithValue("@position_X", (int)firstSaveDic["position_X"]);
-				cmd.Parameters.AddWithValue("@position_Y", (int)firstSaveDic["position_Y"]);
-				cmd.Parameters.AddWithValue("@coins", (int)firstSaveDic["coins"]);
-				cmd.Parameters.AddWithValue("@score", (int)firstSaveDic["score"]);
-				cmd.Parameters.AddWithValue("@game_time_hours", (int)firstSaveDic["game_time_hours"]);
-				cmd.Parameters.AddWithValue("@game_time_minutes", (int)firstSaveDic["game_time_minutes"]);
-				cmd.Parameters.AddWithValue("@game_time_seconds", (int)firstSaveDic["game_time_seconds"]);
+				string query = "INSERT INTO UserStats (user_email ,level, position_X, position_Y, coins, score, game_time_hours, game_time_minutes, game_time_seconds) VALUES(@userEmail, @level, @position_X, @position_Y, @coins, @score, @game_time_hours, @game_time_minutes, @game_time_seconds)";
+
+				using (var cmd = new MySqlCommand(query, UserSession.conn))
+				{
+					var userSession = (UserSession)GetNode("/root/UserSession");
+					string userEmail = userSession.userSessionEmail;
+					cmd.Parameters.AddWithValue("@userEmail", userEmail.ToString());
+					cmd.Parameters.AddWithValue("@level", firstSaveDic["level"].ToString());
+					cmd.Parameters.AddWithValue("@position_X", (int)firstSaveDic["position_X"]);
+					cmd.Parameters.AddWithValue("@position_Y", (int)firstSaveDic["position_Y"]);
+					cmd.Parameters.AddWithValue("@coins", (int)firstSaveDic["coins"]);
+					cmd.Parameters.AddWithValue("@score", (int)firstSaveDic["score"]);
+					cmd.Parameters.AddWithValue("@game_time_hours", (int)firstSaveDic["game_time_hours"]);
+					cmd.Parameters.AddWithValue("@game_time_minutes", (int)firstSaveDic["game_time_minutes"]);
+					cmd.Parameters.AddWithValue("@game_time_seconds", (int)firstSaveDic["game_time_seconds"]);
 
 
 
-				cmd.ExecuteNonQuery();
+					cmd.ExecuteNonQuery();
+				}
+				GD.Print("Checkpoint salvo com sucesso no banco de dados!");
 			}
-			GD.Print("Checkpoint salvo com sucesso no banco de dados!");
-		}
-		catch (Exception e)
-		{
-		}
-		finally
-		{
+			catch (Exception e)
+			{
+			}
+			finally
+			{
+			}
+
 		}
 	}
 
@@ -121,7 +124,16 @@ public partial class title_screen : Control
 	{
 		GetTree().ChangeSceneToFile("res://levels/LoginMenu.tscn");
 	}
+
+	private void OnLogoutButtonButtonDown()
+	{
+		UserSession.conn.Close();
+		UserSession.isLogin = false;
+	}
 }
+
+
+
 
 
 

@@ -23,7 +23,12 @@ public partial class Checkpoint : Area2D
 			Globals.playerPosition = Position;
 			var saveData = CreateSaveData();
 			SaveGameToFile(saveData);
-			SaveGameToDatabase(saveData);
+			GD.Print(UserSession.conn.State);
+			if(UserSession.isLogin)
+			{
+				SaveGameToDatabase(saveData);
+			}
+
 		}
 	}
 
@@ -54,16 +59,7 @@ public partial class Checkpoint : Area2D
 	{
 		try
 		{
-			string query = @"UPDATE UserStats 
-							SET level = @level, 
-								position_X = @position_X, 
-								position_Y = @position_Y, 
-								coins = @coins, 
-								score = @score, 
-								game_time_hours = @game_time_hours, 
-								game_time_minutes = @game_time_minutes, 
-								game_time_seconds = @game_time_seconds 
-							WHERE user_email = @userEmail";
+			string query = "UPDATE UserStats SET level = @level, position_X = @position_X, position_Y = @position_Y, coins = @coins, score = @score, game_time_hours = @game_time_hours, game_time_minutes = @game_time_minutes, game_time_seconds = @game_time_seconds	WHERE user_email = @userEmail";
 
 			using (var cmd = new MySqlCommand(query, UserSession.conn))
 			{
