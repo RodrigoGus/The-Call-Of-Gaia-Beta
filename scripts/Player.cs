@@ -38,10 +38,16 @@ public partial class Player : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		if (isTransforming)
+		{
+			return;
+		}
+			
+		
 		Vector2 velocity = Velocity;
 
-		if(Input.IsActionJustPressed("T")){
-			isTransforming = true;
+		if(Input.IsActionJustPressed("T") && !isTransformedToCat){
+			StartTransformation();
 		}
 
 
@@ -69,7 +75,7 @@ public partial class Player : CharacterBody2D
 
 		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
 		
-		SetState();
+		UpdateAnimation();
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -112,32 +118,42 @@ public partial class Player : CharacterBody2D
 		this.isHited = false;
 	}
 
-	public void SetState()
+	private void UpdateAnimation()
 	{
-		StringName state = "idle";
+		string state = "idle";
 
-		if (this.direction != Vector2.Zero) state = "run";
-		if (!IsOnFloor() && this.isJumping) state = "jump";
-		if (!IsOnFloor() && !this.isJumping) state = "fall";
-		if (this.isHited) state = "hurt";
-		if (this.isTransforming) state = "transform_to_cat";
+		if (direction != Vector2.Zero)
+			state = "run";
+		if (!IsOnFloor())
+			state = isJumping ? "jump" : "fall";
+		if (isHited)
+			state = "hurt";
+		if (isTransforming)
+			state = "transform_to_cat";
 
-		if(this.animation.Name != state) this.animation.Play(state);
+		if (animation.Name != state)
+			animation.Play(state);
+	}
+	private void StartTransformation()
+	{
+		isTransforming = true;
+		UpdateAnimation();
 	}
 
-	public void AishaToCat(){
-		if (!isTransformedToCat){
+	public void AishaToCat()
+	{
+		if (!isTransformedToCat)
+		{
 			CharacterBody2D cat = catScene.Instantiate<CharacterBody2D>();
 			GetParent().AddChild(cat);
-			cat.Position = this.Position;
-			this.QueueFree();
+			cat.Position = Position;
+			QueueFree();
 			isTransformedToCat = true;
 		}
-
 	}
 	private void OnAnimAnimationFinished()
 	{
-		if (this.animation.Animation == "transform_to_cat")
+		if (animation.Animation == "transform_to_cat" && isTransforming)
 		{
 			isTransforming = false;
 			AishaToCat();

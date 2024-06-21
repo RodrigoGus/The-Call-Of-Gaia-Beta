@@ -40,10 +40,14 @@ public partial class AishaCat : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+        if (isTransforming)
+		{
+			return;
+		}
 		Vector2 velocity = Velocity;
 
-		if(Input.IsActionJustPressed("T")){
-			isTransforming = true;
+		if(Input.IsActionJustPressed("T") && isTransformedToCat){
+            StartTransformation();
 		}
 
 
@@ -77,7 +81,7 @@ public partial class AishaCat : CharacterBody2D
 
 		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
 
-		SetState();
+		UpdateAnimation();
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -119,34 +123,48 @@ public partial class AishaCat : CharacterBody2D
 		this.isHited = false;
 	}
 
-	public void SetState()
-	{
-		StringName state = "idle";
+    private void UpdateAnimation()
+    {
+        string state = "idle";
 
-		if (this.direction != Vector2.Zero) state = "run";
-		if (!IsOnFloor() && this.isJumping) state = "jump";
-		if (!IsOnFloor() && !this.isJumping) state = "fall";
-		if (this.isHited) state = "hurt";
-		if (this.isTransforming) state = "transform_to_human";
+        if (direction != Vector2.Zero)
+            state = "run";
+        if (!IsOnFloor())
+            state = isJumping ? "jump" : "fall";
+        if (isHited)
+            state = "hurt";
+        if (isTransforming)
+            state = "transform_to_human";
 
-		if(this.animation.Name != state) this.animation.Play(state);
-		// if(this.catAnimation.Name != state) this.catAnimation.Play(state);
-	}
+        if (animation.Animation != state)
+            animation.Play(state);
+    }
 
-	public void CatToAisha(){
-		if(isTransformedToCat){
-			CharacterBody2D player = playerScene.Instantiate<CharacterBody2D>();
-			GetParent().AddChild(player);
-			player.Position = this.Position;
-			this.QueueFree();
-			isTransformedToCat = false;
-		}
-	}
-	private void OnCatAnimAnimationFinished()
-	{
-		isTransforming = false;
-		CatToAisha();
-	}
+    private void StartTransformation()
+    {
+        isTransforming = true;
+        UpdateAnimation();
+    }
+
+    public void CatToAisha()
+    {
+        if (isTransformedToCat)
+        {
+            CharacterBody2D player = playerScene.Instantiate<CharacterBody2D>();
+            GetParent().AddChild(player);
+            player.Position = Position;
+            QueueFree();
+            isTransformedToCat = false;
+        }
+    }
+    private void OnCatAnimAnimationFinished()
+    {
+        if (animation.Animation == "transform_to_human" && isTransforming)
+        {
+            isTransforming = false;
+            CatToAisha();
+        }
+    }
 
 
 }
