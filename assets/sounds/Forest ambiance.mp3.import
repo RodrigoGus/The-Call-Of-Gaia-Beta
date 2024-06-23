@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di4xihuiend04"
+path="res://.godot/imported/Forest ambiance.mp3-2b24b006bb8eb94bce5afe269b445b8a.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Forest ambiance.mp3"
+dest_files=["res://.godot/imported/Forest ambiance.mp3-2b24b006bb8eb94bce5afe269b445b8a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.2
+bpm=0.0
+beat_count=0
+bar_beats=4

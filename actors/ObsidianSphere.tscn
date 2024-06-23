@@ -1,10 +1,12 @@
-[gd_scene load_steps=44 format=3 uid="uid://31p2y4nsl8xj"]
+[gd_scene load_steps=46 format=3 uid="uid://31p2y4nsl8xj"]
 
 [ext_resource type="Script" path="res://scripts/ObsidianSphere.cs" id="1_0owqk"]
 [ext_resource type="Texture2D" uid="uid://esjuht8nttur" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Damage.png" id="1_lqda2"]
 [ext_resource type="Texture2D" uid="uid://dh58cxjodwmgp" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Idle.png" id="2_x74e4"]
 [ext_resource type="Texture2D" uid="uid://co2mtjekxides" path="res://original assets/actors/obsidian_sphere/Obsidian_Sphere_Walking.png" id="3_m4kxh"]
 [ext_resource type="PackedScene" uid="uid://bds7kfnuusmn4" path="res://prefabs/Hitbox.tscn" id="5_aqx56"]
+[ext_resource type="AudioStream" uid="uid://dtug5bg2vrawt" path="res://assets/sounds/WhatsApp Audio 2024-06-14 at 21.24.30 (online-audio-converter.com).mp3" id="6_spwt4"]
+[ext_resource type="AudioStream" uid="uid://bwucs0r1owu0h" path="res://assets/sounds/WhatsApp Audio 2024-06-14 at 21.24.31 (online-audio-converter.com).mp3" id="7_0yu0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5nt3"]
 atlas = ExtResource("1_lqda2")
@@ -165,7 +167,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -259,14 +261,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jfh2"]
 size = Vector2(192, 179)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5hixm"]
-radius = 336.733
+radius = 2000.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjgw"]
 size = Vector2(140, 10)
@@ -279,8 +281,10 @@ script = ExtResource("1_0owqk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vs8xx")
-animation = &"run"
+animation = &"hurt"
 autoplay = "run"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 36)
@@ -303,6 +307,14 @@ shape = SubResource("CircleShape2D_5hixm")
 position = Vector2(3.33333, -58)
 shape = SubResource("RectangleShape2D_cxjgw")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="roboAndando_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_spwt4")
+
+[node name="roboMorrendo_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0yu0h")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimatedSprite2dAnimationFinished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="OnDetectionAreaBodyEntered"]

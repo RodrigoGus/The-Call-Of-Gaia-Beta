@@ -23,6 +23,14 @@ public partial class World1 : Node2D
 		if (!Player.isTransformedToCat && !Player.isDeath)
 		{
 		 	Player.FollowCamera(camera);
+			
 		}
+		if(Player.isDeath || AishaCat.isDeath){
+			Game_over();
+		}
+	}
+
+	public void Game_over(){
+		GetTree().ChangeSceneToFile("res://scenes/gameOver_screen.tscn");
 	}
 }

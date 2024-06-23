@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dima1b85ph8nh"]
+[gd_scene load_steps=28 format=3 uid="uid://dima1b85ph8nh"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.cs" id="1_e1yp1"]
 [ext_resource type="Texture2D" uid="uid://b6vw6kr121hyn" path="res://assets/Background/CloudsBack.png" id="1_obeeb"]
@@ -1953,6 +1953,9 @@ shader_parameter/move_speed = 0.025
 
 [sub_resource type="Theme" id="Theme_prgfr"]
 
+[sub_resource type="Theme" id="Theme_qr2x3"]
+HSeparator/constants/separation = 100
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_452sa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvhtd"]
@@ -2083,8 +2086,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Title" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_qr2x3")
+theme_override_styles/separator = SubResource("StyleBoxEmpty_452sa")
 
 [node name="NewGameBtn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -2141,7 +2146,7 @@ layout_mode = 2
 theme = ExtResource("13_a34ql")
 theme_override_styles/separator = SubResource("StyleBoxEmpty_452sa")
 
-[node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="QuitBtn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("11_xmom4")
@@ -2164,4 +2169,4 @@ text = "Não foi possível encontrar um jogo salvo."
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGameBtn" to="." method="OnNewGameBtnPressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LoadGameBtn" to="." method="OnLoadGameBtnPressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

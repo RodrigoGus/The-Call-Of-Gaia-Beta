@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class title_screen : Control
 {
@@ -11,6 +12,11 @@ public partial class title_screen : Control
 	public override void _Ready()
 	{
 		// Setup code if needed
+		Globals.playerLife = 1;
+		Globals.coins = 0;
+		Globals.score = 0;
+		Player.isDeath = false;
+		AishaCat.isDeath = false;
 	}
 
 	public override void _Process(double delta)
@@ -36,7 +42,7 @@ public partial class title_screen : Control
 		else
 		{
 			GetNode<Label>(debugSaveNotFoundPath).Visible = true;
-		}
+		} 
 	}
 
 	// Método chamado quando o botão de sair é pressionado
