@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cefd6757vnrl4" path="res://original assets/backgrounds/cairo_night/DesetAmbiancePack.png" id="14_ujq40"]
 [ext_resource type="PackedScene" uid="uid://31p2y4nsl8xj" path="res://actors/ObsidianSphere.tscn" id="15_slo7h"]
 [ext_resource type="PackedScene" uid="uid://dpmalc6u7322k" path="res://prefabs/DialogArea.tscn" id="16_eglf3"]
+[ext_resource type="PackedScene" uid="uid://dgrgkopahrb0a" path="res://scenes/pause_menu.tscn" id="17_hv773"]
+[ext_resource type="AudioStream" uid="uid://di4xihuiend04" path="res://assets/sounds/Forest ambiance.mp3" id="18_hxyl4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ui03m"]
 texture = ExtResource("14_ujq40")
@@ -70,6 +72,7 @@ fill_to = Vector2(0.820359, 0.242515)
 size = Vector2(27, 500)
 
 [node name="World1" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_0auo0")
 metadata/_edit_horizontal_guides_ = [-882.0]
 
@@ -257,5 +260,35 @@ position = Vector2(1068, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
 position = Vector2(-14.5, -71)
 shape = SubResource("RectangleShape2D_w8wfd")
+[node name="pause_menu" parent="." instance=ExtResource("17_hv773")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_hxyl4")
+volume_db = -20.0
+autoplay = true
+
+[node name="Coin5" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(106, 101)
+
+[node name="Coin6" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(165, 97)
+
+[node name="Coin7" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(204, 102)
+
+[node name="Coin8" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(236, 95)
+
+[node name="Coin9" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(244, 69)
+
+[node name="Coin10" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(215, 81)
+
+[node name="Coin11" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(188, 82)
+
+[node name="Coin12" parent="." instance=ExtResource("14_3fntv")]
+position = Vector2(203, 59)
 
 [editable path="DialogArea"]

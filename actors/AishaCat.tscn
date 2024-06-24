@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dhnpcskc70te4"]
+[gd_scene load_steps=96 format=3 uid="uid://dhnpcskc70te4"]
 
 [ext_resource type="Script" path="res://scripts/AishaCat.cs" id="1_1db1b"]
 [ext_resource type="Texture2D" uid="uid://c08d187ica7f4" path="res://original assets/actors/Mofo black car/Aisha_Cat_Falling.png" id="2_3g2to"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://8cpaaotccsee" path="res://original assets/actors/Mofo black car/Aisha_Cat_Runing.png" id="5_iy6km"]
 [ext_resource type="Texture2D" uid="uid://bfuyfd1jpi1b4" path="res://original assets/actors/Mofo black car/Cat_-_Aisha_Transform.png" id="8_rufnh"]
 [ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/Hurtbox.tscn" id="9_3iyfs"]
+[ext_resource type="AudioStream" uid="uid://buat588pltoah" path="res://assets/sounds/WhatsApp Audio 2024-05-13 at 08.23.19_[cut_4sec].mp3" id="10_p4dyf"]
+[ext_resource type="AudioStream" uid="uid://brpo6g7yf2n64" path="res://assets/sounds/swing-whoosh-110410.mp3" id="11_7eh5j"]
+[ext_resource type="AudioStream" uid="uid://do4m1gg08a0iv" path="res://assets/sounds/WhatsApp Audio 2024-06-14 at 21.24.29 (1).mp3" id="12_euvey"]
+[ext_resource type="AudioStream" uid="uid://chp6dep2ca0u0" path="res://assets/sounds/aishacat_levando_dano.mp3" id="13_s6v0y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqi2n"]
 atlas = ExtResource("2_k1bve")
@@ -623,6 +627,7 @@ scale = Vector2(0.203, 0.203)
 sprite_frames = SubResource("SpriteFrames_iy2vt")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.0115258
 
 [node name="CatCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
@@ -649,6 +654,18 @@ collision_mask = 4
 position = Vector2(11, -6)
 target_position = Vector2(8, 0)
 collision_mask = 4
+
+[node name="correr_tsx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_p4dyf")
+
+[node name="pular_tsx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_7eh5j")
+
+[node name="trasnformar_tsx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_euvey")
+
+[node name="dano_tsx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_s6v0y")
 
 [connection signal="animation_finished" from="CatAnim" to="." method="OnCatAnimAnimationFinished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

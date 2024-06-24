@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckkatvbbhai80" path="res://assets/Stinky Rat/MouseRun.png" id="1_u32ap"]
 [ext_resource type="Texture2D" uid="uid://dufomqsi6ry67" path="res://assets/Stinky Rat/MouseDamage.png" id="3_6gpnb"]
 [ext_resource type="Texture2D" uid="uid://ctmimskjw271g" path="res://assets/Stinky Rat/MouseIdle.png" id="4_nk2vd"]
-[ext_resource type="PackedScene" uid="uid://bds7kfnuusmn4" path="res://prefabs/hitbox.tscn" id="5_splok"]
+[ext_resource type="PackedScene" uid="uid://bds7kfnuusmn4" path="res://prefabs/Hitbox.tscn" id="5_splok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwbma"]
 size = Vector2(19.2, 9)

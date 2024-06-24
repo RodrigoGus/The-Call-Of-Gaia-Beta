@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using MySqlConnector;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class title_screen : Control
 {
@@ -42,7 +43,7 @@ public partial class title_screen : Control
 		else
 		{
 			GetNode<Label>(debugSaveNotFoundPath).Visible = true;
-		}
+		} 
 	}
 
 	private void OnQuitBtnPressed()
@@ -96,6 +97,7 @@ public partial class title_screen : Control
 			}
 			catch (Exception e)
 			{
+				GD.Print("Exception:" + e.Message);
 			}
 			finally
 			{
