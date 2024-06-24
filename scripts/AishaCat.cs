@@ -8,6 +8,7 @@ public partial class AishaCat : CharacterBody2D
 	public PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://actors/Player.tscn");
 	public World1 worldScene;
 	private NodePath worldScenePath = "/root/World1";
+	public AnimationPlayer opacitySquareAnim;
 	public static bool isTransformedToCat;
 	public const float Speed = 200.0f;
 	public const float JumpVelocity = -325.0f;
@@ -27,35 +28,36 @@ public partial class AishaCat : CharacterBody2D
 	public RayCast2D rayLeft;
 	public static Vector2 position;
 	public static bool isDeath = false;
-	private AudioStreamPlayer somCorrer;
-	private AudioStreamPlayer somDano;
-	private AudioStreamPlayer somPulo;
-	private AudioStreamPlayer somTransformacao;
+	private AudioStreamPlayer2D somCorrer;
+	private AudioStreamPlayer2D somDano;
+	private AudioStreamPlayer2D somPulo;
+	private AudioStreamPlayer2D somTransformacao;
 
 
 	public override void _Ready()
 	{
+		opacitySquareAnim = GetNode<AnimationPlayer>("CanvasLayer/AnimationPlayer");
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
 		remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
 		this.worldScene = GetNode<World1>(worldScenePath);
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
 		isTransformedToCat = true;
-		somCorrer = GetNode<AudioStreamPlayer>("correr_tsx");
-		somPulo = GetNode<AudioStreamPlayer>("pular_tsx");
-		somTransformacao = GetNode<AudioStreamPlayer>("transformar_tsx");
-		somDano = GetNode<AudioStreamPlayer>("dano_tsx");
+		somCorrer = GetNode<AudioStreamPlayer2D>("correr_tsx");
+		somPulo = GetNode<AudioStreamPlayer2D>("pular_tsx");
+		somTransformacao = GetNode<AudioStreamPlayer2D>("transformar_tsx");
+		somDano = GetNode<AudioStreamPlayer2D>("dano_tsx");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-        if (isTransforming)
+		if (isTransforming)
 		{
 			return;
 		}
 		Vector2 velocity = Velocity;
 
 		if(Input.IsActionJustPressed("T") && isTransformedToCat){
-            StartTransformation();
+			StartTransformation();
 		}
 
 
@@ -65,10 +67,14 @@ public partial class AishaCat : CharacterBody2D
 			{
 				velocity.Y = JumpVelocity;
 				this.isJumping = true;
+				somPulo.Play();
 			}
 			else this.isJumping = false;
 		}
-		else velocity.Y += this.gravity * (float)delta; 
+		else {
+			velocity.Y += this.gravity * (float)delta;
+			if(somCorrer.Playing) somCorrer.Stop(); 
+		}
 
 		this.direction = Input.GetVector("left", "right", "up", "down");
 		if (this.direction != Vector2.Zero)
@@ -82,8 +88,19 @@ public partial class AishaCat : CharacterBody2D
 				this.inputDirection = -0.203f;
 				this.animation.FlipH = true;
 			}
+
+			if (IsOnFloor() && !somCorrer.Playing)
+			{
+				somCorrer.Play();
+			}
 		}
-		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		else {
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			if (somCorrer.Playing)
+			{
+				somCorrer.Stop();
+			}
+			}
 
 		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
 
@@ -125,52 +142,58 @@ public partial class AishaCat : CharacterBody2D
 		}
 
 		this.isHited = true;
+		somDano.Play(0.5f);
 		await ToSignal(GetTree().CreateTimer(0.3), "timeout");
 		this.isHited = false;
 	}
 
-    private void UpdateAnimation()
-    {
-        string state = "idle";
+	private void UpdateAnimation()
+	{
+		string state = "idle";
 
-        if (direction != Vector2.Zero)
-            state = "run";
-        if (!IsOnFloor())
-            state = isJumping ? "jump" : "fall";
-        if (isHited)
-            state = "hurt";
-        if (isTransforming)
-            state = "transform_to_human";
+		if (direction != Vector2.Zero)
+			state = "run";
+		if (!IsOnFloor())
+			state = isJumping ? "jump" : "fall";
+		if (isHited)
+			state = "hurt";
+		if (isTransforming)
+			state = "transform_to_human";
 
-        if (animation.Animation != state)
-            animation.Play(state);
-    }
+		if (animation.Animation != state)
+		{
 
-    private void StartTransformation()
-    {
-        isTransforming = true;
-        UpdateAnimation();
-    }
+			animation.Play(state);
+		}
+	}
 
-    public void CatToAisha()
-    {
-        if (isTransformedToCat)
-        {
-            CharacterBody2D player = playerScene.Instantiate<CharacterBody2D>();
-            GetParent().AddChild(player);
-            player.Position = Position;
-            QueueFree();
-            isTransformedToCat = false;
-        }
-    }
-    private void OnCatAnimAnimationFinished()
-    {
-        if (animation.Animation == "transform_to_human" && isTransforming)
-        {
-            isTransforming = false;
-            CatToAisha();
-        }
-    }
+	private void StartTransformation()
+	{
+		isTransforming = true;
+		somTransformacao.Play();
+		opacitySquareAnim.Play("open");
+		UpdateAnimation();
+	}
+
+	public void CatToAisha()
+	{
+		if (isTransformedToCat)
+		{
+			CharacterBody2D player = playerScene.Instantiate<CharacterBody2D>();
+			GetParent().AddChild(player);
+			player.Position = Position;
+			QueueFree();
+			isTransformedToCat = false;
+		}
+	}
+	private void OnCatAnimAnimationFinished()
+	{
+		if (animation.Animation == "transform_to_human" && isTransforming)
+		{
+			isTransforming = false;
+			CatToAisha();
+		}
+	}
 
 
 }

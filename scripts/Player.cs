@@ -88,16 +88,16 @@ public partial class Player : CharacterBody2D
 			this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
 
 			if (IsOnFloor() && !somAndar.Playing)
-            {
-                somAndar.Play();
-            }
+			{
+				somAndar.Play();
+			}
 		}
 		else{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			if (somAndar.Playing)
-            {
-                somAndar.Stop();
-            }
+			{
+				somAndar.Stop();
+			}
 		} 
 
 		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
@@ -160,7 +160,7 @@ public partial class Player : CharacterBody2D
 			state = "transform_to_cat";
 
 		if (animation.Name != state){
-			somTransformar.Play();
+			
 			animation.Play(state);
 		}
 			
@@ -168,6 +168,7 @@ public partial class Player : CharacterBody2D
 	private void StartTransformation()
 	{
 		isTransforming = true;
+		somTransformar.Play();
 		opacitySquareAnim.Play("open");
 		UpdateAnimation();
 	}

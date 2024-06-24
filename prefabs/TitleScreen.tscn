@@ -2189,6 +2189,5 @@ text = "Entrar"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGameBtn" to="." method="OnNewGameBtnPressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LoadGameBtn" to="." method="OnLoadGameBtnPressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
 [connection signal="button_down" from="LogoutButton" to="." method="OnLogoutButtonButtonDown"]
 [connection signal="button_down" from="LoginButton" to="." method="OnLoginButtonButtonDown"]

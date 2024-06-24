@@ -83,6 +83,7 @@ shape = SubResource("CircleShape2D_8cdiu")
 
 [node name="somMoeda_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uswos")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]

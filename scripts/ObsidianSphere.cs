@@ -1,8 +1,7 @@
 using Godot;
-	using System;
-	using System.Threading.Tasks;
-	using System.Xml.Serialization;
-using ZstdSharp.Unsafe;
+using System;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 public partial class ObsidianSphere : CharacterBody2D
 	{
@@ -18,8 +17,8 @@ public partial class ObsidianSphere : CharacterBody2D
 		private AudioStreamPlayer somRoboAndando;
 		private AudioStreamPlayer somRoboMorrendo;
 		private Area2D detectionArea;
-		private Node2D Player;
-		private Node2D AishaCat;
+		private Node2D player;
+		private Node2D aishaCat;
 		private Node2D Target;
 
 
@@ -30,12 +29,15 @@ public partial class ObsidianSphere : CharacterBody2D
 			somRoboAndando = GetNode<AudioStreamPlayer>("roboAndando_sfx"); 
 			somRoboMorrendo = GetNode<AudioStreamPlayer>("roboMorrendo_sfx");
 			detectionArea = GetNode<Area2D>("DetectionArea");
-			Player = GetTree().Root.GetNode<Node2D>("World1/Player");
-			AishaCat= GetTree().Root.GetNode<Node2D>("World1/AishaCat");
-			Target = Player;
+			player = GetTree().Root.GetNode<Node2D>("World1/Player");
+			if(Player.isTransformedToCat && !AishaCat.isDeath) 
+			{
+				aishaCat= GetTree().Root.GetNode<Node2D>("World1/AishaCat");
+			}
+			Target = player;
 		}
 
-    	public override void _PhysicsProcess(double delta)
+		public override void _PhysicsProcess(double delta)
 		{
 			ManageFootstepsSound();
 			ProcessMovement(delta);
@@ -86,7 +88,7 @@ public partial class ObsidianSphere : CharacterBody2D
 				somRoboAndando.Stop();
 			}
 		}
-    
+	
 
 		private void CheckWallCollision()
 		{
@@ -120,7 +122,7 @@ public partial class ObsidianSphere : CharacterBody2D
 
 		private void OnDetectionAreaBodyEntered(Node2D body)
 		{
-			if (body is Player || body is AishaCat)
+			if (body.Name == "Player" || body.Name == "AishaCat")
 			{
 				PlayerDetected = true;
 				Target = body as Node2D;
@@ -129,7 +131,7 @@ public partial class ObsidianSphere : CharacterBody2D
 		}
 		private void OnDetectionAreaBodyExited(Node2D body)
 		{
-			if (body is Player || body is AishaCat)
+			if (body.Name == "Player" || body.Name == "AishaCat")
 			{
 				PlayerDetected = false;
 				GD.Print("Player exited");

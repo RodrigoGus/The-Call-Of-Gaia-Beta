@@ -3,25 +3,7 @@
 [ext_resource type="Script" path="res://scripts/DialogPlayer.cs" id="1_6j7ay"]
 [ext_resource type="Texture2D" uid="uid://b0guj4dm0wnex" path="res://original assets/actors/Aisha/Aisha_Portrait_Neutral.png" id="2_iufoe"]
 [ext_resource type="Texture2D" uid="uid://cwl5rglsbfs1o" path="res://original assets/ui/DialogueBox.png" id="2_xxawm"]
-
-[sub_resource type="FontFile" id="FontFile_biu7q"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/25/0/ascent = 0.0
-cache/0/25/0/descent = 0.0
-cache/0/25/0/underline_position = 0.0
-cache/0/25/0/underline_thickness = 0.0
-cache/0/25/0/scale = 1.0
-cache/0/25/0/kerning_overrides/25/0 = Vector2(0, 0)
-cache/0/25/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/25/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+[ext_resource type="FontFile" uid="uid://c14qa6dgej37c" path="res://original assets/fonts/TTF/dogica.ttf" id="4_72fdm"]
 
 [sub_resource type="Animation" id="Animation_vgkq2"]
 length = 0.001
@@ -147,7 +129,7 @@ offset_right = 397.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = SubResource("FontFile_biu7q")
+theme_override_fonts/font = ExtResource("4_72fdm")
 theme_override_font_sizes/font_size = 25
 autowrap_mode = 3
 clip_text = true
@@ -156,6 +138,5 @@ clip_text = true
 libraries = {
 "": SubResource("AnimationLibrary_idly8")
 }
-autoplay = "open"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationPlayerAnimationFinished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://mr4iyjksou5p"]
+[gd_scene load_steps=27 format=3 uid="uid://mr4iyjksou5p"]
 
 [ext_resource type="Script" path="res://scripts/World1.cs" id="1_0auo0"]
 [ext_resource type="Texture2D" uid="uid://dvhiaj65dkaon" path="res://original assets/backgrounds/cairo_night/ScenarioCairoSky.png" id="2_gcvsw"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://31p2y4nsl8xj" path="res://actors/ObsidianSphere.tscn" id="15_slo7h"]
 [ext_resource type="PackedScene" uid="uid://dpmalc6u7322k" path="res://prefabs/DialogArea.tscn" id="16_eglf3"]
 [ext_resource type="PackedScene" uid="uid://dgrgkopahrb0a" path="res://scenes/pause_menu.tscn" id="17_hv773"]
-[ext_resource type="AudioStream" uid="uid://di4xihuiend04" path="res://assets/sounds/Forest ambiance.mp3" id="18_hxyl4"]
+[ext_resource type="AudioStream" uid="uid://cq5ep0psiu7l4" path="res://assets/sounds/Desert air.mp3" id="17_p1ycw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ui03m"]
 texture = ExtResource("14_ujq40")
@@ -137,7 +137,6 @@ texture = ExtResource("5_hqnib")
 flip_h = true
 
 [node name="camera" type="Camera2D" parent="."]
-visible = false
 position = Vector2(356, 20)
 zoom = Vector2(3, 3)
 limit_left = 0
@@ -155,27 +154,21 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="DialogPlayer" parent="." instance=ExtResource("13_fdh0k")]
-visible = false
 SceneTextFile = "res://dialogs texts/teste.json"
 
 [node name="Hud" parent="." instance=ExtResource("12_lludn")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("12_rfnvt")]
-visible = false
 position = Vector2(435, -99)
 
 [node name="Checkpoint" parent="." instance=ExtResource("13_bgbnr")]
-visible = false
 position = Vector2(247, 107)
 
 [node name="ObsidianSphere" parent="." instance=ExtResource("15_slo7h")]
-visible = false
 position = Vector2(592, 98)
 
 [node name="DialogArea" parent="." instance=ExtResource("16_eglf3")]
-visible = false
-position = Vector2(366, -54)
+position = Vector2(193, -54)
 dialogKey = "door"
 
 [node name="CollisionShape2D" parent="DialogArea" index="0"]
@@ -183,7 +176,6 @@ position = Vector2(90, 164)
 shape = SubResource("RectangleShape2D_h1ide")
 
 [node name="Ground" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(-174, 136)
 collision_layer = 2
 collision_mask = 127
@@ -193,7 +185,6 @@ position = Vector2(712.5, 0)
 shape = SubResource("RectangleShape2D_aap5s")
 
 [node name="Coins" type="Node2D" parent="."]
-visible = false
 position = Vector2(-364, 67)
 
 [node name="Coin" parent="Coins" instance=ExtResource("14_3fntv")]
@@ -207,6 +198,30 @@ position = Vector2(779, -63)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("14_3fntv")]
 position = Vector2(855, -66)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(106, 101)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(165, 97)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(204, 102)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(236, 95)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(244, 69)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(215, 81)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(188, 82)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("14_3fntv")]
+position = Vector2(203, 59)
 
 [node name="Lights" type="Node2D" parent="."]
 
@@ -247,48 +262,23 @@ color = Color(1.68458e-06, 0, 0.601653, 1)
 range_layer_min = -100
 
 [node name="Wall" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2(-14.5, -71)
 shape = SubResource("RectangleShape2D_w8wfd")
 
 [node name="Wall2" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(1068, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
 position = Vector2(-14.5, -71)
 shape = SubResource("RectangleShape2D_w8wfd")
+
 [node name="pause_menu" parent="." instance=ExtResource("17_hv773")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_hxyl4")
-volume_db = -20.0
+stream = ExtResource("17_p1ycw")
+volume_db = -10.0
 autoplay = true
-
-[node name="Coin5" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(106, 101)
-
-[node name="Coin6" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(165, 97)
-
-[node name="Coin7" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(204, 102)
-
-[node name="Coin8" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(236, 95)
-
-[node name="Coin9" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(244, 69)
-
-[node name="Coin10" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(215, 81)
-
-[node name="Coin11" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(188, 82)
-
-[node name="Coin12" parent="." instance=ExtResource("14_3fntv")]
-position = Vector2(203, 59)
 
 [editable path="DialogArea"]

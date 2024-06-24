@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://5xv63qam47f6"]
+[gd_scene load_steps=101 format=3 uid="uid://5xv63qam47f6"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_8erth"]
 [ext_resource type="Texture2D" uid="uid://crh1bua1bof6c" path="res://original assets/actors/Aisha/Aisha_Attack_Neutral.png" id="2_2xxg5"]
@@ -719,6 +719,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
 [node name="andar_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_janti")
 volume_db = 3.0

@@ -14,9 +14,6 @@ using Godot;
         private AnimatedSprite2D Animation;
         private AudioStreamPlayer FlyingSound;
         private AudioStreamPlayer AttackSound;
-
-    
-        private Vector2 Velocity = Vector2.Zero;
         private float _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
         public override void _Ready()
