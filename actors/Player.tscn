@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://5xv63qam47f6"]
+[gd_scene load_steps=98 format=3 uid="uid://5xv63qam47f6"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_8erth"]
 [ext_resource type="Texture2D" uid="uid://crh1bua1bof6c" path="res://original assets/actors/Aisha/Aisha_Attack_Neutral.png" id="2_2xxg5"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://biobbdegqn45t" path="res://original assets/actors/Aisha/Aisha_Walking_Right.png" id="5_n5uoe"]
 [ext_resource type="Texture2D" uid="uid://v6g356l8ljy3" path="res://original assets/actors/Aisha/Aisha_-_Cat_Transform.png" id="6_jsoxk"]
 [ext_resource type="PackedScene" uid="uid://c3lgclfh68rlk" path="res://prefabs/Hurtbox.tscn" id="9_76l45"]
+[ext_resource type="AudioStream" uid="uid://biigicg7lotgg" path="res://assets/sounds/WhatsApp Audio 2024-05-13 at 08.23.19_[cut_8sec].mp3" id="10_janti"]
+[ext_resource type="AudioStream" uid="uid://brpo6g7yf2n64" path="res://assets/sounds/swing-whoosh-110410.mp3" id="11_uaf3a"]
+[ext_resource type="AudioStream" uid="uid://b76xfsqmew1m7" path="res://assets/sounds/WhatsApp Audio 2024-06-14 at 21.24.29.mp3" id="12_clijg"]
+[ext_resource type="AudioStream" uid="uid://dth13xs1lfbrp" path="res://assets/sounds/WhatsApp Audio 2024-06-14 at 21.24.28.mp3" id="13_cbyq6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsial"]
 atlas = ExtResource("2_2xxg5")
@@ -605,7 +609,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"transform_to_cat",
-"speed": 15.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q386c"]
@@ -628,6 +632,8 @@ scale = Vector2(0.203125, 0.203125)
 sprite_frames = SubResource("SpriteFrames_m3dgr")
 animation = &"transform_to_cat"
 autoplay = "idle"
+frame = 16
+frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -17.8)
@@ -662,6 +668,20 @@ collision_mask = 4
 position = Vector2(-0.5, -18.3)
 shape = SubResource("RectangleShape2D_gdita")
 debug_color = Color(0.992157, 0, 0.247059, 0.419608)
+
+[node name="andar_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_janti")
+volume_db = 3.0
+
+[node name="pular_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_uaf3a")
+mix_target = 1
+
+[node name="transfomação_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_clijg")
+
+[node name="dano_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_cbyq6")
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

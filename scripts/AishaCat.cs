@@ -27,6 +27,10 @@ public partial class AishaCat : CharacterBody2D
 	public RayCast2D rayLeft;
 	public static Vector2 position;
 	public static bool isDeath = false;
+	private AudioStreamPlayer somCorrer;
+	private AudioStreamPlayer somDano;
+	private AudioStreamPlayer somPulo;
+	private AudioStreamPlayer somTransformacao;
 
 
 	public override void _Ready()
@@ -37,6 +41,10 @@ public partial class AishaCat : CharacterBody2D
 		this.rayRight = GetNode<RayCast2D>(rayRightPath);
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
 		isTransformedToCat = true;
+		somCorrer = GetNode<AudioStreamPlayer>("correr_tsx");
+		somPulo = GetNode<AudioStreamPlayer>("pular_tsx");
+		somTransformacao = GetNode<AudioStreamPlayer>("transformar_tsx");
+		somDano = GetNode<AudioStreamPlayer>("dano_tsx");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -74,8 +82,6 @@ public partial class AishaCat : CharacterBody2D
 				this.inputDirection = -0.203f;
 				this.animation.FlipH = true;
 			}
-			// this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
-			// this.catAnimation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
 		}
 		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 

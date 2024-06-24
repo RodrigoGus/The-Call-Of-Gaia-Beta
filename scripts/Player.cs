@@ -25,6 +25,10 @@ public partial class Player : CharacterBody2D
 	public RayCast2D rayLeft;
 	public static Vector2 position;
 	public static bool isDeath = false;
+	private AudioStreamPlayer somPulo;
+	private AudioStreamPlayer somAndar;
+	private AudioStreamPlayer somTransformar;
+	private AudioStreamPlayer somDano;
 
 	public override void _Ready()
 	{
@@ -35,6 +39,11 @@ public partial class Player : CharacterBody2D
 		this.rayLeft = GetNode<RayCast2D>(rayLeftPath);
 		Position = Globals.playerPosition;
 		isTransformedToCat = false;
+
+		somAndar = GetNode<AudioStreamPlayer>("andar_sfx");
+		somPulo = GetNode<AudioStreamPlayer>("pular_sfx");
+		somTransformar = GetNode<AudioStreamPlayer>("transfomação_sfx");
+		somDano = GetNode<AudioStreamPlayer>("dano_sfx");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -42,6 +51,7 @@ public partial class Player : CharacterBody2D
 		{
 			return;
 		}
+
 			
 		
 		Vector2 velocity = Velocity;
@@ -57,10 +67,14 @@ public partial class Player : CharacterBody2D
 			{
 				velocity.Y = JumpVelocity;
 				this.isJumping = true;
+				somPulo.Play();
 			}
 			else this.isJumping = false;
 		}
-		else velocity.Y += this.gravity * (float)delta; 
+		else{
+			velocity.Y += this.gravity * (float)delta;
+			if(somAndar.Playing) somAndar.Stop();
+		}  
 
 		this.direction = Input.GetVector("left", "right", "up", "down");
 		if (this.direction != Vector2.Zero)
@@ -70,8 +84,19 @@ public partial class Player : CharacterBody2D
 			if (Input.IsActionPressed("left")) this.inputDirection = -0.203f;
 			
 			this.animation.Scale = new Vector2(this.inputDirection, this.animation.Scale.Y);
+
+			if (IsOnFloor() && !somAndar.Playing)
+            {
+                somAndar.Play();
+            }
 		}
-		else velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		else{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			if (somAndar.Playing)
+            {
+                somAndar.Stop();
+            }
+		} 
 
 		if (this.knockbackVector != Vector2.Zero) velocity = this.knockbackVector;
 		
@@ -114,6 +139,7 @@ public partial class Player : CharacterBody2D
 		}
 
 		this.isHited = true;
+		somDano.Play(0.5f);
 		await ToSignal(GetTree().CreateTimer(0.3), "timeout");
 		this.isHited = false;
 	}
@@ -131,24 +157,28 @@ public partial class Player : CharacterBody2D
 		if (isTransforming)
 			state = "transform_to_cat";
 
-		if (animation.Name != state)
+		if (animation.Name != state){
+			somTransformar.Play();
 			animation.Play(state);
+		}
+			
 	}
 	private void StartTransformation()
 	{
 		isTransforming = true;
 		UpdateAnimation();
 	}
-
 	public void AishaToCat()
 	{
 		if (!isTransformedToCat)
 		{
+			
 			CharacterBody2D cat = catScene.Instantiate<CharacterBody2D>();
 			GetParent().AddChild(cat);
 			cat.Position = Position;
 			QueueFree();
 			isTransformedToCat = true;
+			
 		}
 	}
 	private void OnAnimAnimationFinished()
