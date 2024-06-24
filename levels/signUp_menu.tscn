@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/signUp_menu.cs" id="1_27jbu"]
 [ext_resource type="Texture2D" uid="uid://cev65e42vtah" path="res://assets/components/logo_tcg.webp" id="2_p1lke"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_bao34"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_usbju"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kluhb"]
-texture = SubResource("CanvasTexture_bao34")
+texture = SubResource("CanvasTexture_usbju")
 modulate_color = Color(0.243137, 0.360784, 1, 1)
 
 [node name="Control" type="Control"]
@@ -94,4 +94,14 @@ offset_bottom = 297.5
 theme_override_styles/normal = SubResource("StyleBoxTexture_kluhb")
 text = "Cadastrar"
 
+[node name="BackBtn" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 266.5
+offset_right = 185.0
+offset_bottom = 297.5
+theme_override_styles/normal = SubResource("StyleBoxTexture_kluhb")
+text = "Voltar"
+
 [connection signal="button_down" from="ColorRect/SignUpButton" to="." method="_on_sign_up_button_button_down"]
+[connection signal="pressed" from="ColorRect/BackBtn" to="." method="OnBackBtnPressed"]

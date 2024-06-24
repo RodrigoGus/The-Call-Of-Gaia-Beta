@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://darogd6k1i2jr"]
+[gd_scene load_steps=7 format=3 uid="uid://darogd6k1i2jr"]
 
 [ext_resource type="Script" path="res://scripts/LoginMenu.cs" id="1_7ct11"]
 [ext_resource type="Texture2D" uid="uid://cev65e42vtah" path="res://assets/components/logo_tcg.webp" id="1_8rp1o"]
@@ -7,6 +7,12 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g2cyo"]
 texture = SubResource("CanvasTexture_aadqx")
+modulate_color = Color(0.243137, 0.360784, 1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bao34"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_doc6q"]
+texture = SubResource("CanvasTexture_bao34")
 modulate_color = Color(0.243137, 0.360784, 1, 1)
 
 [node name="Control" type="Control"]
@@ -85,19 +91,19 @@ placeholder_text = "Password"
 
 [node name="SignInButton" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 262.5
-offset_right = 481.0
-offset_bottom = 293.5
+offset_left = 319.0
+offset_top = 297.5
+offset_right = 479.0
+offset_bottom = 328.5
 theme_override_styles/normal = SubResource("StyleBoxTexture_g2cyo")
 text = "Entrar"
 
 [node name="TextEdit2" type="TextEdit" parent="ColorRect"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 261.0
-offset_right = 225.0
-offset_bottom = 296.0
+offset_left = 20.0
+offset_top = 239.5
+offset_right = 189.0
+offset_bottom = 274.5
 theme_override_colors/background_color = Color(1, 1, 1, 1)
 theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
 text = "Não tem uma conta?"
@@ -105,13 +111,23 @@ editable = false
 
 [node name="SignUpButton" type="LinkButton" parent="ColorRect"]
 layout_mode = 0
-offset_left = 225.0
-offset_top = 266.5
-offset_right = 300.0
-offset_bottom = 306.5
+offset_left = 202.0
+offset_top = 245.5
+offset_right = 277.0
+offset_bottom = 285.5
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 theme_override_colors/font_hover_color = Color(0.202723, 0.202723, 0.202723, 1)
 text = "Crie uma."
 
+[node name="BackBtn" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 297.5
+offset_right = 179.0
+offset_bottom = 328.5
+theme_override_styles/normal = SubResource("StyleBoxTexture_doc6q")
+text = "Voltar"
+
 [connection signal="pressed" from="ColorRect/SignInButton" to="." method="OnSignInButtonPressed"]
 [connection signal="button_down" from="ColorRect/SignUpButton" to="." method="OnSignUpButtonButtonDown"]
+[connection signal="pressed" from="ColorRect/BackBtn" to="." method="OnBackBtnPressed"]

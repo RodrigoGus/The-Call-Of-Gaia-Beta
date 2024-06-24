@@ -16,6 +16,11 @@ public partial class signUp_menu : Control
 	public override void _Process(double delta)
 	{
 	}
+	
+	private void OnBackBtnPressed()
+	{
+		GetTree().ChangeSceneToFile("res://levels/LoginMenu.tscn");
+	}
 
 	private void _on_sign_up_button_button_down()
 	{
@@ -33,6 +38,7 @@ public partial class signUp_menu : Control
 				cmd.ExecuteNonQuery();
 			}
 			GD.Print("Usuário cadastrado com sucesso!");
+			
 			GetTree().ChangeSceneToFile("res://levels/LoginMenu.tscn");
 	   }
 	   catch (Exception e)
@@ -42,6 +48,10 @@ public partial class signUp_menu : Control
 	   }
 	   finally
 	   {
+			UserSession.conn.Close();
 	   }
 	}
 }
+
+
+

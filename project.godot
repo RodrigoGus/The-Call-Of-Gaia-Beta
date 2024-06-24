@@ -15,7 +15,7 @@ run/main_scene="res://prefabs/TitleScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SaveSystem"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://original assets/logo/The_Call_Of_Gaia_logo.ico"
 
 [autoload]
 

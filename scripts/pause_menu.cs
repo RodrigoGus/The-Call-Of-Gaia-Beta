@@ -28,9 +28,18 @@
 			Visible = false;
 			
 		}
+		
+		private void OnMenuBtnPressed()
+		{
+			GetTree().Paused = false;
+			GetTree().ChangeSceneToFile("res://prefabs/TitleScreen.tscn");
+		}
 
 		private void _on_quit_btn_pressed()
 		{
 			GetTree().Quit();
 		}
 	}
+
+
+

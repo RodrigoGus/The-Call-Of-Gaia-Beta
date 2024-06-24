@@ -50,6 +50,17 @@ text = "Resume
 layout_mode = 2
 theme = SubResource("Theme_de3po")
 
+[node name="MenuBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_p4j38")
+text = "Menu
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_de3po")
+
 [node name="quit_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -58,4 +69,5 @@ text = "Quit Game
 "
 
 [connection signal="pressed" from="VBoxContainer/resume_btb" to="." method="_on_resume_btb_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuBtn" to="." method="OnMenuBtnPressed"]
 [connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

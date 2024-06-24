@@ -20,6 +20,11 @@ public partial class LoginMenu : Control
 	{
 		GetTree().ChangeSceneToFile("res://levels/signUp_menu.tscn");
 	}
+	
+	private void OnBackBtnPressed()
+	{
+		GetTree().ChangeSceneToFile("res://prefabs/TitleScreen.tscn");
+	}
 
 	private void OnSignInButtonPressed()
 	{
@@ -58,6 +63,7 @@ public partial class LoginMenu : Control
 		}
 		catch (Exception e)
 		{
+			UserSession.conn.Close();
 			GD.PrintErr("Erro ao conectar ao banco de dados: ", e.Message);
 			GD.PrintErr("Stack Trace: ", e.StackTrace);
 		}
@@ -66,6 +72,9 @@ public partial class LoginMenu : Control
 		}
 	}
 }
+
+
+
 
 
 
