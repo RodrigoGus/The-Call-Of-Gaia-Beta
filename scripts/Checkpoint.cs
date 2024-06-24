@@ -1,5 +1,7 @@
 using Godot;
 using Godot.Collections;
+using MySqlConnector;
+using System;
 
 public partial class Checkpoint : Area2D
 {
@@ -8,7 +10,6 @@ public partial class Checkpoint : Area2D
 
 	public override void _Ready()
 	{
-
 	}
 
 	public override void _Process(double delta)
@@ -22,6 +23,12 @@ public partial class Checkpoint : Area2D
 			Globals.playerPosition = Position;
 			var saveData = CreateSaveData();
 			SaveGameToFile(saveData);
+			GD.Print(UserSession.conn.State);
+			if(UserSession.isLogin)
+			{
+				SaveGameToDatabase(saveData);
+			}
+
 		}
 	}
 
@@ -29,13 +36,11 @@ public partial class Checkpoint : Area2D
 	{
 		return new Dictionary
 		{
-			{"username", "Anderson"},
 			{"level", GetTree().CurrentScene.Name},
 			{"position_X", Globals.playerPosition.X},
 			{"position_Y", Globals.playerPosition.Y},
 			{"coins", Globals.coins},
 			{"score", Globals.score},
-			{"player_life", Globals.playerLife},
 			{"game_time_hours", Globals.hours},
 			{"game_time_minutes", Globals.minutes},
 			{"game_time_seconds", Globals.seconds}
@@ -49,4 +54,40 @@ public partial class Checkpoint : Area2D
 		saveFile.StoreLine(jsonString);
 		saveFile.Close();
 	}
+
+	private void SaveGameToDatabase(Dictionary saveData)
+	{
+		try
+		{
+			string query = "UPDATE UserStats SET level = @level, position_X = @position_X, position_Y = @position_Y, coins = @coins, score = @score, game_time_hours = @game_time_hours, game_time_minutes = @game_time_minutes, game_time_seconds = @game_time_seconds	WHERE user_email = @userEmail";
+
+			using (var cmd = new MySqlCommand(query, UserSession.conn))
+			{
+				cmd.Parameters.AddWithValue("@level", saveData["level"].ToString());
+				cmd.Parameters.AddWithValue("@position_X", (int)saveData["position_X"]);
+				cmd.Parameters.AddWithValue("@position_Y", (int)saveData["position_Y"]);
+				cmd.Parameters.AddWithValue("@coins", (int)saveData["coins"]);
+				cmd.Parameters.AddWithValue("@score", (int)saveData["score"]);
+				cmd.Parameters.AddWithValue("@game_time_hours", (int)saveData["game_time_hours"]);
+				cmd.Parameters.AddWithValue("@game_time_minutes", (int)saveData["game_time_minutes"]);
+				cmd.Parameters.AddWithValue("@game_time_seconds", (int)saveData["game_time_seconds"]);
+
+				var userSession = (UserSession)GetNode("/root/UserSession");
+				var userEmail = userSession.userSessionEmail;
+				cmd.Parameters.AddWithValue("@userEmail", userEmail);
+
+				cmd.ExecuteNonQuery();
+			}
+			GD.Print("Checkpoint salvo com sucesso no banco de dados!");
+		}
+		catch (Exception e)
+		{
+			GD.PrintErr("Erro ao salvar checkpoint no banco de dados: ", e.Message);
+			GD.PrintErr("Stack Trace: ", e.StackTrace);
+		}
+		finally
+		{
+		}
+	}
+
 }

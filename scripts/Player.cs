@@ -52,6 +52,8 @@ public partial class Player : CharacterBody2D
 			return;
 		}
 
+			
+		
 		Vector2 velocity = Velocity;
 
 		if(Input.IsActionJustPressed("T") && !isTransformedToCat){
@@ -178,7 +180,6 @@ public partial class Player : CharacterBody2D
 			isTransformedToCat = true;
 			
 		}
-
 	}
 	private void OnAnimAnimationFinished()
 	{

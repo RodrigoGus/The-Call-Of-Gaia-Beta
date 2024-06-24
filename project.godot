@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 Globals="*res://scripts/Globals.cs"
 SignalBus="*res://scripts/singletons/SignalBus.cs"
+UserSession="*res://scripts/singletons/UserSession.cs"
 
 [display]
 

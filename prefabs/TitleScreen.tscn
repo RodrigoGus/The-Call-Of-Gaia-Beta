@@ -2167,6 +2167,28 @@ offset_right = 666.0
 offset_bottom = 443.0
 text = "Não foi possível encontrar um jogo salvo."
 
+[node name="LogoutButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 311.0
+offset_right = 201.0
+offset_bottom = 355.0
+theme = ExtResource("11_xmom4")
+text = "Sair da conta
+"
+
+[node name="LoginButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 365.0
+offset_right = 195.0
+offset_bottom = 409.0
+theme = ExtResource("11_xmom4")
+text = "Entrar"
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGameBtn" to="." method="OnNewGameBtnPressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LoadGameBtn" to="." method="OnLoadGameBtnPressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="button_down" from="LogoutButton" to="." method="OnLogoutButtonButtonDown"]
+[connection signal="button_down" from="LoginButton" to="." method="OnLoginButtonButtonDown"]
