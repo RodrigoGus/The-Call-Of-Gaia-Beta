@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://5xv63qam47f6"]
+[gd_scene load_steps=97 format=3 uid="uid://5xv63qam47f6"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_8erth"]
 [ext_resource type="Texture2D" uid="uid://crh1bua1bof6c" path="res://original assets/actors/Aisha/Aisha_Attack_Neutral.png" id="2_2xxg5"]
@@ -617,6 +617,42 @@ size = Vector2(19, 35)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdita"]
 size = Vector2(23, 34.6)
 
+[sub_resource type="Animation" id="Animation_v7e2y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_amw6g"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.509804), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4myh4"]
+_data = {
+"RESET": SubResource("Animation_v7e2y"),
+"open": SubResource("Animation_amw6g")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_mask = 30
 floor_constant_speed = true
@@ -662,6 +698,21 @@ collision_mask = 4
 position = Vector2(-0.5, -18.3)
 shape = SubResource("RectangleShape2D_gdita")
 debug_color = Color(0.992157, 0, 0.247059, 0.419608)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_4myh4")
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="animation_finished" from="Anim" to="." method="OnAnimAnimationFinished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnHurtboxBodyEntered"]

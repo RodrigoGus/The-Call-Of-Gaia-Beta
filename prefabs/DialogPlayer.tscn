@@ -1,11 +1,124 @@
-[gd_scene load_steps=3 format=3 uid="uid://k247i8k3m8bi"]
+[gd_scene load_steps=9 format=3 uid="uid://k247i8k3m8bi"]
 
-[ext_resource type="Texture2D" uid="uid://c5de2rtrort3" path="res://assets/Dialogue-Background.png" id="1_1b5dk"]
 [ext_resource type="Script" path="res://scripts/DialogPlayer.cs" id="1_6j7ay"]
+[ext_resource type="Texture2D" uid="uid://b0guj4dm0wnex" path="res://original assets/actors/Aisha/Aisha_Portrait_Neutral.png" id="2_iufoe"]
+[ext_resource type="Texture2D" uid="uid://cwl5rglsbfs1o" path="res://original assets/ui/DialogueBox.png" id="2_xxawm"]
+
+[sub_resource type="FontFile" id="FontFile_biu7q"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/25/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_vgkq2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3jb0g"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rlnyj"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idly8"]
+_data = {
+"RESET": SubResource("Animation_vgkq2"),
+"close": SubResource("Animation_3jb0g"),
+"open": SubResource("Animation_rlnyj")
+}
 
 [node name="DialogPlayer" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_6j7ay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(450, 252)
+scale = Vector2(2, 2)
+texture = ExtResource("2_iufoe")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 7
@@ -13,13 +126,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -173.5
-offset_top = -155.0
-offset_right = 173.5
-offset_bottom = -23.0
+offset_left = -476.0
+offset_top = -672.0
+offset_right = -376.0
+offset_bottom = -572.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_1b5dk")
+scale = Vector2(10, 10)
+texture = ExtResource("2_xxawm")
 
 [node name="TextLabel" type="Label" parent="."]
 anchors_preset = 7
@@ -27,10 +141,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -144.0
-offset_right = 160.0
-offset_bottom = -40.0
+offset_left = -305.0
+offset_top = -188.0
+offset_right = 397.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_biu7q")
+theme_override_font_sizes/font_size = 25
 autowrap_mode = 3
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_idly8")
+}
+autoplay = "open"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationPlayerAnimationFinished"]

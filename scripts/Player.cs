@@ -13,6 +13,7 @@ public partial class Player : CharacterBody2D
 	private Vector2 direction;
 	private NodePath animationNodePath = "Anim";
 	public AnimatedSprite2D animation;
+	public AnimationPlayer opacitySquareAnim;
 	public bool isJumping = false;
 	public bool isHited = false;
 	float inputDirection = 0.203f;
@@ -28,6 +29,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		opacitySquareAnim = GetNode<AnimationPlayer>("CanvasLayer/AnimationPlayer");
 		this.animation = GetNode<AnimatedSprite2D>(animationNodePath);
 		remoteTransform2D = GetNode<RemoteTransform2D>(remoteTransformPath);
 		this.worldScene = GetNode<World1>(worldScenePath);
@@ -137,6 +139,7 @@ public partial class Player : CharacterBody2D
 	private void StartTransformation()
 	{
 		isTransforming = true;
+		opacitySquareAnim.Play("open");
 		UpdateAnimation();
 	}
 

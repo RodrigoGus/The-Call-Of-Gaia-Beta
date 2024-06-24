@@ -1,13 +1,13 @@
 {
-    "door": [
-        "the door is locked",
-        "where did i put the key?"
-    ],
-    "pictures": [
-        "pictures of places that i have visited",
-        "i used to do a lot of traveling"
-    ],
-    "bookcase": [
-        "a undead plant and unread books"
-    ]
+	"door": [
+		"the door is locked",
+		"where did i put the key?"
+	],
+	"pictures": [
+		"pictures of places that i have visited",
+		"i used to do a lot of traveling"
+	],
+	"bookcase": [
+		"a undead plant and unread books"
+	]
 }
