@@ -23,7 +23,6 @@ public partial class Checkpoint : Area2D
 			Globals.playerPosition = Position;
 			var saveData = CreateSaveData();
 			SaveGameToFile(saveData);
-			GD.Print(UserSession.conn.State);
 			if(UserSession.isLogin)
 			{
 				SaveGameToDatabase(saveData);

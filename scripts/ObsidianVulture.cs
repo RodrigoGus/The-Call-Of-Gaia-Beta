@@ -96,7 +96,6 @@ using Godot;
             if (body is Player && !PlayerDetected)
             {
                 PlayerDetected = true;
-                GD.Print("Player detected");
             }
         }
 
@@ -105,7 +104,6 @@ using Godot;
             if (body is Player && PlayerDetected)
             {
                 PlayerDetected = false;
-                GD.Print("Player exited");
             }
         }
     }

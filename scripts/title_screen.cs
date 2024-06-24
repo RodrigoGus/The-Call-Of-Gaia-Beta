@@ -93,7 +93,7 @@ public partial class title_screen : Control
 
 					cmd.ExecuteNonQuery();
 				}
-				GD.Print("Checkpoint salvo com sucesso no banco de dados!");
+				GD.Print("Novo save game salvo com sucesso no banco de dados!");
 			}
 			catch (Exception e)
 			{

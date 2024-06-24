@@ -126,7 +126,6 @@ public partial class ObsidianSphere : CharacterBody2D
 			{
 				PlayerDetected = true;
 				Target = body as Node2D;
-				GD.Print("Player detected");
 			}
 		}
 		private void OnDetectionAreaBodyExited(Node2D body)
@@ -134,7 +133,6 @@ public partial class ObsidianSphere : CharacterBody2D
 			if (body.Name == "Player" || body.Name == "AishaCat")
 			{
 				PlayerDetected = false;
-				GD.Print("Player exited");
 			}
 		}
 	}
